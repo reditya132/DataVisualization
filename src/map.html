@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">
-<style>
+<link rel=stylesheet href=map.css>
 
-/* CSS goes here. */
-
-</style>
 <body>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>
@@ -15,7 +12,7 @@
 var width = 500;
 var height = 500;
 
-d3.json("../map/topo_sample_3.json", function(error, map) {
+d3.json("../map/topo_map.json", function(error, map) {
 	if (error) return console.error(error);
 	console.log(map);
 
