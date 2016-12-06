@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Dataviz</title>
+    <meta name="description" content="Data visualization assignment">
+
+    <link rel="stylesheet" href="css/main.css">
+    <script type="text/javascript" src="javascript/slider.js"></script>
+    <script type="text/javascript" src="javascript/jQuery.js"></script>
+    <script> 
+      $(document).ready(function(){
+        $("#header").load("header.html");
+        $("#footer").load("footer.html"); 
+      });
+    </script>
+    <!--
+    <link rel="canonical" href="http://yourdomain.com/">
+    <link rel="alternate" type="application/rss+xml" title="Dataviz" href="http://yourdomain.com/feed.xml">
+  -->
+  </head>
+
+
+  <body>
+
+    <div id="header"></div>
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="home">
+
+          <table style="width: 100%;">
+            <tr>
+              <td>
+              <div>
+                <div style="float: left;">
+                  <h1 class="page-heading" style="text-align: center;">Left map</h1>
+
+                  <img src="resources/us_choropleth.png" style="width: 500px;">
+                </div>
+
+                <div style="float: right;">
+                  <h1 class="page-heading" style="text-align: center;">Right map</h1>
+
+                  <img src="resources/us_choropleth.png" style="width: 500px;">
+                </div>
+              </div>
+              </td>
+            </tr>
+
+            <tr style="height: 100px;">
+              <td>
+              <div style="text-align: center;">
+                <input class="year-slider" type="range" min="2006" max="2016" value="2006" step="1" oninput="showValue(this.value)">
+                <span id="range">2006</span>
+              </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+               <div>
+                  <h1 class="page-heading" style="text-align: center;">Scatter plot</h1>
+
+                  <img src="resources/scatterplot.png" style="width: 600px; display: block; margin: -20px auto;">
+                </div> 
+              </td>
+            </tr>
+          </table>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div id="footer"></div>
+
+
+  </body>
+
+</html>
