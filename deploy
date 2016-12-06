@@ -1,0 +1,3 @@
+#!/bin/bash
+ssh dataviz@dataviz -C "cd public_html; if [ -d 'site' ]; then rm -r site; fi"
+scp -r site/ dataviz@dataviz:public_html/site
