@@ -13,6 +13,42 @@ var scatterplot_svg = d3.select("#scatterplot_svg")
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+var x = d3.scaleLinear()
+  .range([0, width]);
+var y = d3.scaleLinear()
+  .range([height, 0]);
+
+var xAxis = d3.axisBottom()
+  .scale(x);
+var yAxis = d3.axisLeft()
+  .scale(y);
+
+var boats = boat_data.boats;   
+
+x.domain(d3.extent(boats, function(d) { return d.x; })).nice();
+y.domain(d3.extent(boats, function(d) { return d.y; })).nice();
+
+scatterplot_svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis)
+  .append("text")
+    .attr("class", "label")
+    .attr("x", width)
+    .attr("y", -6)
+    .style("text-anchor", "end")
+    .text("x values");
+
+scatterplot_svg.append("g")
+    .attr("class", "y axis")
+    .call(yAxis)
+  .append("text")
+    .attr("class", "label")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 6)
+    .attr("dy", ".71em")
+    .style("text-anchor", "end")
+    .text("y values")
 
 var tip = d3.select('#scatterplot_vis')
       .append('div')
@@ -31,10 +67,11 @@ var tip = d3.select('#scatterplot_vis')
       });
 
 var drawn = false;
+var color = '#2222aa';
+var hoverColor = '#aa2222';
 
 function drawScatterplot(year) {
   var year = (year - 2005) * 5;
-	var boats = boat_data.boats; 
   //You can implement your scatterplot here
 
   //The svg is already defined, you can just focus on the creation of the scatterplot
@@ -52,43 +89,6 @@ function drawScatterplot(year) {
   //var circles = svg.selectAll(".dot").data([]); //.selectAll('circles');
     
   //circles.exit().remove();
-	   
-	var x = d3.scaleLinear()
-		.range([0, width]);
-	var y = d3.scaleLinear()
-		.range([height, 0]);
-	var color = '#2222aa';
-  var hoverColor = '#aa2222';
-	
-	var xAxis = d3.axisBottom()
-		.scale(x);
-	var yAxis = d3.axisLeft()
-		.scale(y);
-		
-	x.domain(d3.extent(boats, function(d) { return d.x; })).nice();
-	y.domain(d3.extent(boats, function(d) { return d.y; })).nice();
-	
-	scatterplot_svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis)
-    .append("text")
-      .attr("class", "label")
-      .attr("x", width)
-      .attr("y", -6)
-      .style("text-anchor", "end")
-      .text("x values");
-
-	scatterplot_svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis)
-    .append("text")
-      .attr("class", "label")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .text("y values")
 	
 	dots = scatterplot_svg.selectAll(".dot")
 		.data(boats);
