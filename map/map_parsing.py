@@ -34,10 +34,11 @@ for i in data['features']:
 
 	data_features["geometry"]["coordinates"].append(polygon_list)
 	data_features["properties"]["name"] = i["properties"]["titel"]
+	print i["properties"]["titel"]
 
 	if counter < 1000000:
 		data_dict["features"].append(data_features)
 
 	counter = counter + 1
 
-print json.dumps(data_dict)
+#print json.dumps(data_dict)
