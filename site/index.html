@@ -5,20 +5,30 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Data visualization assignment">
 
     <title>Dataviz</title>
-    <meta name="description" content="Data visualization assignment">
 
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/scatterplot.css">
+    <link rel=stylesheet href="css/map.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
     <script type="text/javascript" src="javascript/slider.js"></script>
-    <script type="text/javascript" src="javascript/jQuery.js"></script>
-    <script type="text/javascript" src="javascript/d3.v3.min.js" charset="utf-8"></script>
+    <!-- <script type="text/javascript" src="javascript/jQuery.js"></script> -->
+    <!-- <script type="text/javascript" src="javascript/d3.v3.min.js" charset="utf-8"></script> -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/topojson.v2.min.js"></script>
+    <script src="https://d3js.org/d3-dsv.v1.min.js"></script>
     <script> 
       $(document).ready(function(){
         $("#header").load("header.html");
         $("#footer").load("footer.html");
         $("#scatterplot").load("scatterplot.html");
+        $("#leftmap").load("map.html");
       });
     </script>
     <!--
@@ -41,13 +51,14 @@
               <td>
               <div>
                 <div style="float: left;">
-                  <h1 class="page-heading" style="text-align: center;">Left map</h1>
+                  <h1 class="page-heading" style="text-align: center;">Var A</h1>
 
-                  <img src="resources/us_choropleth.png" style="width: 500px;">
+                  <!-- <img src="resources/us_choropleth.png" style="width: 500px;"> -->
+                  <div id="leftmap" style="width: 500px;"></div>
                 </div>
 
                 <div style="float: right;">
-                  <h1 class="page-heading" style="text-align: center;">Right map</h1>
+                  <h1 class="page-heading" style="text-align: center;">Var B</h1>
 
                   <img src="resources/us_choropleth.png" style="width: 500px;">
                 </div>
@@ -58,8 +69,8 @@
             <tr style="height: 100px;">
               <td>
               <div style="text-align: center;">
+                <h4 id="range" style="display: block; text-align: center;">2006</h4>
                 <input class="year-slider" type="range" min="2006" max="2016" value="2006" step="1" oninput="showValue(this.value)" onchange="updateVisualizations(this.value)">
-                <span id="range">2006</span>
               </div>
               </td>
             </tr>

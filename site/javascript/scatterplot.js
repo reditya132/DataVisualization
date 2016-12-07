@@ -6,7 +6,7 @@ var margin = {top: 20, right: 20, bottom: 30, left: 40};
 var width = viewWidth - margin.left - margin.right;
 var height = viewHeight - margin.top - margin.bottom;
 
-var svg = d3.select("#d3_svg")
+var scatterplot_svg = d3.select("#scatterplot_svg")
     .attr("width", viewWidth)
     .attr("height", viewHeight)
     .attr("margin", "auto")
@@ -53,23 +53,22 @@ function drawScatterplot(year) {
     
   //circles.exit().remove();
 	   
-	var x = d3.scale.linear()
+	var x = d3.scaleLinear()
 		.range([0, width]);
-	var y = d3.scale.linear()
+	var y = d3.scaleLinear()
 		.range([height, 0]);
-	var color = d3.scale.category10();
+	var color = '#2222aa';
+  var hoverColor = '#aa2222';
 	
-	var xAxis = d3.svg.axis()
-		.scale(x)
-		.orient("bottom");
-	var yAxis = d3.svg.axis()
-		.scale(y)
-		.orient("left");
+	var xAxis = d3.axisBottom()
+		.scale(x);
+	var yAxis = d3.axisLeft()
+		.scale(y);
 		
 	x.domain(d3.extent(boats, function(d) { return d.x; })).nice();
 	y.domain(d3.extent(boats, function(d) { return d.y; })).nice();
 	
-	svg.append("g")
+	scatterplot_svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis)
@@ -80,7 +79,7 @@ function drawScatterplot(year) {
       .style("text-anchor", "end")
       .text("x values");
 
-	svg.append("g")
+	scatterplot_svg.append("g")
       .attr("class", "y axis")
       .call(yAxis)
     .append("text")
@@ -91,7 +90,7 @@ function drawScatterplot(year) {
       .style("text-anchor", "end")
       .text("y values")
 	
-	dots = svg.selectAll(".dot")
+	dots = scatterplot_svg.selectAll(".dot")
 		.data(boats);
 
   if (drawn) {
@@ -101,22 +100,50 @@ function drawScatterplot(year) {
     .attr("r", 3.5)
     .attr("cx", function(d) {return x(d.x - year);})
     .attr("cy", function(d) {return y(d.y - year * 2);})
-    .style("fill", color(1.0));
+    .style("fill", color);
   } else {
 		dots.enter().append("circle")
 		.attr("class", "dot")
 		.attr("r", 3.5)
 		.attr("cx", function(d) {return x(d.x - year);})
 		.attr("cy", function(d) {return y(d.y - year * 2);})
-		.style("fill", color(1.0));
+		.style("fill", color)
+    .on('mouseover', function() {
+    d3.select(this).style("fill", hoverColor);
+    })
+    .on('mouseout', function() {
+      d3.select(this).style("fill", color);
+      // d3.select(this).attr('class', function(d){return d.class})
+    })
+    /*.on('click', function(d, i) {
+      obj = d3.select(this);
+      console.log("top: " + obj.style('cy') + " left: " + obj.style('cx'));
+      tip.transition().duration(0);
+      tip.style('top', y(d.y - year * 2) + 'px');
+      tip.style('left', x(d.x - year) + 'px');
+      //tip.style('cy', obj.style('cy'));
+      //tip.style('cx', obj.style('cx'));
+      //tip.style('top', obj.style('top'));
+      //tip.style('left', obj.style('left'));
+      //tip.style('top', y(d.y) - 20 + 'px');
+      //tip.style('left', x(d.x) + 'px');
+      tip.style('display', 'block');
+
+      // fade out
+      tip.transition()
+      .delay(3000)
+      .style('display', 'none');
+    });
+  */
+
     drawn = true;
   }
 
   dots.on('mouseover', function() {
-    d3.select(this).style("fill", color(5.0));
+    d3.select(this).style("fill", hoverColor);
   })
   .on('mouseout', function() {
-    d3.select(this).style("fill", color(1.0));
+    d3.select(this).style("fill", color);
     // d3.select(this).attr('class', function(d){return d.class})
   })
   /*.on('click', function(d, i) {
