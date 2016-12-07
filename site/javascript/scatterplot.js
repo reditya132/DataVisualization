@@ -13,6 +13,23 @@ var svg = d3.select("#d3_svg")
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+
+var tip = d3.select('#scatterplot_vis')
+      .append('div')
+      .attr('class', 'tip')
+      .html('I am a tooltip...')
+      .style('border', '1px solid steelblue')
+      .style('padding', '5px')
+      .style('position', 'relative')
+      .style('display', 'none')
+      .style('background-color', 'yellow  ')
+      .on('mouseover', function(d, i) {
+        tip.transition().duration(0);
+      })
+      .on('mouseout', function(d, i) {
+        tip.style('display', 'none');
+      });
+
 var drawn = false;
 
 function drawScatterplot(year) {
@@ -94,6 +111,34 @@ function drawScatterplot(year) {
 		.style("fill", color(1.0));
     drawn = true;
   }
+
+  dots.on('mouseover', function() {
+    d3.select(this).style("fill", color(5.0));
+  })
+  .on('mouseout', function() {
+    d3.select(this).style("fill", color(1.0));
+    // d3.select(this).attr('class', function(d){return d.class})
+  })
+  /*.on('click', function(d, i) {
+    obj = d3.select(this);
+    console.log("top: " + obj.style('cy') + " left: " + obj.style('cx'));
+    tip.transition().duration(0);
+    tip.style('top', y(d.y - year * 2) + 'px');
+    tip.style('left', x(d.x - year) + 'px');
+    //tip.style('cy', obj.style('cy'));
+    //tip.style('cx', obj.style('cx'));
+    //tip.style('top', obj.style('top'));
+    //tip.style('left', obj.style('left'));
+    //tip.style('top', y(d.y) - 20 + 'px');
+    //tip.style('left', x(d.x) + 'px');
+    tip.style('display', 'block');
+
+    // fade out
+    tip.transition()
+    .delay(3000)
+    .style('display', 'none');
+  });
+*/
 		
   //Additional tasks are given at the end of this file
 }
