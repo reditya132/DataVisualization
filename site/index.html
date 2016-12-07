@@ -10,12 +10,15 @@
     <meta name="description" content="Data visualization assignment">
 
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/scatterplot.css">
     <script type="text/javascript" src="javascript/slider.js"></script>
     <script type="text/javascript" src="javascript/jQuery.js"></script>
+    <script type="text/javascript" src="javascript/d3.v3.min.js" charset="utf-8"></script>
     <script> 
       $(document).ready(function(){
         $("#header").load("header.html");
-        $("#footer").load("footer.html"); 
+        $("#footer").load("footer.html");
+        $("#scatterplot").load("scatterplot.html");
       });
     </script>
     <!--
@@ -55,7 +58,7 @@
             <tr style="height: 100px;">
               <td>
               <div style="text-align: center;">
-                <input class="year-slider" type="range" min="2006" max="2016" value="2006" step="1" oninput="showValue(this.value)">
+                <input class="year-slider" type="range" min="2006" max="2016" value="2006" step="1" oninput="showValue(this.value)" onchange="updateVisualizations(this.value)">
                 <span id="range">2006</span>
               </div>
               </td>
@@ -66,7 +69,10 @@
                <div>
                   <h1 class="page-heading" style="text-align: center;">Scatter plot</h1>
 
+                  <div id="scatterplot" style="width: 500px; display: block; margin: auto;"></div>
+                  <!--
                   <img src="resources/scatterplot.png" style="width: 600px; display: block; margin: -20px auto;">
+                  -->
                 </div> 
               </td>
             </tr>

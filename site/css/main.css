@@ -180,3 +180,9 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 .highlight .il { color: #099; }
 
 .year-slider { width: 300px;}
+
+#scatterplot {
+    /*width: 600px;
+    display: block; 
+    margin: -20px auto;*/
+}
