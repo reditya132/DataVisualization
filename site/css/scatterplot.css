@@ -10,6 +10,10 @@ body {
   shape-rendering: crispEdges;
 }
 
+.label {
+  /** color: #000 !important; */
+}
+
 .dot {
   stroke-width: 0.25pt;
   stroke: #555;
