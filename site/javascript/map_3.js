@@ -11,13 +11,13 @@ var legend_labels = ["< 2000", "2000+", "4000+", "8000+", "16000+"];
 
 var color = d3.scaleThreshold().domain(d3.range(100, 28000, 3000)).range(d3.schemeGreens[7]);
 
-var div = d3.select("body").append("div")   
-  .attr("class", "tooltip")               
-  .style("opacity", 0);
+var tooltip = d3.select(".tooltip")
 
 var svg = d3.select("#left_column").append("svg")
   .attr("width", width)
   .attr("height", height);
+
+console.log("left column left: " + d3.select("#left_column").style("left"))
 
 var projection = d3.geoAlbers()
   .center([4.88, 52.36])
@@ -66,8 +66,8 @@ function ready(error, map, data) {
 function mouseOver(d)
 {
   d3.select(this).transition().duration(200).style("opacity", 1);
-  div.transition().duration(200).style("opacity", 1);
-  div.text(nameById[d.id] + " : " + rateById[d.id])
+  tooltip.transition().duration(200).style("opacity", 1);
+  tooltip.text(nameById[d.id] + " : " + rateById[d.id])
     .style("left", (d3.event.pageX) + "px")
     .style("top", (d3.event.pageY - 30) + "px");
 }
@@ -75,7 +75,7 @@ function mouseOver(d)
 function mouseOut()
 {
   d3.select(this).transition().duration(300).style("opacity", 0.8);
-  div.transition().duration(300).style("opacity", 0);
+  tooltip.transition().duration(300).style("opacity", 0);
 }
 
 function mouseClicked(d)
