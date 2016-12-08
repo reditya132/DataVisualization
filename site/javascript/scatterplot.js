@@ -50,25 +50,8 @@ scatterplot_svg.append("g")
     .style("text-anchor", "end")
     .text("y values")
 
-var tip = d3.select('#scatterplot_vis')
-      .append('div')
-      .attr('class', 'tip')
-      .html('I am a tooltip...')
-      .style('border', '1px solid steelblue')
-      .style('padding', '5px')
-      .style('position', 'relative')
-      .style('display', 'none')
-      .style('background-color', 'yellow  ')
-      .on('mouseover', function(d, i) {
-        tip.transition().duration(0);
-      })
-      .on('mouseout', function(d, i) {
-        tip.style('display', 'none');
-      });
-
+var tooltip = d3.select(".tooltip");
 var drawn = false;
-var color = '#2222aa';
-var hoverColor = '#aa2222';
 
 function drawScatterplot(year) {
   var year = (year - 2005) * 5;
@@ -100,72 +83,29 @@ function drawScatterplot(year) {
     .attr("r", 3.5)
     .attr("cx", function(d) {return x(d.x - year);})
     .attr("cy", function(d) {return y(d.y - year * 2);})
-    .style("fill", color);
+    .style("fill", '#2222aa');
   } else {
 		dots.enter().append("circle")
 		.attr("class", "dot")
 		.attr("r", 3.5)
 		.attr("cx", function(d) {return x(d.x - year);})
 		.attr("cy", function(d) {return y(d.y - year * 2);})
-		.style("fill", color)
-    .on('mouseover', function() {
-    d3.select(this).style("fill", hoverColor);
+		.style("fill", '#2222aa')
+    .on('mouseover', function(d) {
+      d3.select(this).style("fill", '#aa2222');
+      tooltip.transition().duration(200).style("opacity", 1);
+      tooltip.text(d.x + ", " + d.y)
+        .style("left", (d3.event.pageX) + "px")
+        .style("top", (d3.event.pageY - 30) + "px");
     })
-    .on('mouseout', function() {
-      d3.select(this).style("fill", color);
+    .on('mouseout', function(d) {
+      d3.select(this).style("fill", '#2222aa');
       // d3.select(this).attr('class', function(d){return d.class})
+      tooltip.transition().duration(300).style("opacity", 0);
     })
-    /*.on('click', function(d, i) {
-      obj = d3.select(this);
-      console.log("top: " + obj.style('cy') + " left: " + obj.style('cx'));
-      tip.transition().duration(0);
-      tip.style('top', y(d.y - year * 2) + 'px');
-      tip.style('left', x(d.x - year) + 'px');
-      //tip.style('cy', obj.style('cy'));
-      //tip.style('cx', obj.style('cx'));
-      //tip.style('top', obj.style('top'));
-      //tip.style('left', obj.style('left'));
-      //tip.style('top', y(d.y) - 20 + 'px');
-      //tip.style('left', x(d.x) + 'px');
-      tip.style('display', 'block');
-
-      // fade out
-      tip.transition()
-      .delay(3000)
-      .style('display', 'none');
-    });
-  */
 
     drawn = true;
   }
-
-  dots.on('mouseover', function() {
-    d3.select(this).style("fill", hoverColor);
-  })
-  .on('mouseout', function() {
-    d3.select(this).style("fill", color);
-    // d3.select(this).attr('class', function(d){return d.class})
-  })
-  /*.on('click', function(d, i) {
-    obj = d3.select(this);
-    console.log("top: " + obj.style('cy') + " left: " + obj.style('cx'));
-    tip.transition().duration(0);
-    tip.style('top', y(d.y - year * 2) + 'px');
-    tip.style('left', x(d.x - year) + 'px');
-    //tip.style('cy', obj.style('cy'));
-    //tip.style('cx', obj.style('cx'));
-    //tip.style('top', obj.style('top'));
-    //tip.style('left', obj.style('left'));
-    //tip.style('top', y(d.y) - 20 + 'px');
-    //tip.style('left', x(d.x) + 'px');
-    tip.style('display', 'block');
-
-    // fade out
-    tip.transition()
-    .delay(3000)
-    .style('display', 'none');
-  });
-*/
 		
   //Additional tasks are given at the end of this file
 }
