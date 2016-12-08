@@ -15,7 +15,7 @@ div.tooltip {
   pointer-events: none;         
 }        
 
-#path-borders {
+.path-borders {
   fill: none;
   stroke: #fff;
   stroke-width: 1px;

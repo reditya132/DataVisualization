@@ -12,11 +12,11 @@ var legend_labels = ["< 2000", "2000+", "4000+", "8000+", "16000+"];
 var color = d3.scaleThreshold().domain(d3.range(100, 28000, 3000)).range(d3.schemeGreens[7]);
 var color2 = d3.scaleThreshold().domain(d3.range(70, 13000, 2000)).range(d3.schemeBlues[7]);
 
-var div = d3.select("body").append("div")   
+var divTooltipFirst = d3.select("body").append("div")   
   .attr("class", "tooltip")               
   .style("opacity", 0);
 
-var div2 = d3.select("body").append("div")   
+var divTooltipSecond = d3.select("body").append("div")   
   .attr("class", "tooltip")               
   .style("opacity", 0);
 
@@ -34,7 +34,8 @@ var projection = d3.geoAlbers()
   .scale(120000)
   .translate([width / 2, height / 2]);
 
-var path = d3.geoPath().projection(projection);
+var path = d3.geoPath()
+            .projection(projection);
 
 // reading map file and data
 d3.queue()
@@ -68,11 +69,13 @@ function ready(error, map, data) {
 
 //
   g = svg.append("g")
-        .attr("id", "path-borders")
+        .attr("class", "path-borders")
+        .attr("id", "leftG")        
         .selectAll("path")
         .data(topojson.feature(map, map.objects.new_wijk_water).features) 
         .enter().append("path")
         .attr("d", path)
+        .attr("id", function(d) { return "pathLeft"+d.id; })
         .style("fill", function(d) {
           return color(rateById[d.id]); 
         })
@@ -93,11 +96,13 @@ function ready2(error, map, data) {
 
 //
   g2 = svg_right.append("g")
-        .attr("id", "path-borders")
+        .attr("class", "path-borders")
+        .attr("id", "rightG")
         .selectAll("path")
         .data(topojson.feature(map, map.objects.new_wijk_water).features) 
         .enter().append("path")
         .attr("d", path)
+        .attr("id", function(d) { return "pathRight"+d.id; })
         .style("fill", function(d) {
           return color2(rateById_2[d.id]); 
         })
@@ -107,31 +112,66 @@ function ready2(error, map, data) {
         .on("click", mouseClicked);
 };
 
-function mouseOver(d)
+function mouseOver(d,i)
 {
   d3.select(this).transition().duration(200).style("opacity", 1);
   
-  var locationDiv = $("#left_column").position();
-  div.transition().duration(200).style("opacity", 1);
-  div.text(nameById[d.id] + " : " + rateById[d.id])
-    .style("left", (d3.event.pageX) + "px")
-    .style("top", (d3.event.pageY - 30) + "px");
+  // get the name of the div where the mouse position is located
+  var arr = allElementsFromPoint(d3.event.pageX, d3.event.pageY);
+  var mouseDiv = arr[3].id;
+  console.log(mouseDiv);
+  var locationDivLeft = $("#left_column").position();
+  var locationDivRight = $("#right_column").position();
   
-  var locationDiv2 = $("#right_column").position();
-  div2.transition().duration(200).style("opacity", 1);
-  div2.text(nameById_2[d.id] + " : " + rateById_2[d.id])
-    .style("left", (d3.event.pageX - locationDiv.left + locationDiv2.left) + "px")
-    .style("top", (d3.event.pageY - 30 - locationDiv.top + locationDiv2.top) + "px");
+  // reference : http://stackoverflow.com/questions/17917072/choropleth-maps-changing-stroke-color-in-mouseover-shows-overlapping-boundari
+  console.log(this.parentNode.appendChild(this));
+  console.log(this.parentNode);
+  console.log(arr[5]);
 
-  //alert(locationDiv.left + " " + locationDiv2.left);
-    
+  d3.select("#"+"pathLeft"+d.id).transition().duration(300)
+    .style('stroke', '#F00');
+
+  d3.select("#"+"pathRight"+d.id).transition().duration(300)
+    .style('stroke', '#F00');
+
+
+  if(mouseDiv == "left_column")
+  {
+    divTooltipFirst.transition().duration(200).style("opacity", 1);
+    divTooltipFirst.text(nameById[d.id] + " : " + rateById[d.id])
+      .style("left", (d3.event.pageX) + "px")
+      .style("top", (d3.event.pageY - 30) + "px");
+  
+    divTooltipSecond.transition().duration(200).style("opacity", 1);
+    divTooltipSecond.text(nameById_2[d.id] + " : " + rateById_2[d.id])
+      .style("left", (d3.event.pageX - locationDivLeft.left + locationDivRight.left) + "px")
+      .style("top", (d3.event.pageY - 30 - locationDivLeft.top + locationDivRight.top) + "px");
+  }
+
+  else if(mouseDiv == "right_column")
+  {
+    divTooltipFirst.transition().duration(200).style("opacity", 1);
+    divTooltipFirst.text(nameById_2[d.id] + " : " + rateById_2[d.id])
+      .style("left", (d3.event.pageX) + "px")
+      .style("top", (d3.event.pageY - 30) + "px");
+  
+    divTooltipSecond.transition().duration(200).style("opacity", 1);
+    divTooltipSecond.text(nameById[d.id] + " : " + rateById[d.id])
+      .style("left", (d3.event.pageX - locationDivRight.left + locationDivLeft.left) + "px")
+      .style("top", (d3.event.pageY - 30 - locationDivRight.top + locationDivLeft.top) + "px");    
+  }
 }
 
-function mouseOut()
+function mouseOut(d)
 {
   d3.select(this).transition().duration(300).style("opacity", 0.8);
-  div.transition().duration(300).style("opacity", 0);
-  div2.transition().duration(300).style("opacity", 0);
+  divTooltipFirst.transition().duration(300).style("opacity", 0);
+  divTooltipSecond.transition().duration(300).style("opacity", 0);
+  d3.select("#"+"pathLeft"+d.id).transition().duration(300)
+    .style('stroke', '#fff');
+
+  d3.select("#"+"pathRight"+d.id).transition().duration(300)
+    .style('stroke', '#fff');
 }
 
 function mouseClicked(d)
@@ -141,7 +181,7 @@ function mouseClicked(d)
     var centroid = path.centroid(d);
     x = centroid[0];
     y = centroid[1];
-    k = 5;
+    k = 3;
     centered = d;
   }
   else {
@@ -155,7 +195,38 @@ function mouseClicked(d)
     .classed("active", centered && function(d) {
       return d === centered;
     });
+
+  g2.selectAll("path")
+    .classed("active", centered && function(d) {
+      return d === centered;
+    });
+
+
   g.transition().duration(700).attr("transform", "translate(" + width/2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");
+  g2.transition().duration(700).attr("transform", "translate(" + width/2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");
+
+
+}
+
+// reference : http://stackoverflow.com/questions/8813051/determine-which-element-the-mouse-pointer-is-on-top-of-in-javascript
+// this function will return all the div associated with a particular mouse position
+function allElementsFromPoint(x, y) {
+  var element, elements = [];
+  var old_visibility = [];
+  while (true) {
+      element = document.elementFromPoint(x, y);
+      if (!element || element === document.documentElement) {
+          break;
+      }
+      elements.push(element);
+      old_visibility.push(element.style.visibility);
+      element.style.visibility = 'hidden'; // Temporarily hide the element (without changing the layout)
+  }
+  for (var k = 0; k < elements.length; k++) {
+      elements[k].style.visibility = old_visibility[k];
+  }
+  elements.reverse();
+  return elements;
 }
 
 
