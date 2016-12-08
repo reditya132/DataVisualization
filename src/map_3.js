@@ -9,8 +9,8 @@ var ext_color_domain = [0, 2000, 4000, 8000, 16000];
 
 var legend_labels = ["< 2000", "2000+", "4000+", "8000+", "16000+"];
 
-var color = d3.scaleThreshold().domain(d3.range(100, 28000, 3000)).range(d3.schemeGreens[7]);
-var color2 = d3.scaleThreshold().domain(d3.range(70, 13000, 2000)).range(d3.schemeBlues[7]);
+var color = d3.scaleThreshold().domain(d3.range(-0.2, 1, 0.15)).range(d3.schemeGreens[7]);
+var color2 = d3.scaleThreshold().domain(d3.range(-0.2, 1, 0.15)).range(d3.schemeBlues[7]);
 
 var divTooltipFirst = d3.select("body").append("div")   
   .attr("class", "tooltip")               
@@ -50,9 +50,11 @@ d3.queue()
 
 var rateById = {};
 var nameById = {};
+var rangeById = {};
 
 var rateById_2 = {};
 var nameById_2 = {};
+var rangeById_2 = {};
 
 
 var g;
@@ -62,9 +64,24 @@ function ready(error, map, data) {
    //var rateById = {};
    //var nameById = {};
 
-   data.forEach(function(d) {
+  var max = 0;
+  var min = 100000;
+  
+  data.forEach(function(d) {
     rateById[d.id] = +d.pop;
     nameById[d.id] = d.wijk_name;
+    if(d.pop > max && d.pop>0)
+    {
+      max = +d.pop;
+    }
+    if(d.pop < min && d.pop>0)
+    {
+      min = +d.pop;
+    }
+  });
+
+  data.forEach(function(d) {
+    rangeById[d.id] = (d.pop-min)/(max-min);
   });
 
 //
@@ -77,7 +94,7 @@ function ready(error, map, data) {
         .attr("d", path)
         .attr("id", function(d) { return "pathLeft"+d.id; })
         .style("fill", function(d) {
-          return color(rateById[d.id]); 
+          return color(rangeById[d.id]); 
         })
         .style("opacity", 0.8)
         .on("mouseover", mouseOver)
@@ -88,10 +105,24 @@ function ready(error, map, data) {
 function ready2(error, map, data) {
    //var rateById = {};
    //var nameById = {};
+  var max2 = 0;
+  var min2 = 10000000000;
 
    data.forEach(function(d) {
     rateById_2[d.id] = +d.households;
     nameById_2[d.id] = d.wijk_name;
+    if(d.households > max2 && d.households > 0)
+    {
+      max2 = +d.households;
+    }
+    if(d.households < min2 && d.households > 0)
+    {
+      min2 = +d.households;
+    }
+  });
+
+  data.forEach(function(d) {
+    rangeById_2[d.id] = (d.households-min2)/(max2-min2);
   });
 
 //
@@ -104,7 +135,7 @@ function ready2(error, map, data) {
         .attr("d", path)
         .attr("id", function(d) { return "pathRight"+d.id; })
         .style("fill", function(d) {
-          return color2(rateById_2[d.id]); 
+          return color2(rangeById_2[d.id]); 
         })
         .style("opacity", 0.8)
         .on("mouseover", mouseOver)
@@ -119,20 +150,20 @@ function mouseOver(d,i)
   // get the name of the div where the mouse position is located
   var arr = allElementsFromPoint(d3.event.pageX, d3.event.pageY);
   var mouseDiv = arr[3].id;
-  console.log(mouseDiv);
+  //console.log(mouseDiv);
   var locationDivLeft = $("#left_column").position();
   var locationDivRight = $("#right_column").position();
   
   // reference : http://stackoverflow.com/questions/17917072/choropleth-maps-changing-stroke-color-in-mouseover-shows-overlapping-boundari
-  console.log(this.parentNode.appendChild(this));
-  console.log(this.parentNode);
-  console.log(arr[5]);
+  //console.log(this.parentNode.appendChild(this));
+  //console.log(this.parentNode);
+  //console.log(arr[5]);
 
-  d3.select("#"+"pathLeft"+d.id).transition().duration(300)
+  /*d3.select("#"+"pathLeft"+d.id).transition().duration(300)
     .style('stroke', '#F00');
 
   d3.select("#"+"pathRight"+d.id).transition().duration(300)
-    .style('stroke', '#F00');
+    .style('stroke', '#F00');*/
 
 
   if(mouseDiv == "left_column")
@@ -167,28 +198,31 @@ function mouseOut(d)
   d3.select(this).transition().duration(300).style("opacity", 0.8);
   divTooltipFirst.transition().duration(300).style("opacity", 0);
   divTooltipSecond.transition().duration(300).style("opacity", 0);
-  d3.select("#"+"pathLeft"+d.id).transition().duration(300)
+  /*d3.select("#"+"pathLeft"+d.id).transition().duration(300)
     .style('stroke', '#fff');
 
   d3.select("#"+"pathRight"+d.id).transition().duration(300)
-    .style('stroke', '#fff');
+    .style('stroke', '#fff');*/
 }
 
 function mouseClicked(d)
 {
   var x, y, k;
+  var zoomState;
   if (d && centered != d) {
     var centroid = path.centroid(d);
     x = centroid[0];
     y = centroid[1];
     k = 3;
     centered = d;
+    zoomState = 1;
   }
   else {
     x = width / 2;
     y = height / 2;
     k = 1;
     centered = null;
+    zoomState = 0;
   }
 
   g.selectAll("path")
@@ -201,11 +235,39 @@ function mouseClicked(d)
       return d === centered;
     });
 
+  var selected = d.id;
+  // inspired from this : http://stackoverflow.com/questions/10692100/invoke-a-callback-at-the-end-of-a-transition
+  g.transition().duration(700)
+    .attr("transform", "translate(" + width/2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+    .on("end", function(d) { 
+      if(zoomState == 1)
+      {
+        d3.select(this).style('stroke','#FFF');
+        d3.select("#"+"pathLeft"+selected).transition().duration(300)
+          .style('stroke', '#F00');
+      }
+      else
+      {
+        d3.select("#"+"pathLeft"+selected).transition().duration(300)
+          .style('stroke', '#FFF');        
+      }
+    })
 
-  g.transition().duration(700).attr("transform", "translate(" + width/2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");
-  g2.transition().duration(700).attr("transform", "translate(" + width/2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");
-
-
+  g2.transition().duration(700)
+    .attr("transform", "translate(" + width/2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+    .on("end", function(d) { 
+      if(zoomState == 1)
+      {
+        d3.select(this).style('stroke','#FFF');
+        d3.select("#"+"pathRight"+selected).transition().duration(300)
+          .style('stroke', '#F00');
+      }
+      else
+      {
+        d3.select("#"+"pathRight"+selected).transition().duration(300)
+          .style('stroke', '#FFF');        
+      }
+    })
 }
 
 // reference : http://stackoverflow.com/questions/8813051/determine-which-element-the-mouse-pointer-is-on-top-of-in-javascript
