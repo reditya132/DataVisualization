@@ -12,6 +12,7 @@
 	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 	<script src="https://d3js.org/topojson.v2.min.js"></script>
 	<script src="https://d3js.org/d3-dsv.v1.min.js"></script>
+	<script src="d3-legend.js"></script>
   <script>
 
   </script>
@@ -21,19 +22,21 @@
 	<div class="container">
 		<div class="row">
 			<div id="left_column" class="col-md-6">
-			
+				<h1>Var A</h1>
 			</div>
 
 			<div id="right_column" class="col-md-6">
-			
+				<h1>Var B</h1>
 			</div>
 		</div>
 		<div class="row">
-		  <label for="amount">Year :</label>
-		  <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+		 	<div class="col-md-4 col-md-offset-4">
+		  		<label for="amount">Year :</label>
+		  		<input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+			</div>
 		</div>		
 		<div class="row">
-			<div id="slider" class="col-md-4"></div>
+			<div id="slider" class="col-md-4 col-md-offset-4"></div>
 		</div>
 	</div>
 

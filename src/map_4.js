@@ -3,7 +3,7 @@
 $( function() {
   $( "#slider" ).slider({
     value:2005,
-    min: 2005,
+    min: 2000,
     max: 2016,
     step: 1,
     slide: function( event, ui ) {
@@ -16,7 +16,7 @@ $( function() {
 } );
 
 // initialize the width and height of the map
-var width = 400;
+var width = 500;
 var height = 500;
 var centered;
 
@@ -50,16 +50,28 @@ var svg = d3.select("#left_column").append("svg")
   .attr("width", width)
   .attr("height", height);
 
+var legendLeft = d3.select("#left_column").append("svg")
+  .attr("width", width)
+  .attr("height", 50)
+  .attr("id", "legendLeft");
+
+
 // initialize the svg in the right column
 var svg_right = d3.select("#right_column").append("svg")
   .attr("width", width)
   .attr("height", height);
 
+var legendRight = d3.select("#right_column").append("svg")
+  .attr("width", width)
+  .attr("height", 50)
+  .attr("id", "legendRight");
+
+
 // projection using geoAlbers
 var projection = d3.geoAlbers()
   .center([4.88, 52.36])
   .rotate(4.88)
-  .scale(120000)
+  .scale(150000)
   .translate([width / 2, height / 2]);
 
 // save the projection variable that will later be used to draw the map
@@ -70,39 +82,41 @@ var path = d3.geoPath()
 d3.queue()
   .defer(d3.json, "../map/topo_real_map.json")
   .defer(d3.tsv, "data_year.csv")
-  .await(ready);
+  .await(queueLeft);
 
 d3.queue()
   .defer(d3.json, "../map/topo_real_map.json")
   .defer(d3.tsv, "data_year.csv")
-  .await(ready2);
+  .await(queueRight);
 
 // initialize some variables for the first option that user choose
-var rateById = {};
-var nameById = {};
-var rangeById = {};
+var leftValue = {};
+var leftId = {};
+var leftRange = {};
 
 // initialize some variables for the second option that user choose
-var rateById_2 = {};
-var nameById_2 = {};
-var rangeById_2 = {};
+var rightValue = {};
+var rightId = {};
+var rightRange = {};
 
-
+// initialize variable for the svg selector g
+// g = left column
+// g2 = right column
 var g;
 var g2;
 
-function ready(error, map, data) {
-   //var rateById = {};
-   //var nameById = {};
-
+// function queueLeft is called after the queue above
+function queueLeft(error, map, data) {
   var max = 0;
   var min = 100000;
   
+  // save corresponding map data for the variable that user choose
+  // at first, it will choose the minimum year that the data is available
   data.forEach(function(d) {
     if(d.year == year)
     {
-      rateById[d.id] = +d[data_1];
-      nameById[d.id] = d.name;
+      leftValue[d.id] = +d[data_1];
+      leftId[d.id] = d.name;
     }
     if(d[data_1] > max && d[data_1]>0 && d.year == year)
     {
@@ -115,7 +129,7 @@ function ready(error, map, data) {
   });
 
   data.forEach(function(d) {
-    if( d.year == year) { rangeById[d.id] = (d[data_1]-min)/(max-min); }
+    if( d.year == year) { leftRange[d.id] = (d[data_1]-min)/(max-min); }
   });
 
 //
@@ -128,7 +142,7 @@ function ready(error, map, data) {
         .attr("d", path)
         .attr("id", function(d) { return "pathLeft"+d.id; })
         .style("fill", function(d) {
-          return color(rateById[d.id]); 
+          return color(leftValue[d.id]); 
         })
         .style("opacity", 1)
         .on("mouseover", mouseOver)
@@ -139,17 +153,17 @@ function ready(error, map, data) {
 
 };
 
-function ready2(error, map, data) {
-   //var rateById = {};
-   //var nameById = {};
+function queueRight(error, map, data) {
+   //var leftValue = {};
+   //var leftId = {};
   var max2 = 0;
   var min2 = 10000000000;
 
    data.forEach(function(d) {
     if(d.year == year)
     {
-        rateById_2[d.id] = +d[data_2];
-        nameById_2[d.id] = d.name;
+        rightValue[d.id] = +d[data_2];
+        rightId[d.id] = d.name;
     }
     if(d[data_2] > max2 && d[data_2] > 0 && d.year == year)
     {
@@ -164,7 +178,7 @@ function ready2(error, map, data) {
   console.log(year);
 
   data.forEach(function(d) {
-    if(d.year == year) { rangeById_2[d.id] = (d[data_2]-min2)/(max2-min2); }
+    if(d.year == year) { rightRange[d.id] = (d[data_2]-min2)/(max2-min2); }
   });
 
 //
@@ -177,7 +191,7 @@ function ready2(error, map, data) {
         .attr("d", path)
         .attr("id", function(d) { return "pathRight"+d.id; })
         .style("fill", function(d) {
-          return color2(rateById_2[d.id]); 
+          return color2(rightValue[d.id]); 
         })
         .style("opacity", 1)
         .on("mouseover", mouseOver)
@@ -213,12 +227,12 @@ function mouseOver(d,i)
   if(mouseDiv == "left_column")
   {
     divTooltipFirst.transition().duration(200).style("opacity", 1);
-    divTooltipFirst.text(nameById[d.id] + " : " + rateById[d.id])
+    divTooltipFirst.text(leftId[d.id] + " : " + leftValue[d.id])
       .style("left", (d3.event.pageX) + "px")
       .style("top", (d3.event.pageY - 30) + "px");
   
     divTooltipSecond.transition().duration(200).style("opacity", 1);
-    divTooltipSecond.text(nameById_2[d.id] + " : " + rateById_2[d.id])
+    divTooltipSecond.text(rightId[d.id] + " : " + rightValue[d.id])
       .style("left", (d3.event.pageX - locationDivLeft.left + locationDivRight.left) + "px")
       .style("top", (d3.event.pageY - 30 - locationDivLeft.top + locationDivRight.top) + "px");
   }
@@ -226,12 +240,12 @@ function mouseOver(d,i)
   else if(mouseDiv == "right_column")
   {
     divTooltipFirst.transition().duration(200).style("opacity", 1);
-    divTooltipFirst.text(nameById_2[d.id] + " : " + rateById_2[d.id])
+    divTooltipFirst.text(rightId[d.id] + " : " + rightValue[d.id])
       .style("left", (d3.event.pageX) + "px")
       .style("top", (d3.event.pageY - 30) + "px");
   
     divTooltipSecond.transition().duration(200).style("opacity", 1);
-    divTooltipSecond.text(nameById[d.id] + " : " + rateById[d.id])
+    divTooltipSecond.text(leftId[d.id] + " : " + leftValue[d.id])
       .style("left", (d3.event.pageX - locationDivRight.left + locationDivLeft.left) + "px")
       .style("top", (d3.event.pageY - 30 - locationDivRight.top + locationDivLeft.top) + "px");    
   }
@@ -243,10 +257,10 @@ function mouseOut(d)
   divTooltipFirst.transition().duration(300).style("opacity", 0);
   divTooltipSecond.transition().duration(300).style("opacity", 0);
   /*d3.select("#"+"pathLeft"+d.id).transition().duration(300)
-    .style('stroke', '#fff');
+    .style('stroke', '#757575');
 
   d3.select("#"+"pathRight"+d.id).transition().duration(300)
-    .style('stroke', '#fff');*/
+    .style('stroke', '#757575');*/
 }
 
 function mouseClicked(d)
@@ -286,18 +300,20 @@ function mouseClicked(d)
     .on("end", function(d) { 
       if(zoomState == 1)
       {
-        d3.select(this).style('stroke','#FFF');
+        d3.select(this).style('stroke','#757575').style('stroke-width','0.5px');
         var select2 = "#"+"pathLeft"+selected;
         var y = $("#leftG");
         y.find(select2).appendTo(y);
         //var select = d3.select(this.select("#"+"pathRight"+selected);
         d3.select(select2).transition().duration(300)
-          .style('stroke', '#F00');
+          .style('stroke', '#F57F17')
+          .style('stroke-width','2px');
       }
       else
       {
         d3.select("#"+"pathLeft"+selected).transition().duration(300)
-          .style('stroke', '#FFF');        
+          .style('stroke', '#757575')
+          .style('stroke-width', '0.5px');        
       }
     })
 
@@ -306,18 +322,20 @@ function mouseClicked(d)
     .on("end", function(d) { 
       if(zoomState == 1)
       {
-        d3.select(this).style('stroke','#FFF');
+        d3.select(this).style('stroke','#757575').style('stroke-width','0.5px');
         var select = "#"+"pathRight"+selected;
         var x = $("#rightG");
         x.find(select).appendTo(x);
         //var select = d3.select(this.select("#"+"pathRight"+selected);
         d3.select(select).transition().duration(300)
-          .style('stroke', '#F00');
+          .style('stroke', '#F57F17')
+          .style('stroke-width','2px');
       }
       else
       {
         d3.select("#"+"pathRight"+selected).transition().duration(300)
-          .style('stroke', '#FFF');        
+          .style('stroke', '#757575')
+          .style('stroke-width', '0.5px');        
       }
     })
 }
@@ -348,12 +366,17 @@ function update(year1)
   d3.tsv("data_year.csv", function(error, data1) {
     var max = 0;
     var min = 100000;
+
+    for (var key in leftId)
+    {
+      leftValue[key] = 0;
+    }
     
     data1.forEach(function(d) {
       if(d.year == year1)
       {
-        rateById[d.id] = +d[data_1];
-        nameById[d.id] = d.name;
+        leftValue[d.id] = +d[data_1];
+        leftId[d.id] = d.name;
       }
       if(d[data_1] > max && d[data_1]>0 && d.year == year1)
       {
@@ -366,13 +389,15 @@ function update(year1)
     });
 
     data1.forEach(function(d) {
-      if( d.year == year) { rangeById[d.id] = (d[data_1]-min)/(max-min); }
+      if( d.year == year) { leftRange[d.id] = (d[data_1]-min)/(max-min); }
     });   
      g = d3.select("#leftG")
       .selectAll("path")
       .each(function(d,i) {
-        d3.select(this).style("fill", function(d){
-          return color(rateById[d.id])
+        d3.select(this).transition().duration(200).style("fill", function(d){
+          var mapValue = leftValue[d.id];
+          if(mapValue == 0) { return "white"; }
+          else { return color(mapValue); }
         })
       });
   });
@@ -383,12 +408,17 @@ function update2(year1)
   d3.tsv("data_year.csv", function(error, data1) {
     var max = 0;
     var min = 100000;
+
+    for (var key in rightId)
+    {
+      rightValue[key] = 0;
+    }    
     
     data1.forEach(function(d) {
       if(d.year == year1)
       {
-        rateById_2[d.id] = +d[data_2];
-        nameById_2[d.id] = d.name;
+        rightValue[d.id] = +d[data_2];
+        rightId[d.id] = d.name;
       }
       if(d[data_2] > max && d[data_2]>0 && d.year == year1)
       {
@@ -401,13 +431,15 @@ function update2(year1)
     });
 
     data1.forEach(function(d) {
-      if( d.year == year) { rangeById_2[d.id] = (d[data_2]-min)/(max-min); }
+      if( d.year == year) { rightRange[d.id] = (d[data_2]-min)/(max-min); }
     });   
      g2 = d3.select("#rightG")
       .selectAll("path")
       .each(function(d,i) {
-        d3.select(this).style("fill", function(d){
-          return color2(rateById_2[d.id])
+        d3.select(this).transition().duration(200).style("fill", function(d){
+          var mapValue = rightValue[d.id];
+          if(mapValue == 0) { return "white"; }
+          else { return color2(mapValue); }
         })
       });
   });
@@ -422,8 +454,8 @@ function returnMax(dataVar,pos)
     data1.forEach(function(d) {
       if(d.year > 0)
       {
-        rateById[d.id] = +d[dataVar];
-        nameById[d.id] = d.name;
+        leftValue[d.id] = +d[dataVar];
+        leftId[d.id] = d.name;
       }
       if(d[dataVar] > max && d[dataVar]>0 && d.year > 0)
       {
@@ -436,11 +468,41 @@ function returnMax(dataVar,pos)
     });
     var tick = max/9;
 
-    if(pos == "left") { color = d3.scaleThreshold().domain(d3.range(0, max, tick)).range(d3.schemeGreens[9]); }
-    else if(pos == "right") { color2 = d3.scaleThreshold().domain(d3.range(0, max, tick)).range(d3.schemeBlues[9]); }
+    //if(pos == "left") { color = d3.scaleThreshold().domain(d3.range(0, max, tick)).range(d3.schemeGreens[9]); }
+    if(pos == "left") { 
+      color = d3.scaleThreshold().domain(d3.range(0, max, tick)).range(d3.schemeGreens[9]);
+      var ssvg = d3.select("#legendLeft");
+
+      ssvg.append("g")
+        .attr("class", "legendLinear")
+        .attr("transform", "translate(100,10)");
+
+      var legendLinear = d3.legendColor()
+        .shapeWidth(35)
+        .orient('horizontal')
+        .scale(color);
+
+      ssvg.select(".legendLinear")
+        .call(legendLinear);
+
+      }
+    else if(pos == "right") { 
+      color2 = d3.scaleThreshold().domain(d3.range(0, max, tick)).range(d3.schemeBlues[9]); 
+      var ssvg = d3.select("#legendRight");
+
+      ssvg.append("g")
+        .attr("class", "legendLinear")
+        .attr("transform", "translate(100,10)");
+
+      var legendLinear = d3.legendColor()
+        .shapeWidth(35)
+        .orient('horizontal')
+        .scale(color2);
+
+      ssvg.select(".legendLinear")
+        .call(legendLinear);
+    }
   });
 }
-
-
 
 

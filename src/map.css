@@ -17,8 +17,8 @@ div.tooltip {
 
 .path-borders {
   fill: none;
-  stroke: #fff;
-  stroke-width: 1px;
+  stroke: #757575;
+  stroke-width: 0.5px;
   stroke-linejoin: round;
   stroke-linecap: round;
 }
