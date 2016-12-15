@@ -15,15 +15,45 @@ $( function() {
   $( "#amount" ).val( " " + $( "#slider" ).slider( "value" ) );
 } );
 
+
+
+// easy autocomplete
+var options = {
+  url: "buurt.json",
+  getValue: "name", 
+  list: {
+    onClickEvent: function() {
+      d3.json('../map/topo_real_map.json', function(error, map) {
+        var code = $("#provider-json").getSelectedItemData().code;
+        var topodata = topojson.feature(map, map.objects.new_wijk_water).features;
+        var select;
+        for(var i in topodata)
+        {
+          if(topodata[i].id == code)
+          {
+            mouseClicked(topodata[i]);
+          }
+        }
+      })
+    },
+    match: {
+      enabled: true
+    }
+  }
+};
+
+$("#provider-json").easyAutocomplete(options);
+
+
 // initialize the width and height of the map
-var width = 500;
+var width = 550;
 var height = 500;
 var centered;
 
 // initialize the data with pre-selected value to draw the map
 var year='2010';
-var data_1 = "data1";
-var data_2 = "data2";
+var data_1 = "Bevtotaal";
+var data_2 = "Wkoop";
 
 // setting color domain for the left div
 // var color = d3.scaleThreshold().domain(d3.range(-0.2, 1, 0.15)).range(d3.schemeGreens[7]);
@@ -81,12 +111,12 @@ var path = d3.geoPath()
 // reading map file and data
 d3.queue()
   .defer(d3.json, "../map/topo_real_map.json")
-  .defer(d3.tsv, "data_year.csv")
+  .defer(d3.tsv, "data_year_2.csv")
   .await(queueLeft);
 
 d3.queue()
   .defer(d3.json, "../map/topo_real_map.json")
-  .defer(d3.tsv, "data_year.csv")
+  .defer(d3.tsv, "data_year_2.csv")
   .await(queueRight);
 
 // initialize some variables for the first option that user choose
@@ -294,6 +324,7 @@ function mouseClicked(d)
     });
 
   var selected = d.id;
+  console.log(d);
   // inspired from this : http://stackoverflow.com/questions/10692100/invoke-a-callback-at-the-end-of-a-transition
   g.transition().duration(700)
     .attr("transform", "translate(" + width/2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
@@ -363,7 +394,7 @@ function allElementsFromPoint(x, y) {
 
 function update(year1)
 {
-  d3.tsv("data_year.csv", function(error, data1) {
+  d3.tsv("data_year_2.csv", function(error, data1) {
     var max = 0;
     var min = 100000;
 
@@ -405,7 +436,7 @@ function update(year1)
 
 function update2(year1)
 {
-  d3.tsv("data_year.csv", function(error, data1) {
+  d3.tsv("data_year_2.csv", function(error, data1) {
     var max = 0;
     var min = 100000;
 
@@ -447,7 +478,7 @@ function update2(year1)
 
 function returnMax(dataVar,pos)
 {
-  d3.tsv("data_year.csv", function(error, data1) {
+  d3.tsv("data_year_2.csv", function(error, data1) {
     var max = 0;
     var min = 100000;
     

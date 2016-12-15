@@ -23,3 +23,8 @@ div.tooltip {
   stroke-linecap: round;
 }
 
+#left_column, #right_column {
+    outline: 1px solid gray;
+}
+
+
