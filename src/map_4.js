@@ -1,21 +1,23 @@
+var year='2012';
+var data_1 = "Bevtotaal";
+var data_2 = "Wkoop";
+
 // slider function from jquery-ui
 // it will create slider interface in the map page
 $( function() {
   $( "#slider" ).slider({
-    value:2005,
+    value:year,
     min: 2000,
     max: 2016,
     step: 1,
     slide: function( event, ui ) {
       $( "#amount" ).val( " " + ui.value );
-      update(ui.value);
-      update2(ui.value);
+      update(ui.value,"left",data_1);
+      update(ui.value,"right",data_2);
     }
   });
   $( "#amount" ).val( " " + $( "#slider" ).slider( "value" ) );
 } );
-
-
 
 // easy autocomplete
 var options = {
@@ -24,7 +26,7 @@ var options = {
   list: {
     onClickEvent: function() {
       d3.json('../map/topo_real_map.json', function(error, map) {
-        var code = $("#provider-json").getSelectedItemData().code;
+        var code = $("#search").getSelectedItemData().code;
         var topodata = topojson.feature(map, map.objects.new_wijk_water).features;
         var select;
         for(var i in topodata)
@@ -42,8 +44,17 @@ var options = {
   }
 };
 
-$("#provider-json").easyAutocomplete(options);
+$("#search").easyAutocomplete(options);
 
+function draw()
+{
+  data_1 = $("#variableA").val();
+  data_2 = $("#variableB").val();
+  drawLegend(data_1, "left");
+  drawLegend(data_2, "right");
+  update(year,"left",data_1);
+  update(year,"right",data_2);
+}
 
 // initialize the width and height of the map
 var width = 550;
@@ -51,19 +62,14 @@ var height = 500;
 var centered;
 
 // initialize the data with pre-selected value to draw the map
-var year='2010';
-var data_1 = "Bevtotaal";
-var data_2 = "Wkoop";
-
 // setting color domain for the left div
-// var color = d3.scaleThreshold().domain(d3.range(-0.2, 1, 0.15)).range(d3.schemeGreens[7]);
-var color = "";
-returnMax(data_1, "left");
+var color = {};
+color["left"] = "";
+drawLegend(data_1, "left");
 
 // setting color domain for the right div
-// var color2 = d3.scaleThreshold().domain(d3.range(-0.2, 1, 0.15)).range(d3.schemeBlues[7]);
-var color2 = "";
-returnMax(data_2, "right");
+color["right"] = "";
+drawLegend(data_2, "right");
 
 // create a tooltip div for mouseover action on the map
 // the tooltip will show information on the selected neighbourhoods and the value associated with it
@@ -83,8 +89,7 @@ var svg = d3.select("#left_column").append("svg")
 var legendLeft = d3.select("#left_column").append("svg")
   .attr("width", width)
   .attr("height", 50)
-  .attr("id", "legendLeft");
-
+  .attr("id", "legend_left");
 
 // initialize the svg in the right column
 var svg_right = d3.select("#right_column").append("svg")
@@ -94,8 +99,7 @@ var svg_right = d3.select("#right_column").append("svg")
 var legendRight = d3.select("#right_column").append("svg")
   .attr("width", width)
   .attr("height", 50)
-  .attr("id", "legendRight");
-
+  .attr("id", "legend_right");
 
 // projection using geoAlbers
 var projection = d3.geoAlbers()
@@ -111,23 +115,17 @@ var path = d3.geoPath()
 // reading map file and data
 d3.queue()
   .defer(d3.json, "../map/topo_real_map.json")
-  .defer(d3.tsv, "data_year_2.csv")
-  .await(queueLeft);
-
-d3.queue()
-  .defer(d3.json, "../map/topo_real_map.json")
-  .defer(d3.tsv, "data_year_2.csv")
-  .await(queueRight);
+  .defer(d3.tsv, "../datasets/data_tab_delimited.txt")
+  .await(queue);
 
 // initialize some variables for the first option that user choose
-var leftValue = {};
-var leftId = {};
-var leftRange = {};
-
-// initialize some variables for the second option that user choose
-var rightValue = {};
-var rightId = {};
-var rightRange = {};
+var dataValue = {};
+dataValue["leftValue"] = {};
+dataValue["leftId"] = {};
+dataValue["leftRange"] = {};
+dataValue["rightValue"] = {};
+dataValue["rightId"] = {};
+dataValue["rightRange"] = {};
 
 // initialize variable for the svg selector g
 // g = left column
@@ -136,33 +134,50 @@ var g;
 var g2;
 
 // function queueLeft is called after the queue above
-function queueLeft(error, map, data) {
-  var max = 0;
-  var min = 100000;
-  
+function queue(error, map, data) {
+  var max = {};
+  max["left"] = 0;
+  max["right"] = 0;
+  //var min = 100000;
+  var min = {};
+  min["left"] = 100000;
+  min["right"] = 100000;
+
   // save corresponding map data for the variable that user choose
   // at first, it will choose the minimum year that the data is available
   data.forEach(function(d) {
     if(d.year == year)
     {
-      leftValue[d.id] = +d[data_1];
-      leftId[d.id] = d.name;
+      dataValue["leftValue"][d.id] = +d[data_1];
+      dataValue["leftId"][d.id] = d.name;
+      dataValue["rightValue"][d.id] = +d[data_2];
+      dataValue["rightId"][d.id] = d.name;
     }
-    if(d[data_1] > max && d[data_1]>0 && d.year == year)
+    if(d[data_1] > max["left"] && d[data_1]>0 && d.year == year)
     {
-      max = +d[data_1];
+      max["left"] = +d[data_1];
     }
-    if(d[data_1] < min && d[data_1]>0 && d.year == year)
+    if(d[data_1] < min["left"] && d[data_1]>0 && d.year == year)
     {
-      min = +d[data_1];
+      min["left"] = +d[data_1];
+    }
+    if(d[data_1] > max["right"] && d[data_1]>0 && d.year == year)
+    {
+      max["right"] = +d[data_1];
+    }
+    if(d[data_1] < min["right"] && d[data_1]>0 && d.year == year)
+    {
+      min["right"] = +d[data_1];
     }
   });
 
   data.forEach(function(d) {
-    if( d.year == year) { leftRange[d.id] = (d[data_1]-min)/(max-min); }
+    if( d.year == year) { 
+      dataValue["leftRange"][d.id] = (d[data_1]-min["left"])/(max["left"]-min["left"]); 
+      dataValue["rightRange"][d.id] = (d[data_2]-min["right"])/(max["right"]-min["right"]); 
+    }
   });
 
-//
   g = svg.append("g")
         .attr("class", "path-borders")
         .attr("id", "leftG")        
@@ -172,46 +187,13 @@ function queueLeft(error, map, data) {
         .attr("d", path)
         .attr("id", function(d) { return "pathLeft"+d.id; })
         .style("fill", function(d) {
-          return color(leftValue[d.id]); 
+          return color["left"](dataValue["leftValue"][d.id]); 
         })
         .style("opacity", 1)
         .on("mouseover", mouseOver)
         .on("mouseout", mouseOut)
         .on("click", mouseClicked);
 
-  //g.transition().duration(100).style("opacity", 1);
-
-};
-
-function queueRight(error, map, data) {
-   //var leftValue = {};
-   //var leftId = {};
-  var max2 = 0;
-  var min2 = 10000000000;
-
-   data.forEach(function(d) {
-    if(d.year == year)
-    {
-        rightValue[d.id] = +d[data_2];
-        rightId[d.id] = d.name;
-    }
-    if(d[data_2] > max2 && d[data_2] > 0 && d.year == year)
-    {
-      max2 = +d[data_2];
-    }
-    if(d[data_2] < min2 && d[data_2] > 0 && d.year == year)
-    {
-      min2 = +d[data_2];
-    }
-  });
-
-  console.log(year);
-
-  data.forEach(function(d) {
-    if(d.year == year) { rightRange[d.id] = (d[data_2]-min2)/(max2-min2); }
-  });
-
-//
   g2 = svg_right.append("g")
         .attr("class", "path-borders")
         .attr("id", "rightG")
@@ -221,14 +203,15 @@ function queueRight(error, map, data) {
         .attr("d", path)
         .attr("id", function(d) { return "pathRight"+d.id; })
         .style("fill", function(d) {
-          return color2(rightValue[d.id]); 
+          return color["right"](dataValue["rightValue"][d.id]); 
         })
         .style("opacity", 1)
         .on("mouseover", mouseOver)
         .on("mouseout", mouseOut)
         .on("click", mouseClicked);
 
-  //g2.transition().duration(100).style("opacity", 1);
+  //g.transition().duration(100).style("opacity", 1);
+
 };
 
 function mouseOver(d,i)
@@ -243,26 +226,16 @@ function mouseOver(d,i)
   var locationDivRight = $("#right_column").position();
   
   // reference : http://stackoverflow.com/questions/17917072/choropleth-maps-changing-stroke-color-in-mouseover-shows-overlapping-boundari
-  //console.log(this.parentNode.appendChild(this));
-  //console.log(this.parentNode);
-  //console.log(arr[5]);
-
-  /*d3.select("#"+"pathLeft"+d.id).transition().duration(300)
-    .style('stroke', '#F00');
-
-  d3.select("#"+"pathRight"+d.id).transition().duration(300)
-    .style('stroke', '#F00');*/
-
 
   if(mouseDiv == "left_column")
   {
     divTooltipFirst.transition().duration(200).style("opacity", 1);
-    divTooltipFirst.text(leftId[d.id] + " : " + leftValue[d.id])
+    divTooltipFirst.text(dataValue["leftId"][d.id] + " : " + dataValue["leftValue"][d.id])
       .style("left", (d3.event.pageX) + "px")
       .style("top", (d3.event.pageY - 30) + "px");
   
     divTooltipSecond.transition().duration(200).style("opacity", 1);
-    divTooltipSecond.text(rightId[d.id] + " : " + rightValue[d.id])
+    divTooltipSecond.text(dataValue["rightId"][d.id] + " : " + dataValue["rightValue"][d.id])
       .style("left", (d3.event.pageX - locationDivLeft.left + locationDivRight.left) + "px")
       .style("top", (d3.event.pageY - 30 - locationDivLeft.top + locationDivRight.top) + "px");
   }
@@ -270,12 +243,12 @@ function mouseOver(d,i)
   else if(mouseDiv == "right_column")
   {
     divTooltipFirst.transition().duration(200).style("opacity", 1);
-    divTooltipFirst.text(rightId[d.id] + " : " + rightValue[d.id])
+    divTooltipFirst.text(dataValue["rightId"][d.id] + " : " + dataValue["rightValue"][d.id])
       .style("left", (d3.event.pageX) + "px")
       .style("top", (d3.event.pageY - 30) + "px");
   
     divTooltipSecond.transition().duration(200).style("opacity", 1);
-    divTooltipSecond.text(leftId[d.id] + " : " + leftValue[d.id])
+    divTooltipSecond.text(dataValue["leftId"][d.id] + " : " + dataValue["leftValue"][d.id])
       .style("left", (d3.event.pageX - locationDivRight.left + locationDivLeft.left) + "px")
       .style("top", (d3.event.pageY - 30 - locationDivRight.top + locationDivLeft.top) + "px");    
   }
@@ -286,11 +259,6 @@ function mouseOut(d)
   d3.select(this).transition().duration(300).style("opacity", 0.8);
   divTooltipFirst.transition().duration(300).style("opacity", 0);
   divTooltipSecond.transition().duration(300).style("opacity", 0);
-  /*d3.select("#"+"pathLeft"+d.id).transition().duration(300)
-    .style('stroke', '#757575');
-
-  d3.select("#"+"pathRight"+d.id).transition().duration(300)
-    .style('stroke', '#757575');*/
 }
 
 function mouseClicked(d)
@@ -392,64 +360,79 @@ function allElementsFromPoint(x, y) {
   return elements;
 }
 
-function update(year1)
+function update(year1,pos,datadraw)
 {
-  d3.tsv("data_year_2.csv", function(error, data1) {
+  d3.tsv("../datasets/data_tab_delimited.txt", function(error, data1) {
     var max = 0;
     var min = 100000;
 
-    for (var key in leftId)
+    for (var key in dataValue[pos+"Id"])
     {
-      leftValue[key] = 0;
+      dataValue[pos+"Value"][key] = 0;
     }
     
     data1.forEach(function(d) {
       if(d.year == year1)
       {
-        leftValue[d.id] = +d[data_1];
-        leftId[d.id] = d.name;
+        dataValue[pos+"Value"][d.id] = +d[datadraw];
+        dataValue[pos+"Id"][d.id] = d.name;
       }
-      if(d[data_1] > max && d[data_1]>0 && d.year == year1)
+      if(d[datadraw] > max && d[datadraw]>0 && d.year == year1)
       {
-        max = +d[data_1];
+        max = +d[datadraw];
       }
-      if(d[data_1] < min && d[data_1]>0 && d.year == year1)
+      if(d[datadraw] < min && d[datadraw]>0 && d.year == year1)
       {
-        min = +d[data_1];
+        min = +d[datadraw];
       }
     });
 
     data1.forEach(function(d) {
-      if( d.year == year) { leftRange[d.id] = (d[data_1]-min)/(max-min); }
+      if( d.year == year) { dataValue[pos+"Range"][d.id] = (d[datadraw]-min)/(max-min); }
     });   
-     g = d3.select("#leftG")
+    if(pos == "left")
+     {
+      g = d3.select("#"+pos+"G")
       .selectAll("path")
       .each(function(d,i) {
         d3.select(this).transition().duration(200).style("fill", function(d){
-          var mapValue = leftValue[d.id];
+          var mapValue = dataValue[pos+"Value"][d.id];
           if(mapValue == 0) { return "white"; }
-          else { return color(mapValue); }
+          else { return color[pos](mapValue); }
         })
       });
+    }
+    if(pos == "right")
+     {
+      g2 = d3.select("#"+pos+"G")
+      .selectAll("path")
+      .each(function(d,i) {
+        d3.select(this).transition().duration(200).style("fill", function(d){
+          var mapValue = dataValue[pos+"Value"][d.id];
+          if(mapValue == 0) { return "white"; }
+          else { return color[pos](mapValue); }
+        })
+      });
+    }    
   });
 }
 
 function update2(year1)
 {
-  d3.tsv("data_year_2.csv", function(error, data1) {
+  d3.tsv("../datasets/data_tab_delimited.txt", function(error, data1) {
     var max = 0;
     var min = 100000;
 
-    for (var key in rightId)
+    for (var key in dataValue["rightId"])
     {
-      rightValue[key] = 0;
+      dataValue["rightValue"][key] = 0;
     }    
     
     data1.forEach(function(d) {
       if(d.year == year1)
       {
-        rightValue[d.id] = +d[data_2];
-        rightId[d.id] = d.name;
+        dataValue["rightValue"][d.id] = +d[data_2];
+        dataValue["rightId"][d.id] = d.name;
       }
       if(d[data_2] > max && d[data_2]>0 && d.year == year1)
       {
@@ -462,32 +445,28 @@ function update2(year1)
     });
 
     data1.forEach(function(d) {
-      if( d.year == year) { rightRange[d.id] = (d[data_2]-min)/(max-min); }
+      if( d.year == year) { dataValue["rightRange"][d.id] = (d[data_2]-min)/(max-min); }
     });   
      g2 = d3.select("#rightG")
       .selectAll("path")
       .each(function(d,i) {
         d3.select(this).transition().duration(200).style("fill", function(d){
-          var mapValue = rightValue[d.id];
+          var mapValue = dataValue["rightValue"][d.id];
           if(mapValue == 0) { return "white"; }
-          else { return color2(mapValue); }
+          else { return color["right"](mapValue); }
         })
       });
   });
 }
 
-function returnMax(dataVar,pos)
+function drawLegend(dataVar,pos)
 {
-  d3.tsv("data_year_2.csv", function(error, data1) {
+  d3.tsv("../datasets/data_tab_delimited.txt", function(error, data1) {
     var max = 0;
     var min = 100000;
-    
+    $("#legend_"+pos).html("");
+
     data1.forEach(function(d) {
-      if(d.year > 0)
-      {
-        leftValue[d.id] = +d[dataVar];
-        leftId[d.id] = d.name;
-      }
       if(d[dataVar] > max && d[dataVar]>0 && d.year > 0)
       {
         max = +d[dataVar];
@@ -499,40 +478,22 @@ function returnMax(dataVar,pos)
     });
     var tick = max/9;
 
-    //if(pos == "left") { color = d3.scaleThreshold().domain(d3.range(0, max, tick)).range(d3.schemeGreens[9]); }
-    if(pos == "left") { 
-      color = d3.scaleThreshold().domain(d3.range(0, max, tick)).range(d3.schemeGreens[9]);
-      var ssvg = d3.select("#legendLeft");
+    if(pos == "left") { color[pos] = d3.scaleThreshold().domain(d3.range(0, max, tick)).range(d3.schemeGreens[9]); }
+    else if(pos == "right") { color[pos] = d3.scaleThreshold().domain(d3.range(0, max, tick)).range(d3.schemeBlues[9]); }
 
-      ssvg.append("g")
-        .attr("class", "legendLinear")
-        .attr("transform", "translate(100,10)");
+    var ssvg = d3.select("#legend_"+pos);
 
-      var legendLinear = d3.legendColor()
-        .shapeWidth(35)
-        .orient('horizontal')
-        .scale(color);
+    ssvg.append("g")
+      .attr("class", "legendLinear")
+      .attr("transform", "translate(100,10)");
 
-      ssvg.select(".legendLinear")
-        .call(legendLinear);
+    var legendLinear = d3.legendColor()
+      .shapeWidth(35)
+      .orient('horizontal')
+      .scale(color[pos]);
 
-      }
-    else if(pos == "right") { 
-      color2 = d3.scaleThreshold().domain(d3.range(0, max, tick)).range(d3.schemeBlues[9]); 
-      var ssvg = d3.select("#legendRight");
-
-      ssvg.append("g")
-        .attr("class", "legendLinear")
-        .attr("transform", "translate(100,10)");
-
-      var legendLinear = d3.legendColor()
-        .shapeWidth(35)
-        .orient('horizontal')
-        .scale(color2);
-
-      ssvg.select(".legendLinear")
-        .call(legendLinear);
-    }
+    ssvg.select(".legendLinear")
+      .call(legendLinear);
   });
 }
 
