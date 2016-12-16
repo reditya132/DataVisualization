@@ -1,13 +1,13 @@
 var year='2012';
-var data_1 = "Bevtotaal";
-var data_2 = "Wkoop";
+var data_1 = "";
+var data_2 = "";
 
 // slider function from jquery-ui
 // it will create slider interface in the map page
 $( function() {
   $( "#slider" ).slider({
     value:year,
-    min: 2000,
+    min: 2005,
     max: 2016,
     step: 1,
     slide: function( event, ui ) {
@@ -18,6 +18,8 @@ $( function() {
   });
   $( "#amount" ).val( " " + $( "#slider" ).slider( "value" ) );
 } );
+
+var dataset = [];
 
 // easy autocomplete
 var options = {
@@ -50,10 +52,24 @@ function draw()
 {
   data_1 = $("#variableA").val();
   data_2 = $("#variableB").val();
-  drawLegend(data_1, "left");
-  drawLegend(data_2, "right");
-  update(year,"left",data_1);
-  update(year,"right",data_2);
+  d3.tsv("../datasets/data_tab_delimited.txt", function(error, tsv_data) {
+    //console.log(dataset);
+    tsv_data.forEach(function(d) {
+      var temp = {};
+      temp["id"] = d.id;
+      temp["name"] = d.name;
+      temp["year"] = d.year;
+      temp[data_1] = d[data_1];
+      temp[data_2] = d[data_2];
+      dataset.push(temp);
+    });
+    console.log(dataset);
+    drawLegend(data_1, "left");
+    drawLegend(data_2, "right");
+    update(year,"left",data_1);
+    update(year,"right",data_2);    
+  });  
+
 }
 
 // initialize the width and height of the map
@@ -146,14 +162,14 @@ function queue(error, map, data) {
   // save corresponding map data for the variable that user choose
   // at first, it will choose the minimum year that the data is available
   data.forEach(function(d) {
-    if(d.year == year)
-    {
-      dataValue["leftValue"][d.id] = +d[data_1];
+    //if(d.year == year)
+    //{
+      dataValue["leftValue"][d.id] = 0;
       dataValue["leftId"][d.id] = d.name;
-      dataValue["rightValue"][d.id] = +d[data_2];
+      dataValue["rightValue"][d.id] = 0;
       dataValue["rightId"][d.id] = d.name;
-    }
-    if(d[data_1] > max["left"] && d[data_1]>0 && d.year == year)
+    //}
+    /*if(d[data_1] > max["left"] && d[data_1]>0 && d.year == year)
     {
       max["left"] = +d[data_1];
     }
@@ -168,15 +184,15 @@ function queue(error, map, data) {
     if(d[data_1] < min["right"] && d[data_1]>0 && d.year == year)
     {
       min["right"] = +d[data_1];
-    }
+    }*/
   });
 
-  data.forEach(function(d) {
+  /*data.forEach(function(d) {
     if( d.year == year) { 
       dataValue["leftRange"][d.id] = (d[data_1]-min["left"])/(max["left"]-min["left"]); 
       dataValue["rightRange"][d.id] = (d[data_2]-min["right"])/(max["right"]-min["right"]); 
     }
-  });
+  });*/
 
   g = svg.append("g")
         .attr("class", "path-borders")
@@ -209,9 +225,6 @@ function queue(error, map, data) {
         .on("mouseover", mouseOver)
         .on("mouseout", mouseOut)
         .on("click", mouseClicked);
-
-  //g.transition().duration(100).style("opacity", 1);
-
 };
 
 function mouseOver(d,i)
@@ -362,7 +375,8 @@ function allElementsFromPoint(x, y) {
 
 function update(year1,pos,datadraw)
 {
-  d3.tsv("../datasets/data_tab_delimited.txt", function(error, data1) {
+  //d3.tsv("../datasets/data_tab_delimited.txt", function(error, data1) {
+    var data1 = dataset;
     var max = 0;
     var min = 100000;
 
@@ -370,7 +384,7 @@ function update(year1,pos,datadraw)
     {
       dataValue[pos+"Value"][key] = 0;
     }
-    
+    console.log(data1);
     data1.forEach(function(d) {
       if(d.year == year1)
       {
@@ -414,54 +428,13 @@ function update(year1,pos,datadraw)
         })
       });
     }    
-  });
-}
-
-function update2(year1)
-{
-  d3.tsv("../datasets/data_tab_delimited.txt", function(error, data1) {
-    var max = 0;
-    var min = 100000;
-
-    for (var key in dataValue["rightId"])
-    {
-      dataValue["rightValue"][key] = 0;
-    }    
-    
-    data1.forEach(function(d) {
-      if(d.year == year1)
-      {
-        dataValue["rightValue"][d.id] = +d[data_2];
-        dataValue["rightId"][d.id] = d.name;
-      }
-      if(d[data_2] > max && d[data_2]>0 && d.year == year1)
-      {
-        max = +d[data_2];
-      }
-      if(d[data_2] < min && d[data_2]>0 && d.year == year1)
-      {
-        min = +d[data_2];
-      }
-    });
-
-    data1.forEach(function(d) {
-      if( d.year == year) { dataValue["rightRange"][d.id] = (d[data_2]-min)/(max-min); }
-    });   
-     g2 = d3.select("#rightG")
-      .selectAll("path")
-      .each(function(d,i) {
-        d3.select(this).transition().duration(200).style("fill", function(d){
-          var mapValue = dataValue["rightValue"][d.id];
-          if(mapValue == 0) { return "white"; }
-          else { return color["right"](mapValue); }
-        })
-      });
-  });
+  //});
 }
 
 function drawLegend(dataVar,pos)
 {
-  d3.tsv("../datasets/data_tab_delimited.txt", function(error, data1) {
+  //d3.tsv("../datasets/data_tab_delimited.txt", function(error, data1) {
+    var data1 = dataset;
     var max = 0;
     var min = 100000;
     $("#legend_"+pos).html("");
@@ -494,7 +467,76 @@ function drawLegend(dataVar,pos)
 
     ssvg.select(".legendLinear")
       .call(legendLinear);
-  });
+  //});
 }
+
+// reference for heatmap : http://bl.ocks.org/tjdecke/5558084
+var gridSize = Math.floor(width/30);
+var legendElementWidth = gridSize * 2;
+
+var widthHeat = 1000;
+var heightHeat = 1000;
+
+var heatSvg = d3.select("#heatmap").append("svg")
+                .attr("width", widthHeat)
+                .attr("height", heightHeat)
+                .append("g")
+                .attr("transform", "translate(10,10)");
+
+var heatmapChart = function() {
+  d3.tsv("../datasets/data_tab_delimited.txt",
+    function(d) {
+      return {
+        name: d.name,
+        year: +d.year,
+        id: d.id,
+        value: +d.BevAutoch
+      };
+    },
+    function(error, data) {
+      var colorScale = d3.scaleThreshold().domain(d3.range(0, 13000, 13000/9)).range(d3.schemeGreens[9]);
+      var cards = heatSvg.selectAll(".year").data(data, function(d) { return d.name+":"+d.year;});
+      cards.append("title");
+
+      cards.enter().append("rect")
+        .attr("x", function(d) { 
+          var h = d.id.slice(-2)*1;
+          //console.log(h);
+          return h * gridSize; 
+        })
+        .attr("y", function(d) {
+          var h = d.year - 2005;
+          console.log(h);
+          return h * gridSize; 
+        })
+        .attr("rx", 4)
+        .attr("ry", 4)
+        .attr("width", gridSize)
+        .attr("height", gridSize)
+        .style("fill", function(d) { 
+          console.log(d); 
+          return colorScale(d.value); 
+        });
+
+      cards.transition().duration(1000)
+        .style("fill", function(d) { 
+          console.log(d); 
+          return colorScale(d.value); 
+        });
+
+      cards.select("title").text(function(d) { return d.value; });
+
+      cards.exit().remove();
+
+    });
+};
+
+heatmapChart();
+
+
+
+
+
+
 
 
