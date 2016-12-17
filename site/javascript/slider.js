@@ -5,5 +5,5 @@ function showValue(newValue)
 
 function updateVisualizations(newValue)
 {
-    drawScatterplot(newValue);
+    updateScatterplot(newValue);
 }
