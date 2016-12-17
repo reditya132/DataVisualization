@@ -1,6 +1,6 @@
 d3.queue()
-	.defer(d3.tsv, "/DataVisualization/datasets/data_tab_delimited.txt")
-	.defer(d3.tsv, "/DataVisualization/datasets/metadata.txt")
+	.defer(d3.tsv, "../datasets/data_tab_delimited.txt")
+	.defer(d3.tsv, "../datasets/metadata.txt")
 	.await(ready);
 
 function ready(error, data, metadata) {
