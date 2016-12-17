@@ -1,0 +1,1201 @@
+id	name	year	Bevtotaal	Wdicht	Wligplaats	Winstituut	Wcorhuur	Wkoop	Wparthuur
+A00	Burgwallen-Oude Zijde	2005	3684		2	19			
+A01	Burgwallen-Nieuwe Zijde	2005	3361		5	6			
+A02	Grachtengordel-West	2005	7804		74	24			
+A03	Grachtengordel-Zuid	2005	5123		55	22			
+A04	Nieuwmarkt/Lastage	2005	8819		162	22			
+A05	Haarlemmerbuurt	2005	7174		150	100			
+A06	Jordaan	2005	18772		127	18			
+A07	De Weteringschans	2005	6855		62	17			
+A08	Weesperbuurt/Plantage	2005	7829		92	46			
+A09	Oostelijke Eilanden/Kadijken	2005	11852		144	10			
+B10	Westelijk Havengebied	2005	249		17	2			
+E12	Houthavens	2005	1049		245	0			
+E13	Spaarndammer- en Zeeheldenbuurt	2005	10459		12	5			
+E14	Staatsliedenbuurt	2005	12120		52	22			
+E15	Centrale Markt	2005	2296		24	3			
+E16	Frederik Hendrikbuurt	2005	7625		18	10			
+E17	Da Costabuurt	2005	4314		65	26			
+E18	Kinkerbuurt	2005	5224		12	9			
+E19	Van Lennepbuurt	2005	6632		49	6			
+E20	Helmersbuurt	2005	6773		12	24			
+E21	Overtoomse Sluis	2005	7157		18	81			
+E22	Vondelbuurt	2005	1740		0	9			
+E36	Sloterdijk	2005	115		0	1			
+E37	Landlust	2005	18181		18	0			
+E38	Erasmuspark	2005	5371		0	1			
+E39	De Kolenkit	2005	7350		0	7			
+E40	Geuzenbuurt	2005	6294		0	1			
+E41	Van Galenbuurt	2005	5656		0	0			
+E42	Hoofdweg e,o,	2005	10220		0	2			
+E43	Westindische Buurt	2005	6461		0	3			
+E75	Chassébuurt	2005	5841		0	1			
+F11	Bedrijventerrein Sloterdijk	2005	69		0	3			
+F76	Slotermeer-Noordoost	2005	9010		0	7			
+F77	Slotermeer-Zuidwest	2005	16191		8	7			
+F78	Geuzenveld	2005	13344		0	62			
+F79	Eendracht	2005	2341		0	0			
+F80	Lutkemeer/Ookmeer	2005	875		0	1			
+F81	Osdorp-Oost	2005	14418		0	11			
+F82	Osdorp-Midden	2005	9659		0	4			
+F83	De Punt	2005	4850		0	5			
+F84	Middelveldsche Akerpolder	2005	14272		14	1			
+F85	Slotervaart-Noord	2005	7612		0	8			
+F86	Overtoomse Veld	2005	9617		0	19			
+F87	Westlandgracht	2005	5490		0	5			
+F88	Sloter-/Riekerpolder	2005	14070		17	30			
+F89	Slotervaart-Zuid	2005	8445		0	252			
+K23	Zuidas	2005	74		0	14			
+K24	Oude Pijp	2005	13840		26	4			
+K25	Nieuwe Pijp	2005	11448		22	6			
+K26	Zuid-Pijp	2005	8231		24	3			
+K44	Hoofddorppleinbuurt	2005	10771		46	6			
+K45	Schinkelbuurt	2005	3786		0	11			
+K46	Willemspark	2005	5125		0	22			
+K47	Museumkwartier	2005	12673		2	27			
+K48	Stadionbuurt	2005	9726		145	5			
+K49	Apollobuurt	2005	8096		0	4			
+K52	Scheldebuurt	2005	13237		0	5			
+K53	IJselbuurt	2005	5166		8	0			
+K54	Rijnbuurt	2005	8575		70	2			
+K59	Prinses Irenebuurt e,o,	2005	1123		0	0			
+K90	Buitenveldert-West	2005	11692		16	70			
+K91	Buitenveldert-Oost	2005	7174		1	4			
+M27	Weesperzijde	2005	4501		48	4			
+M28	Oosterparkbuurt	2005	10631		0	71			
+M29	Dapperbuurt	2005	8441		1	22			
+M30	Transvaalbuurt	2005	9664		0	1			
+M31	Indische Buurt-West	2005	12749		0	31			
+M32	Indische Buurt-Oost	2005	10712		27	6			
+M33	Oostelijk Havengebied	2005	16524		226	9			
+M34	Zeeburgereiland/Nieuwe diep	2005	568		60	1			
+M35	IJburg-West	2005	1650		0	0			
+M50	IJburg-Oost	2005							
+M51	IJburg-Zuid	2005							
+M55	Frankendael	2005	9423		3	85			
+M56	Middenmeer	2005	11890		0	6			
+M57	Betondorp	2005	3094		0	0			
+M58	Omval/Overamstel	2005	1035		97	3			
+N60	Volewijck	2005	10166		36	10			
+N61	IJplein/Vogelbuurt	2005	8247		37	5			
+N62	Tuindorp Nieuwendam	2005	3420		2	0			
+N63	Tuindorp Buiksloot	2005	1928		0	0			
+N64	Nieuwendammerdijk/Buiksloterdijk	2005	1576		14	0			
+N65	Tuindorp Oostzaan	2005	9305		64	23			
+N66	Oostzanerwerf	2005	9040		71	1			
+N67	Kadoelen	2005	2853		34	0			
+N68	Waterlandpleinbuurt	2005	13423		0	3			
+N69	Buikslotermeer	2005	10694		0	6			
+N70	Banne Buiksloot	2005	13812		35	14			
+N71	Noordelijke IJ-oevers-West	2005	314		84	0			
+N72	Noordelijke IJ-oevers-Oost	2005	149		0	1			
+N73	Waterland	2005	2085		81	1			
+N74	Elzenhagen	2005	1107		1	0			
+T92	Amstel III/Bullewijk	2005	110		1	7			
+T93	Bijlmer-Centrum (D,F,H)	2005	21953		0	23			
+T94	Bijlmer-Oost (E,G,K)	2005	23631		0	17			
+T95	Nellestein	2005	2724		1	4			
+T96	Holendrecht/Reigersbos	2005	18366		0	14			
+T97	Gein	2005	12262		0	109			
+T98	Driemond	2005	1504		0	0			
+Z99	buiten beschouwing	2005							
+A00	Burgwallen-Oude Zijde	2006	3737		2	18			
+A01	Burgwallen-Nieuwe Zijde	2006	3471		12	5			
+A02	Grachtengordel-West	2006	7862		77	23			
+A03	Grachtengordel-Zuid	2006	5147		71	22			
+A04	Nieuwmarkt/Lastage	2006	8812		181	22			
+A05	Haarlemmerbuurt	2006	7127		194	97			
+A06	Jordaan	2006	18882		127	20			
+A07	De Weteringschans	2006	6883		78	10			
+A08	Weesperbuurt/Plantage	2006	7704		117	20			
+A09	Oostelijke Eilanden/Kadijken	2006	12379		150	8			
+B10	Westelijk Havengebied	2006	239		17	2			
+E12	Houthavens	2006	1702		248	0			
+E13	Spaarndammer- en Zeeheldenbuurt	2006	10327		15	5			
+E14	Staatsliedenbuurt	2006	12094		58	23			
+E15	Centrale Markt	2006	2363		24	2			
+E16	Frederik Hendrikbuurt	2006	7568		21	7			
+E17	Da Costabuurt	2006	4261		63	19			
+E18	Kinkerbuurt	2006	5181		13	9			
+E19	Van Lennepbuurt	2006	6536		51	6			
+E20	Helmersbuurt	2006	6839		12	23			
+E21	Overtoomse Sluis	2006	7156		18	21			
+E22	Vondelbuurt	2006	1746		0	6			
+E36	Sloterdijk	2006	128		0	1			
+E37	Landlust	2006	18326		18	0			
+E38	Erasmuspark	2006	5177		0	1			
+E39	De Kolenkit	2006	6846		0	7			
+E40	Geuzenbuurt	2006	6244		0	1			
+E41	Van Galenbuurt	2006	5628		0	0			
+E42	Hoofdweg e,o,	2006	10281		0	2			
+E43	Westindische Buurt	2006	6440		0	3			
+E75	Chassébuurt	2006	5654		0	2			
+F11	Bedrijventerrein Sloterdijk	2006	66		0	2			
+F76	Slotermeer-Noordoost	2006	9106		0	7			
+F77	Slotermeer-Zuidwest	2006	16285		4	7			
+F78	Geuzenveld	2006	13481		0	62			
+F79	Eendracht	2006	2348		0	0			
+F80	Lutkemeer/Ookmeer	2006	892		0	1			
+F81	Osdorp-Oost	2006	14380		0	12			
+F82	Osdorp-Midden	2006	10295		0	3			
+F83	De Punt	2006	4902		0	5			
+F84	Middelveldsche Akerpolder	2006	14364		13	1			
+F85	Slotervaart-Noord	2006	7612		0	7			
+F86	Overtoomse Veld	2006	9516		0	20			
+F87	Westlandgracht	2006	5156		0	4			
+F88	Sloter-/Riekerpolder	2006	13972		12	24			
+F89	Slotervaart-Zuid	2006	8603		0	252			
+K23	Zuidas	2006	87		0	12			
+K24	Oude Pijp	2006	13616		27	6			
+K25	Nieuwe Pijp	2006	11348		22	6			
+K26	Zuid-Pijp	2006	8221		24	3			
+K44	Hoofddorppleinbuurt	2006	10742		44	6			
+K45	Schinkelbuurt	2006	3719		0	11			
+K46	Willemspark	2006	5149		0	22			
+K47	Museumkwartier	2006	12653		2	27			
+K48	Stadionbuurt	2006	10133		145	4			
+K49	Apollobuurt	2006	8013		0	4			
+K52	Scheldebuurt	2006	13176		0	6			
+K53	IJselbuurt	2006	5122		8	0			
+K54	Rijnbuurt	2006	8504		69	2			
+K59	Prinses Irenebuurt e,o,	2006	1155		0	0			
+K90	Buitenveldert-West	2006	11646		17	68			
+K91	Buitenveldert-Oost	2006	7195		1	3			
+M27	Weesperzijde	2006	4414		48	5			
+M28	Oosterparkbuurt	2006	10384		0	70			
+M29	Dapperbuurt	2006	8427		0	22			
+M30	Transvaalbuurt	2006	9606		0	1			
+M31	Indische Buurt-West	2006	12643		0	31			
+M32	Indische Buurt-Oost	2006	10600		25	5			
+M33	Oostelijk Havengebied	2006	16649		219	8			
+M34	Zeeburgereiland/Nieuwe diep	2006	426		66	1			
+M35	IJburg-West	2006	3183		0	0			
+M50	IJburg-Oost	2006							
+M51	IJburg-Zuid	2006							
+M55	Frankendael	2006	9326		4	83			
+M56	Middenmeer	2006	11972		0	5			
+M57	Betondorp	2006	3098		0	0			
+M58	Omval/Overamstel	2006	1401		93	3			
+N60	Volewijck	2006	9944		65	9			
+N61	IJplein/Vogelbuurt	2006	8136		39	5			
+N62	Tuindorp Nieuwendam	2006	3428		4	0			
+N63	Tuindorp Buiksloot	2006	1905		0	0			
+N64	Nieuwendammerdijk/Buiksloterdijk	2006	1579		13	0			
+N65	Tuindorp Oostzaan	2006	9423		63	23			
+N66	Oostzanerwerf	2006	8882		72	1			
+N67	Kadoelen	2006	2895		35	0			
+N68	Waterlandpleinbuurt	2006	13235		0	3			
+N69	Buikslotermeer	2006	10639		0	6			
+N70	Banne Buiksloot	2006	13790		35	13			
+N71	Noordelijke IJ-oevers-West	2006	617		86	0			
+N72	Noordelijke IJ-oevers-Oost	2006	145		0	1			
+N73	Waterland	2006	2076		81	1			
+N74	Elzenhagen	2006	1100		1	0			
+T92	Amstel III/Bullewijk	2006	117		2	7			
+T93	Bijlmer-Centrum (D,F,H)	2006	21313		0	24			
+T94	Bijlmer-Oost (E,G,K)	2006	22739		0	14			
+T95	Nellestein	2006	2760		1	4			
+T96	Holendrecht/Reigersbos	2006	18273		0	15			
+T97	Gein	2006	12188		0	109			
+T98	Driemond	2006	1517		0	0			
+Z99	buiten beschouwing	2006							
+A00	Burgwallen-Oude Zijde	2007	3733		2	18			
+A01	Burgwallen-Nieuwe Zijde	2007	3505		12	3			
+A02	Grachtengordel-West	2007	7641		74	16			
+A03	Grachtengordel-Zuid	2007	5075		67	22			
+A04	Nieuwmarkt/Lastage	2007	8547		197	23			
+A05	Haarlemmerbuurt	2007	6985		212	97			
+A06	Jordaan	2007	18847		124	17			
+A07	De Weteringschans	2007	6916		80	8			
+A08	Weesperbuurt/Plantage	2007	7456		116	21			
+A09	Oostelijke Eilanden/Kadijken	2007	12113		158	10			
+B10	Westelijk Havengebied	2007	257		20	3			
+E12	Houthavens	2007	1681		260	0			
+E13	Spaarndammer- en Zeeheldenbuurt	2007	10185		11	5			
+E14	Staatsliedenbuurt	2007	12098		54	23			
+E15	Centrale Markt	2007	2442		24	2			
+E16	Frederik Hendrikbuurt	2007	7652		19	7			
+E17	Da Costabuurt	2007	4240		68	29			
+E18	Kinkerbuurt	2007	5060		14	9			
+E19	Van Lennepbuurt	2007	6615		51	6			
+E20	Helmersbuurt	2007	6814		13	22			
+E21	Overtoomse Sluis	2007	7093		18	21			
+E22	Vondelbuurt	2007	1707		0	6			
+E36	Sloterdijk	2007	139		0	1			
+E37	Landlust	2007	18099		18	0			
+E38	Erasmuspark	2007	5074		0	1			
+E39	De Kolenkit	2007	7021		0	6			
+E40	Geuzenbuurt	2007	6274		0	1			
+E41	Van Galenbuurt	2007	5499		0	0			
+E42	Hoofdweg e,o,	2007	10072		0	2			
+E43	Westindische Buurt	2007	6415		0	3			
+E75	Chassébuurt	2007	5587		0	2			
+F11	Bedrijventerrein Sloterdijk	2007	78		0	2			
+F76	Slotermeer-Noordoost	2007	9137		0	6			
+F77	Slotermeer-Zuidwest	2007	16077		4	7			
+F78	Geuzenveld	2007	13799		0	61			
+F79	Eendracht	2007	2320		0	0			
+F80	Lutkemeer/Ookmeer	2007	894		0	0			
+F81	Osdorp-Oost	2007	14020		0	11			
+F82	Osdorp-Midden	2007	10590		0	4			
+F83	De Punt	2007	4967		0	5			
+F84	Middelveldsche Akerpolder	2007	14373		13	1			
+F85	Slotervaart-Noord	2007	7650		0	7			
+F86	Overtoomse Veld	2007	9693		0	21			
+F87	Westlandgracht	2007	4505		0	4			
+F88	Sloter-/Riekerpolder	2007	13947		12	25			
+F89	Slotervaart-Zuid	2007	8757		0	252			
+K23	Zuidas	2007	83		0	11			
+K24	Oude Pijp	2007	13659		30	6			
+K25	Nieuwe Pijp	2007	11352		21	6			
+K26	Zuid-Pijp	2007	8181		24	3			
+K44	Hoofddorppleinbuurt	2007	10648		44	6			
+K45	Schinkelbuurt	2007	3728		0	11			
+K46	Willemspark	2007	5161		0	22			
+K47	Museumkwartier	2007	12631		3	28			
+K48	Stadionbuurt	2007	10223		144	5			
+K49	Apollobuurt	2007	8050		0	4			
+K52	Scheldebuurt	2007	13099		0	5			
+K53	IJselbuurt	2007	5026		8	0			
+K54	Rijnbuurt	2007	8567		69	2			
+K59	Prinses Irenebuurt e,o,	2007	1185		0	0			
+K90	Buitenveldert-West	2007	11717		19	68			
+K91	Buitenveldert-Oost	2007	7107		0	4			
+M27	Weesperzijde	2007	4346		48	5			
+M28	Oosterparkbuurt	2007	10401		0	70			
+M29	Dapperbuurt	2007	8252		0	22			
+M30	Transvaalbuurt	2007	9413		0	1			
+M31	Indische Buurt-West	2007	12448		0	31			
+M32	Indische Buurt-Oost	2007	10620		23	5			
+M33	Oostelijk Havengebied	2007	17086		216	10			
+M34	Zeeburgereiland/Nieuwe diep	2007	455		63	1			
+M35	IJburg-West	2007	6091		0	0			
+M50	IJburg-Oost	2007							
+M51	IJburg-Zuid	2007			0	0			
+M55	Frankendael	2007	9242		3	83			
+M56	Middenmeer	2007	11979		0	5			
+M57	Betondorp	2007	3053		0	0			
+M58	Omval/Overamstel	2007	2112		97	3			
+N60	Volewijck	2007	9732		41	9			
+N61	IJplein/Vogelbuurt	2007	8331		37	5			
+N62	Tuindorp Nieuwendam	2007	3438		3	0			
+N63	Tuindorp Buiksloot	2007	1884		0	0			
+N64	Nieuwendammerdijk/Buiksloterdijk	2007	1590		12	0			
+N65	Tuindorp Oostzaan	2007	9489		63	25			
+N66	Oostzanerwerf	2007	8939		72	1			
+N67	Kadoelen	2007	2905		35	0			
+N68	Waterlandpleinbuurt	2007	13055		0	3			
+N69	Buikslotermeer	2007	10587		0	6			
+N70	Banne Buiksloot	2007	13693		35	13			
+N71	Noordelijke IJ-oevers-West	2007	611		83	0			
+N72	Noordelijke IJ-oevers-Oost	2007	136		0	1			
+N73	Waterland	2007	2129		80	1			
+N74	Elzenhagen	2007	1104		1	0			
+T92	Amstel III/Bullewijk	2007	113		11	7			
+T93	Bijlmer-Centrum (D,F,H)	2007	20406		0	26			
+T94	Bijlmer-Oost (E,G,K)	2007	22970		0	9			
+T95	Nellestein	2007	2716		1	4			
+T96	Holendrecht/Reigersbos	2007	18238		0	15			
+T97	Gein	2007	11989		0	113			
+T98	Driemond	2007	1485		0	0			
+Z99	buiten beschouwing	2007							
+A00	Burgwallen-Oude Zijde	2008	3754		2	16			
+A01	Burgwallen-Nieuwe Zijde	2008	3726		10	5			
+A02	Grachtengordel-West	2008	7409		70	12			
+A03	Grachtengordel-Zuid	2008	5012		66	19			
+A04	Nieuwmarkt/Lastage	2008	8667		198	23			
+A05	Haarlemmerbuurt	2008	7191		150	86			
+A06	Jordaan	2008	18685		119	10			
+A07	De Weteringschans	2008	6880		74	6			
+A08	Weesperbuurt/Plantage	2008	7501		110	18			
+A09	Oostelijke Eilanden/Kadijken	2008	12492		156	10			
+B10	Westelijk Havengebied	2008	253		19	2			
+E12	Houthavens	2008	1817		263	0			
+E13	Spaarndammer- en Zeeheldenbuurt	2008	10002		10	5			
+E14	Staatsliedenbuurt	2008	12094		54	23			
+E15	Centrale Markt	2008	2616		24	2			
+E16	Frederik Hendrikbuurt	2008	7791		19	9			
+E17	Da Costabuurt	2008	4349		68	16			
+E18	Kinkerbuurt	2008	5028		14	9			
+E19	Van Lennepbuurt	2008	6630		51	6			
+E20	Helmersbuurt	2008	6788		13	22			
+E21	Overtoomse Sluis	2008	7007		18	13			
+E22	Vondelbuurt	2008	1682		0	7			
+E36	Sloterdijk	2008	135		0	2			
+E37	Landlust	2008	17830		18	0			
+E38	Erasmuspark	2008	5068		0	1			
+E39	De Kolenkit	2008	7045		1	6			
+E40	Geuzenbuurt	2008	6304		0	1			
+E41	Van Galenbuurt	2008	5414		0	0			
+E42	Hoofdweg e,o,	2008	10039		0	2			
+E43	Westindische Buurt	2008	6353		0	3			
+E75	Chassébuurt	2008	5657		0	2			
+F11	Bedrijventerrein Sloterdijk	2008	74		0	1			
+F76	Slotermeer-Noordoost	2008	9155		0	6			
+F77	Slotermeer-Zuidwest	2008	15707		4	7			
+F78	Geuzenveld	2008	14115		0	60			
+F79	Eendracht	2008	2333		0	0			
+F80	Lutkemeer/Ookmeer	2008	878		0	0			
+F81	Osdorp-Oost	2008	14141		0	11			
+F82	Osdorp-Midden	2008	11485		0	5			
+F83	De Punt	2008	4971		0	5			
+F84	Middelveldsche Akerpolder	2008	14359		13	1			
+F85	Slotervaart-Noord	2008	7591		0	8			
+F86	Overtoomse Veld	2008	9808		0	21			
+F87	Westlandgracht	2008	4581		0	4			
+F88	Sloter-/Riekerpolder	2008	13955		12	23			
+F89	Slotervaart-Zuid	2008	8895		0	252			
+K23	Zuidas	2008	96		0	11			
+K24	Oude Pijp	2008	13712		30	4			
+K25	Nieuwe Pijp	2008	11295		21	5			
+K26	Zuid-Pijp	2008	8137		24	3			
+K44	Hoofddorppleinbuurt	2008	10663		44	6			
+K45	Schinkelbuurt	2008	3717		0	11			
+K46	Willemspark	2008	5220		0	19			
+K47	Museumkwartier	2008	12406		3	28			
+K48	Stadionbuurt	2008	10099		146	5			
+K49	Apollobuurt	2008	8070		0	4			
+K52	Scheldebuurt	2008	13300		0	6			
+K53	IJselbuurt	2008	5085		8	0			
+K54	Rijnbuurt	2008	8568		70	2			
+K59	Prinses Irenebuurt e,o,	2008	1153		0	0			
+K90	Buitenveldert-West	2008	11822		18	68			
+K91	Buitenveldert-Oost	2008	7111		0	5			
+M27	Weesperzijde	2008	4550		48	2			
+M28	Oosterparkbuurt	2008	10215		0	70			
+M29	Dapperbuurt	2008	8111		0	22			
+M30	Transvaalbuurt	2008	9329		0	1			
+M31	Indische Buurt-West	2008	11913		0	27			
+M32	Indische Buurt-Oost	2008	10368		21	5			
+M33	Oostelijk Havengebied	2008	17662		219	8			
+M34	Zeeburgereiland/Nieuwe diep	2008	464		62	1			
+M35	IJburg-West	2008	7781		0	0			
+M50	IJburg-Oost	2008							
+M51	IJburg-Zuid	2008	485		0	0			
+M55	Frankendael	2008	9528		3	82			
+M56	Middenmeer	2008	12164		0	6			
+M57	Betondorp	2008	3032		0	0			
+M58	Omval/Overamstel	2008	2115		95	3			
+N60	Volewijck	2008	9583		41	9			
+N61	IJplein/Vogelbuurt	2008	8366		37	5			
+N62	Tuindorp Nieuwendam	2008	3444		3	0			
+N63	Tuindorp Buiksloot	2008	1868		0	0			
+N64	Nieuwendammerdijk/Buiksloterdijk	2008	1588		12	0			
+N65	Tuindorp Oostzaan	2008	9893		64	23			
+N66	Oostzanerwerf	2008	8698		72	1			
+N67	Kadoelen	2008	2890		34	0			
+N68	Waterlandpleinbuurt	2008	13023		0	3			
+N69	Buikslotermeer	2008	10480		0	6			
+N70	Banne Buiksloot	2008	13143		35	13			
+N71	Noordelijke IJ-oevers-West	2008	609		90	0			
+N72	Noordelijke IJ-oevers-Oost	2008	126		1	1			
+N73	Waterland	2008	2126		83	1			
+N74	Elzenhagen	2008	1093		1	0			
+T92	Amstel III/Bullewijk	2008	97		11	7			
+T93	Bijlmer-Centrum (D,F,H)	2008	20440		0	26			
+T94	Bijlmer-Oost (E,G,K)	2008	23912		0	9			
+T95	Nellestein	2008	2765		1	4			
+T96	Holendrecht/Reigersbos	2008	18396		0	15			
+T97	Gein	2008	11825		0	113			
+T98	Driemond	2008	1487		0	0			
+Z99	buiten beschouwing	2008							
+A00	Burgwallen-Oude Zijde	2009	3783		2	16			
+A01	Burgwallen-Nieuwe Zijde	2009	3754		9	2			
+A02	Grachtengordel-West	2009	6316		70	12			
+A03	Grachtengordel-Zuid	2009	5056		80	19			
+A04	Nieuwmarkt/Lastage	2009	8783		194	23			
+A05	Haarlemmerbuurt	2009	7918		143	86			
+A06	Jordaan	2009	18660		115	10			
+A07	De Weteringschans	2009	6861		73	6			
+A08	Weesperbuurt/Plantage	2009	7618		106	13			
+A09	Oostelijke Eilanden/Kadijken	2009	12554		164	9			
+B10	Westelijk Havengebied	2009	238		32	2			
+E12	Houthavens	2009	1878		207	0			
+E13	Spaarndammer- en Zeeheldenbuurt	2009	9917		9	5			
+E14	Staatsliedenbuurt	2009	11875		54	23			
+E15	Centrale Markt	2009	2614		24	2			
+E16	Frederik Hendrikbuurt	2009	7864		19	8			
+E17	Da Costabuurt	2009	4350		68	16			
+E18	Kinkerbuurt	2009	5044		14	9			
+E19	Van Lennepbuurt	2009	6709		51	6			
+E20	Helmersbuurt	2009	6903		13	11			
+E21	Overtoomse Sluis	2009	7058		18	13			
+E22	Vondelbuurt	2009	1696		0	5			
+E36	Sloterdijk	2009	184		0	1			
+E37	Landlust	2009	17514		18	0			
+E38	Erasmuspark	2009	5531		0	1			
+E39	De Kolenkit	2009	7219		0	6			
+E40	Geuzenbuurt	2009	6404		0	1			
+E41	Van Galenbuurt	2009	5460		0	0			
+E42	Hoofdweg e,o,	2009	9988		0	2			
+E43	Westindische Buurt	2009	6374		0	0			
+E75	Chassébuurt	2009	5410		0	2			
+F11	Bedrijventerrein Sloterdijk	2009	73		0	1			
+F76	Slotermeer-Noordoost	2009	9243		0	2			
+F77	Slotermeer-Zuidwest	2009	15847		4	7			
+F78	Geuzenveld	2009	13228		0	58			
+F79	Eendracht	2009	2350		0	0			
+F80	Lutkemeer/Ookmeer	2009	883		0	0			
+F81	Osdorp-Oost	2009	14444		0	10			
+F82	Osdorp-Midden	2009	12136		0	4			
+F83	De Punt	2009	5080		0	5			
+F84	Middelveldsche Akerpolder	2009	14320		13	1			
+F85	Slotervaart-Noord	2009	7640		0	8			
+F86	Overtoomse Veld	2009	9890		0	21			
+F87	Westlandgracht	2009	4879		0	3			
+F88	Sloter-/Riekerpolder	2009	13934		12	23			
+F89	Slotervaart-Zuid	2009	9098		0	252			
+K23	Zuidas	2009	198		0	12			
+K24	Oude Pijp	2009	13665		30	4			
+K25	Nieuwe Pijp	2009	11419		21	5			
+K26	Zuid-Pijp	2009	8036		24	3			
+K44	Hoofddorppleinbuurt	2009	10657		44	6			
+K45	Schinkelbuurt	2009	3686		0	11			
+K46	Willemspark	2009	5197		0	19			
+K47	Museumkwartier	2009	12387		2	27			
+K48	Stadionbuurt	2009	11796		146	5			
+K49	Apollobuurt	2009	8047		0	3			
+K52	Scheldebuurt	2009	13384		0	5			
+K53	IJselbuurt	2009	5051		8	0			
+K54	Rijnbuurt	2009	8505		70	2			
+K59	Prinses Irenebuurt e,o,	2009	1177		0	0			
+K90	Buitenveldert-West	2009	11833		18	68			
+K91	Buitenveldert-Oost	2009	7115		0	5			
+M27	Weesperzijde	2009	4606		48	2			
+M28	Oosterparkbuurt	2009	10215		0	71			
+M29	Dapperbuurt	2009	7959		0	22			
+M30	Transvaalbuurt	2009	9218		0	1			
+M31	Indische Buurt-West	2009	11642		0	27			
+M32	Indische Buurt-Oost	2009	10246		20	5			
+M33	Oostelijk Havengebied	2009	17555		219	8			
+M34	Zeeburgereiland/Nieuwe diep	2009	458		61	1			
+M35	IJburg-West	2009	10339		0	0			
+M50	IJburg-Oost	2009							
+M51	IJburg-Zuid	2009	2442		0	0			
+M55	Frankendael	2009	9626		3	82			
+M56	Middenmeer	2009	13035		0	5			
+M57	Betondorp	2009	3076		0	0			
+M58	Omval/Overamstel	2009	2028		96	3			
+N60	Volewijck	2009	9479		40	8			
+N61	IJplein/Vogelbuurt	2009	8366		38	5			
+N62	Tuindorp Nieuwendam	2009	3419		3	0			
+N63	Tuindorp Buiksloot	2009	1853		0	0			
+N64	Nieuwendammerdijk/Buiksloterdijk	2009	1599		12	0			
+N65	Tuindorp Oostzaan	2009	10336		63	23			
+N66	Oostzanerwerf	2009	8704		72	1			
+N67	Kadoelen	2009	2892		34	0			
+N68	Waterlandpleinbuurt	2009	12919		0	3			
+N69	Buikslotermeer	2009	10371		0	6			
+N70	Banne Buiksloot	2009	12732		34	12			
+N71	Noordelijke IJ-oevers-West	2009	610		84	0			
+N72	Noordelijke IJ-oevers-Oost	2009	122		0	1			
+N73	Waterland	2009	2121		88	1			
+N74	Elzenhagen	2009	1158		1	0			
+T92	Amstel III/Bullewijk	2009	153		3	7			
+T93	Bijlmer-Centrum (D,F,H)	2009	20666		0	26			
+T94	Bijlmer-Oost (E,G,K)	2009	25153		0	9			
+T95	Nellestein	2009	2757		1	4			
+T96	Holendrecht/Reigersbos	2009	18347		0	12			
+T97	Gein	2009	11905		0	113			
+T98	Driemond	2009	1509		0	0			
+Z99	buiten beschouwing	2009							
+A00	Burgwallen-Oude Zijde	2010	3900		2	14			
+A01	Burgwallen-Nieuwe Zijde	2010	4146		8	2			
+A02	Grachtengordel-West	2010	6230		69	12			
+A03	Grachtengordel-Zuid	2010	5125		79	18			
+A04	Nieuwmarkt/Lastage	2010	8808		195	23			
+A05	Haarlemmerbuurt	2010	8704		140	86			
+A06	Jordaan	2010	18927		115	9			
+A07	De Weteringschans	2010	6973		74	5			
+A08	Weesperbuurt/Plantage	2010	7542		105	13			
+A09	Oostelijke Eilanden/Kadijken	2010	12355		163	9			
+B10	Westelijk Havengebied	2010	255		33	2			
+E12	Houthavens	2010	1749		74	0			
+E13	Spaarndammer- en Zeeheldenbuurt	2010	9968		9	5			
+E14	Staatsliedenbuurt	2010	11921		54	23			
+E15	Centrale Markt	2010	2585		24	2			
+E16	Frederik Hendrikbuurt	2010	7834		19	6			
+E17	Da Costabuurt	2010	4395		68	16			
+E18	Kinkerbuurt	2010	5140		14	9			
+E19	Van Lennepbuurt	2010	6775		51	6			
+E20	Helmersbuurt	2010	7120		13	11			
+E21	Overtoomse Sluis	2010	7243		18	13			
+E22	Vondelbuurt	2010	1730		0	4			
+E36	Sloterdijk	2010	186		0	1			
+E37	Landlust	2010	17966		18	0			
+E38	Erasmuspark	2010	5500		0	1			
+E39	De Kolenkit	2010	7313		0	6			
+E40	Geuzenbuurt	2010	6487		0	1			
+E41	Van Galenbuurt	2010	5502		0	0			
+E42	Hoofdweg e,o,	2010	10026		0	2			
+E43	Westindische Buurt	2010	6393		0	0			
+E75	Chassébuurt	2010	5462		0	2			
+F11	Bedrijventerrein Sloterdijk	2010	69		0	1			
+F76	Slotermeer-Noordoost	2010	9177		0	2			
+F77	Slotermeer-Zuidwest	2010	16069		5	7			
+F78	Geuzenveld	2010	12822		0	58			
+F79	Eendracht	2010	2335		0	0			
+F80	Lutkemeer/Ookmeer	2010	880		0	0			
+F81	Osdorp-Oost	2010	15054		0	10			
+F82	Osdorp-Midden	2010	13442		0	4			
+F83	De Punt	2010	5113		0	5			
+F84	Middelveldsche Akerpolder	2010	14341		13	1			
+F85	Slotervaart-Noord	2010	7584		0	7			
+F86	Overtoomse Veld	2010	10475		0	19			
+F87	Westlandgracht	2010	5154		0	3			
+F88	Sloter-/Riekerpolder	2010	13839		12	23			
+F89	Slotervaart-Zuid	2010	8901		0	113			
+K23	Zuidas	2010	226		0	12			
+K24	Oude Pijp	2010	13771		30	4			
+K25	Nieuwe Pijp	2010	11539		21	5			
+K26	Zuid-Pijp	2010	7976		25	3			
+K44	Hoofddorppleinbuurt	2010	10846		44	6			
+K45	Schinkelbuurt	2010	3727		0	11			
+K46	Willemspark	2010	5233		0	17			
+K47	Museumkwartier	2010	12560		2	27			
+K48	Stadionbuurt	2010	12058		146	5			
+K49	Apollobuurt	2010	8167		0	3			
+K52	Scheldebuurt	2010	13720		0	5			
+K53	IJselbuurt	2010	5041		8	0			
+K54	Rijnbuurt	2010	8635		70	2			
+K59	Prinses Irenebuurt e,o,	2010	1185		0	0			
+K90	Buitenveldert-West	2010	12062		17	67			
+K91	Buitenveldert-Oost	2010	7062		0	4			
+M27	Weesperzijde	2010	4648		48	2			
+M28	Oosterparkbuurt	2010	10253		0	71			
+M29	Dapperbuurt	2010	7975		0	21			
+M30	Transvaalbuurt	2010	9301		0	1			
+M31	Indische Buurt-West	2010	12061		0	28			
+M32	Indische Buurt-Oost	2010	10425		22	5			
+M33	Oostelijk Havengebied	2010	17670		224	8			
+M34	Zeeburgereiland/Nieuwe diep	2010	468		63	1			
+M35	IJburg-West	2010	11842		0	0			
+M50	IJburg-Oost	2010							
+M51	IJburg-Zuid	2010	3660		0	0			
+M55	Frankendael	2010	9695		3	81			
+M56	Middenmeer	2010	13526		0	5			
+M57	Betondorp	2010	3074		0	0			
+M58	Omval/Overamstel	2010	2017		96	3			
+N60	Volewijck	2010	9395		41	8			
+N61	IJplein/Vogelbuurt	2010	8310		38	5			
+N62	Tuindorp Nieuwendam	2010	3425		3	0			
+N63	Tuindorp Buiksloot	2010	1904		0	0			
+N64	Nieuwendammerdijk/Buiksloterdijk	2010	1687		12	0			
+N65	Tuindorp Oostzaan	2010	10373		81	23			
+N66	Oostzanerwerf	2010	8719		71	1			
+N67	Kadoelen	2010	2907		34	0			
+N68	Waterlandpleinbuurt	2010	12216		0	3			
+N69	Buikslotermeer	2010	10662		0	6			
+N70	Banne Buiksloot	2010	12518		33	12			
+N71	Noordelijke IJ-oevers-West	2010	651		90	0			
+N72	Noordelijke IJ-oevers-Oost	2010	136		1	1			
+N73	Waterland	2010	2142		116	1			
+N74	Elzenhagen	2010	1282		1	0			
+T92	Amstel III/Bullewijk	2010	178		11	7			
+T93	Bijlmer-Centrum (D,F,H)	2010	20830		0	27			
+T94	Bijlmer-Oost (E,G,K)	2010	25853		0	9			
+T95	Nellestein	2010	2839		1	4			
+T96	Holendrecht/Reigersbos	2010	18421		0	12			
+T97	Gein	2010	11878		0	112			
+T98	Driemond	2010	1509		0	0			
+Z99	buiten beschouwing	2010							
+A00	Burgwallen-Oude Zijde	2011	3928		2	18	532	494	1697
+A01	Burgwallen-Nieuwe Zijde	2011	4147		8	3	265	530	1857
+A02	Grachtengordel-West	2011	6337		69	12	498	1773	1987
+A03	Grachtengordel-Zuid	2011	5293		80	20	193	1269	1841
+A04	Nieuwmarkt/Lastage	2011	9008		195	22	2469	1477	1775
+A05	Haarlemmerbuurt	2011	8925		140	39	2502	1418	1507
+A06	Jordaan	2011	18979		114	11	5043	3130	4631
+A07	De Weteringschans	2011	7101		75	5	588	1660	2233
+A08	Weesperbuurt/Plantage	2011	7752		104	15	1553	1305	1499
+A09	Oostelijke Eilanden/Kadijken	2011	12557		165	10	4828	1661	757
+B10	Westelijk Havengebied	2011	249		34	2	0	6	48
+E12	Houthavens	2011	1943		313	0	910	199	81
+E13	Spaarndammer- en Zeeheldenbuurt	2011	10319		9	5	4352	961	777
+E14	Staatsliedenbuurt	2011	12094		54	23	4063	2061	1619
+E15	Centrale Markt	2011	2595		24	2	657	410	132
+E16	Frederik Hendrikbuurt	2011	7923		19	8	2214	1176	1594
+E17	Da Costabuurt	2011	4429		68	20	644	739	1231
+E18	Kinkerbuurt	2011	5172		14	9	1432	660	1290
+E19	Van Lennepbuurt	2011	6824		51	6	2553	816	1116
+E20	Helmersbuurt	2011	7235		13	11	1110	1359	1707
+E21	Overtoomse Sluis	2011	7479		18	24	963	1445	1974
+E22	Vondelbuurt	2011	1717		0	5	157	354	373
+E36	Sloterdijk	2011	199		0	1	11	18	26
+E37	Landlust	2011	18300		18	0	4865	1978	2419
+E38	Erasmuspark	2011	5658		0	1	625	1169	1247
+E39	De Kolenkit	2011	7215		0	6	2344	370	258
+E40	Geuzenbuurt	2011	6603		0	1	782	1168	1689
+E41	Van Galenbuurt	2011	5542		0	0	1705	647	880
+E42	Hoofdweg e,o,	2011	10058		0	2	2481	1094	2123
+E43	Westindische Buurt	2011	6464		0	0	817	904	1873
+E75	Chassébuurt	2011	5550		0	2	1319	468	900
+F11	Bedrijventerrein Sloterdijk	2011	102		0	1	0	0	25
+F76	Slotermeer-Noordoost	2011	9302		0	2	2840	1089	221
+F77	Slotermeer-Zuidwest	2011	16525		5	7	5240	1594	628
+F78	Geuzenveld	2011	13214		0	58	4378	1026	718
+F79	Eendracht	2011	2338		0	0	524	379	29
+F80	Lutkemeer/Ookmeer	2011	882		1	0	24	182	98
+F81	Osdorp-Oost	2011	15392		0	10	5219	2046	872
+F82	Osdorp-Midden	2011	14012		0	4	4116	1464	806
+F83	De Punt	2011	5090		0	5	1253	874	191
+F84	Middelveldsche Akerpolder	2011	14249		12	1	1670	2906	797
+F85	Slotervaart-Noord	2011	7726		0	8	1481	1107	767
+F86	Overtoomse Veld	2011	10446		0	20	2472	748	1140
+F87	Westlandgracht	2011	5846		0	3	1598	724	1139
+F88	Sloter-/Riekerpolder	2011	13989		11	31	1138	2838	1655
+F89	Slotervaart-Zuid	2011	9073		0	122	2940	662	388
+K23	Zuidas	2011	507		0	9	16	116	373
+K24	Oude Pijp	2011	14102		30	4	2669	2150	4245
+K25	Nieuwe Pijp	2011	11674		21	7	2556	1795	2867
+K26	Zuid-Pijp	2011	8032		25	3	3555	446	555
+K44	Hoofddorppleinbuurt	2011	10936		44	6	996	2342	3075
+K45	Schinkelbuurt	2011	3761		0	11	813	619	826
+K46	Willemspark	2011	5333		0	19	260	1127	1151
+K47	Museumkwartier	2011	12612		2	29	362	2464	3919
+K48	Stadionbuurt	2011	12487		147	5	3757	628	2049
+K49	Apollobuurt	2011	8306		0	3	63	1850	1942
+K52	Scheldebuurt	2011	13873		0	5	1414	1873	4080
+K53	IJselbuurt	2011	5040		8	0	1396	419	1137
+K54	Rijnbuurt	2011	8820		70	2	2255	843	2130
+K59	Prinses Irenebuurt e,o,	2011	1212		0	0	0	528	168
+K90	Buitenveldert-West	2011	12142		13	71	2471	2609	2307
+K91	Buitenveldert-Oost	2011	7024		0	5	1421	1446	1292
+M27	Weesperzijde	2011	4739		48	3	970	880	801
+M28	Oosterparkbuurt	2011	10257		0	73	3863	1179	928
+M29	Dapperbuurt	2011	8206		0	21	3172	774	635
+M30	Transvaalbuurt	2011	9248		0	1	3131	799	682
+M31	Indische Buurt-West	2011	12407		0	29	4196	1478	942
+M32	Indische Buurt-Oost	2011	10399		11	5	3764	819	555
+M33	Oostelijk Havengebied	2011	17984		228	8	3378	3292	1721
+M34	Zeeburgereiland/Nieuwe diep	2011	756		64	1	418	9	15
+M35	IJburg-West	2011	12667		0	25	1764	2394	1001
+M50	IJburg-Oost	2011			0	0			
+M51	IJburg-Zuid	2011	4701		0	1	1043	774	425
+M55	Frankendael	2011	9948		3	82	3400	823	958
+M56	Middenmeer	2011	13773		0	6	1811	2568	2329
+M57	Betondorp	2011	3107		0	0	1778	131	44
+M58	Omval/Overamstel	2011	2042		96	3	1004	196	271
+N60	Volewijck	2011	9403		42	8	4250	315	279
+N61	IJplein/Vogelbuurt	2011	8206		38	5	3258	613	201
+N62	Tuindorp Nieuwendam	2011	3429		3	0	1631	188	28
+N63	Tuindorp Buiksloot	2011	1881		0	0	768	93	59
+N64	Nieuwendammerdijk/Buiksloterdijk	2011	1696		12	0	2	536	84
+N65	Tuindorp Oostzaan	2011	10345		81	25	3671	1082	137
+N66	Oostzanerwerf	2011	8483		71	1	2118	1425	140
+N67	Kadoelen	2011	2859		34	0	451	622	68
+N68	Waterlandpleinbuurt	2011	12177		0	3	3217	1410	474
+N69	Buikslotermeer	2011	10841		0	6	4058	1303	287
+N70	Banne Buiksloot	2011	12661		33	12	4095	1234	174
+N71	Noordelijke IJ-oevers-West	2011	1012		90	0	436	45	110
+N72	Noordelijke IJ-oevers-Oost	2011	123		1	1	0	16	49
+N73	Waterland	2011	2154		108	1	43	619	140
+N74	Elzenhagen	2011	1405		1	0	148	273	79
+T92	Amstel III/Bullewijk	2011	187		11	7	0	5	10
+T93	Bijlmer-Centrum (D,F,H)	2011	21226		0	25	7515	1897	484
+T94	Bijlmer-Oost (E,G,K)	2011	25835		0	9	7449	3469	989
+T95	Nellestein	2011	2914		1	4	351	627	702
+T96	Holendrecht/Reigersbos	2011	18424		0	12	6008	1818	529
+T97	Gein	2011	11920		0	113	2657	1789	689
+T98	Driemond	2011	1502		0	0	275	314	35
+Z99	buiten beschouwing	2011							
+A00	Burgwallen-Oude Zijde	2012	4013		2	16	528	548	1702
+A01	Burgwallen-Nieuwe Zijde	2012	4047		8	3	263	548	1877
+A02	Grachtengordel-West	2012	6403		69	13	502	1730	2038
+A03	Grachtengordel-Zuid	2012	5264		80	19	197	1238	1884
+A04	Nieuwmarkt/Lastage	2012	9021		197	21	2475	1477	1785
+A05	Haarlemmerbuurt	2012	9046		140	39	2497	1411	1528
+A06	Jordaan	2012	19090		113	10	5034	3203	4628
+A07	De Weteringschans	2012	7146		75	5	581	1669	2228
+A08	Weesperbuurt/Plantage	2012	7640		94	13	1539	1318	1501
+A09	Oostelijke Eilanden/Kadijken	2012	12868		165	10	4822	1723	734
+B10	Westelijk Havengebied	2012	251		34	2	0	6	48
+E12	Houthavens	2012	1909		121	0	910	191	86
+E13	Spaarndammer- en Zeeheldenbuurt	2012	10583		9	5	4299	1017	704
+E14	Staatsliedenbuurt	2012	12400		54	23	3941	2160	1602
+E15	Centrale Markt	2012	2587		24	2	640	420	138
+E16	Frederik Hendrikbuurt	2012	7879		19	8	2202	1241	1625
+E17	Da Costabuurt	2012	4448		68	20	638	754	1228
+E18	Kinkerbuurt	2012	5399		14	9	1421	701	1256
+E19	Van Lennepbuurt	2012	6937		51	6	2527	862	1098
+E20	Helmersbuurt	2012	7337		13	12	1103	1399	1674
+E21	Overtoomse Sluis	2012	7547		18	24	866	1471	2047
+E22	Vondelbuurt	2012	1752		0	6	139	375	377
+E36	Sloterdijk	2012	211		0	2	11	20	24
+E37	Landlust	2012	18098		18	0	4786	2068	2395
+E38	Erasmuspark	2012	5710		0	1	613	1215	1212
+E39	De Kolenkit	2012	7952		0	6	2815	461	245
+E40	Geuzenbuurt	2012	6649		0	1	783	1179	1680
+E41	Van Galenbuurt	2012	5583		0	0	1694	650	882
+E42	Hoofdweg e,o,	2012	10149		0	2	2472	1102	2130
+E43	Westindische Buurt	2012	6404		0	1	797	942	1854
+E75	Chassébuurt	2012	5650		0	2	1301	599	910
+F11	Bedrijventerrein Sloterdijk	2012	103		0	1	0	0	25
+F76	Slotermeer-Noordoost	2012	9301		0	2	2860	1085	232
+F77	Slotermeer-Zuidwest	2012	16479		5	9	5252	1589	621
+F78	Geuzenveld	2012	14020		0	60	4136	1044	636
+F79	Eendracht	2012	2327		0	0	522	384	26
+F80	Lutkemeer/Ookmeer	2012	873		0	0	23	184	99
+F81	Osdorp-Oost	2012	15536		0	10	5150	2086	901
+F82	Osdorp-Midden	2012	14573		0	5	4113	1495	837
+F83	De Punt	2012	5099		0	5	1224	885	209
+F84	Middelveldsche Akerpolder	2012	14207		12	1	1663	2883	829
+F85	Slotervaart-Noord	2012	7800		0	9	1474	1099	783
+F86	Overtoomse Veld	2012	10302		0	20	2331	762	1181
+F87	Westlandgracht	2012	6349		0	3	1308	745	1162
+F88	Sloter-/Riekerpolder	2012	14024		10	34	1136	2817	1679
+F89	Slotervaart-Zuid	2012	8992		0	125	2985	730	457
+K23	Zuidas	2012	699		0	9	65	116	377
+K24	Oude Pijp	2012	14425		31	4	2633	2251	4163
+K25	Nieuwe Pijp	2012	11666		21	7	2533	1839	2872
+K26	Zuid-Pijp	2012	8047		26	4	3493	495	568
+K44	Hoofddorppleinbuurt	2012	11036		44	6	996	2321	3100
+K45	Schinkelbuurt	2012	3732		0	11	814	626	820
+K46	Willemspark	2012	5396		0	19	245	1140	1164
+K47	Museumkwartier	2012	12677		2	29	361	2464	3920
+K48	Stadionbuurt	2012	12513		147	7	3620	735	2074
+K49	Apollobuurt	2012	8452		0	2	66	1844	1942
+K52	Scheldebuurt	2012	14025		0	5	1425	1865	4068
+K53	IJselbuurt	2012	5147		8	0	1402	427	1127
+K54	Rijnbuurt	2012	8889		71	2	2223	857	2146
+K59	Prinses Irenebuurt e,o,	2012	1212		0	0	0	520	177
+K90	Buitenveldert-West	2012	12455		20	72	2465	2624	2346
+K91	Buitenveldert-Oost	2012	7232		0	6	1378	1444	1335
+M27	Weesperzijde	2012	4708		48	2	970	929	774
+M28	Oosterparkbuurt	2012	10273		0	74	3702	1236	928
+M29	Dapperbuurt	2012	8228		0	21	3129	830	627
+M30	Transvaalbuurt	2012	9190		0	1	3102	824	693
+M31	Indische Buurt-West	2012	12650		0	30	4208	1558	995
+M32	Indische Buurt-Oost	2012	10258		12	6	3610	855	591
+M33	Oostelijk Havengebied	2012	17897		228	8	3378	3231	1783
+M34	Zeeburgereiland/Nieuwe diep	2012	802		66	1	418	12	11
+M35	IJburg-West	2012	13657		0	26	1774	2515	1033
+M50	IJburg-Oost	2012			0	0			
+M51	IJburg-Zuid	2012	5474		0	1	1082	961	404
+M55	Frankendael	2012	9999		3	82	3384	844	959
+M56	Middenmeer	2012	13944		0	6	1704	2575	2425
+M57	Betondorp	2012	3089		0	0	1764	130	59
+M58	Omval/Overamstel	2012	2106		96	4	1004	197	262
+N60	Volewijck	2012	9394		42	9	4219	366	272
+N61	IJplein/Vogelbuurt	2012	8201		37	5	3220	647	206
+N62	Tuindorp Nieuwendam	2012	3418		3	0	1593	206	46
+N63	Tuindorp Buiksloot	2012	1867		0	0	802	100	10
+N64	Nieuwendammerdijk/Buiksloterdijk	2012	1680		11	0	2	554	84
+N65	Tuindorp Oostzaan	2012	10313		81	25	3619	1115	156
+N66	Oostzanerwerf	2012	8635		71	1	2076	1456	155
+N67	Kadoelen	2012	2830		35	3	445	626	83
+N68	Waterlandpleinbuurt	2012	12308		0	3	3531	1454	210
+N69	Buikslotermeer	2012	10954		0	6	3929	1330	340
+N70	Banne Buiksloot	2012	12749		33	13	4358	1282	270
+N71	Noordelijke IJ-oevers-West	2012	1113		90	0	436	84	154
+N72	Noordelijke IJ-oevers-Oost	2012	117		1	1	0	15	51
+N73	Waterland	2012	2150		109	2	42	644	123
+N74	Elzenhagen	2012	1613		1	0	129	367	83
+T92	Amstel III/Bullewijk	2012	178		11	7	0	6	9
+T93	Bijlmer-Centrum (D,F,H)	2012	21894		0	26	7379	2005	760
+T94	Bijlmer-Oost (E,G,K)	2012	26023		0	15	7479	3486	1130
+T95	Nellestein	2012	2953		1	4	350	633	697
+T96	Holendrecht/Reigersbos	2012	18485		0	14	5903	1864	588
+T97	Gein	2012	11848		0	113	2618	1828	688
+T98	Driemond	2012	1485		0	0	275	311	39
+Z99	buiten beschouwing	2012							
+A00	Burgwallen-Oude Zijde	2013	4091		2	16	537	547	1712
+A01	Burgwallen-Nieuwe Zijde	2013	4001		8	3	265	546	1894
+A02	Grachtengordel-West	2013	6395		69	13	511	1755	2012
+A03	Grachtengordel-Zuid	2013	5316		80	19	193	1240	1878
+A04	Nieuwmarkt/Lastage	2013	9324		197	22	2551	1552	1887
+A05	Haarlemmerbuurt	2013	9214		141	39	2512	1447	1598
+A06	Jordaan	2013	19122		114	10	4973	3315	4594
+A07	De Weteringschans	2013	7293		75	5	573	1686	2236
+A08	Weesperbuurt/Plantage	2013	7958		98	13	1529	1339	1477
+A09	Oostelijke Eilanden/Kadijken	2013	12901		163	10	4712	1759	815
+B10	Westelijk Havengebied	2013	305		48	2	0	7	48
+E12	Houthavens	2013	1706		83	0	793	189	58
+E13	Spaarndammer- en Zeeheldenbuurt	2013	10645		9	5	4158	1111	742
+E14	Staatsliedenbuurt	2013	12504		54	24	3842	2273	1545
+E15	Centrale Markt	2013	2558		24	2	628	424	145
+E16	Frederik Hendrikbuurt	2013	7994		19	8	2089	1312	1621
+E17	Da Costabuurt	2013	4564		68	17	631	783	1214
+E18	Kinkerbuurt	2013	5976		14	9	1409	719	1262
+E19	Van Lennepbuurt	2013	6914		51	6	2510	918	1067
+E20	Helmersbuurt	2013	7456		13	12	1130	1418	1652
+E21	Overtoomse Sluis	2013	7605		18	24	914	1503	1948
+E22	Vondelbuurt	2013	1805		0	6	157	364	372
+E36	Sloterdijk	2013	231		0	2	3	19	33
+E37	Landlust	2013	18409		18	0	4659	2165	2387
+E38	Erasmuspark	2013	5792		0	1	590	1219	1231
+E39	De Kolenkit	2013	8605		1	6	2918	817	296
+E40	Geuzenbuurt	2013	6748		0	1	778	1208	1652
+E41	Van Galenbuurt	2013	6407		0	0	1680	673	863
+E42	Hoofdweg e,o,	2013	10224		0	2	2413	1167	2122
+E43	Westindische Buurt	2013	6443		1	1	774	971	1851
+E75	Chassébuurt	2013	6094		0	2	1358	682	894
+F11	Bedrijventerrein Sloterdijk	2013	96		0	1	0	0	44
+F76	Slotermeer-Noordoost	2013	9408		0	2	2847	1096	235
+F77	Slotermeer-Zuidwest	2013	16361		5	9	5286	1607	588
+F78	Geuzenveld	2013	14348		0	60	4142	1107	594
+F79	Eendracht	2013	2343		0	0	506	396	30
+F80	Lutkemeer/Ookmeer	2013	879		0	0	23	182	103
+F81	Osdorp-Oost	2013	15719		0	10	5173	2130	834
+F82	Osdorp-Midden	2013	14840		0	5	3998	1543	850
+F83	De Punt	2013	5085		0	5	1253	955	210
+F84	Middelveldsche Akerpolder	2013	14289		12	1	1648	2913	813
+F85	Slotervaart-Noord	2013	7871		0	9	1463	1111	780
+F86	Overtoomse Veld	2013	10310		0	20	2260	780	1179
+F87	Westlandgracht	2013	7074		0	3	1409	853	1376
+F88	Sloter-/Riekerpolder	2013	13879		10	33	1132	2841	1659
+F89	Slotervaart-Zuid	2013	9415		0	125	2910	747	881
+K23	Zuidas	2013	919		0	9	65	94	403
+K24	Oude Pijp	2013	14546		31	4	2612	2314	4158
+K25	Nieuwe Pijp	2013	11943		21	7	2502	1918	2881
+K26	Zuid-Pijp	2013	8148		26	4	3451	532	575
+K44	Hoofddorppleinbuurt	2013	11275		44	6	990	2331	3090
+K45	Schinkelbuurt	2013	3721		0	10	805	638	817
+K46	Willemspark	2013	5559		0	19	260	1160	1144
+K47	Museumkwartier	2013	12737		2	28	359	2516	3881
+K48	Stadionbuurt	2013	11322		147	7	3600	814	2019
+K49	Apollobuurt	2013	8529		0	2	63	1899	1895
+K52	Scheldebuurt	2013	14326		0	5	1413	1906	4073
+K53	IJselbuurt	2013	5155		8	0	1377	442	1148
+K54	Rijnbuurt	2013	8998		71	2	2203	877	2144
+K59	Prinses Irenebuurt e,o,	2013	1211		0	0	0	518	179
+K90	Buitenveldert-West	2013	12364		20	72	2407	2709	2247
+K91	Buitenveldert-Oost	2013	7148		0	6	1377	1469	1311
+M27	Weesperzijde	2013	4854		48	5	898	972	730
+M28	Oosterparkbuurt	2013	10096		0	74	3639	1270	958
+M29	Dapperbuurt	2013	8259		0	21	3043	860	626
+M30	Transvaalbuurt	2013	8918		0	1	2881	865	698
+M31	Indische Buurt-West	2013	12691		0	30	4122	1623	993
+M32	Indische Buurt-Oost	2013	10075		12	6	3622	876	566
+M33	Oostelijk Havengebied	2013	17972		227	8	3539	3251	1812
+M34	Zeeburgereiland/Nieuwe diep	2013	837		67	1	418	10	14
+M35	IJburg-West	2013	13946		0	26	1736	2532	1036
+M50	IJburg-Oost	2013			0	0			
+M51	IJburg-Zuid	2013	6203		0	1	1106	979	494
+M55	Frankendael	2013	9563		4	82	3374	873	938
+M56	Middenmeer	2013	14168		0	6	1807	2721	2266
+M57	Betondorp	2013	3087		0	0	1715	182	54
+M58	Omval/Overamstel	2013	2178		94	4	1005	198	258
+N60	Volewijck	2013	9366		42	9	4171	419	256
+N61	IJplein/Vogelbuurt	2013	8147		37	5	3181	681	210
+N62	Tuindorp Nieuwendam	2013	3393		3	0	1571	233	41
+N63	Tuindorp Buiksloot	2013	1868		0	0	795	109	8
+N64	Nieuwendammerdijk/Buiksloterdijk	2013	1683		11	0	2	549	90
+N65	Tuindorp Oostzaan	2013	10518		81	25	3578	1225	149
+N66	Oostzanerwerf	2013	8734		72	1	2023	1508	147
+N67	Kadoelen	2013	2816		35	3	437	634	85
+N68	Waterlandpleinbuurt	2013	12544		0	3	3520	1561	201
+N69	Buikslotermeer	2013	10804		0	6	3956	1346	297
+N70	Banne Buiksloot	2013	13359		33	10	4006	1462	195
+N71	Noordelijke IJ-oevers-West	2013	1239		88	0	437	110	230
+N72	Noordelijke IJ-oevers-Oost	2013	107		0	1	0	17	49
+N73	Waterland	2013	2171		108	2	42	638	130
+N74	Elzenhagen	2013	1685		1	0	131	383	85
+T92	Amstel III/Bullewijk	2013	236		4	7	0	6	9
+T93	Bijlmer-Centrum (D,F,H)	2013	22875		0	26	8005	2109	688
+T94	Bijlmer-Oost (E,G,K)	2013	26267		0	15	6896	3560	1283
+T95	Nellestein	2013	2970		1	4	349	654	677
+T96	Holendrecht/Reigersbos	2013	18265		0	14	5907	1914	534
+T97	Gein	2013	11652		0	113	2577	1861	696
+T98	Driemond	2013	1478		0	0	275	309	40
+Z99	buiten beschouwing	2013							
+T92	Amstel III/Bullewijk	2014	243		5	7	0	6	9
+K49	Apollobuurt	2014	8647		0	1	63	1885	1911
+N70	Banne Buiksloot	2014	13557		33	11	3984	1485	309
+F11	Bedrijventerrein Sloterdijk	2014	92		0	1	0	0	45
+M57	Betondorp	2014	3147		0	0	1688	215	47
+T93	Bijlmer-Centrum (D,F,H)	2014	22943		0	24	7358	2174	1347
+T94	Bijlmer-Oost (E,G,K)	2014	26548		0	10	6938	3540	1255
+N69	Buikslotermeer	2014	10947		0	5	3912	1384	303
+Z99	buiten beschouwing	2014							
+K91	Buitenveldert-Oost	2014	7200		0	6	1361	1436	1353
+K90	Buitenveldert-West	2014	12487		20	67	2347	2733	2351
+A01	Burgwallen-Nieuwe Zijde	2014	4103		7	3	264	540	1911
+A00	Burgwallen-Oude Zijde	2014	4194		2	19	539	526	1758
+E15	Centrale Markt	2014	2537		24	2	619	438	140
+E75	Chassébuurt	2014	6189		0	2	1343	702	894
+E17	Da Costabuurt	2014	4659		68	10	626	789	1219
+M29	Dapperbuurt	2014	8408		0	22	2988	911	654
+E39	De Kolenkit	2014	9293		1	2	3212	697	339
+F83	De Punt	2014	5252		0	5	1196	941	372
+A07	De Weteringschans	2014	7299		74	5	565	1692	2259
+T98	Driemond	2014	1497		0	0	268	311	47
+F79	Eendracht	2014	2337		0	0	499	400	33
+N74	Elzenhagen	2014	1812		1	0	126	430	82
+E38	Erasmuspark	2014	5775		0	1	586	1222	1239
+M55	Frankendael	2014	9858		4	81	3358	902	1085
+E16	Frederik Hendrikbuurt	2014	8143		19	5	2008	1378	1627
+T97	Gein	2014	11587		0	113	2620	1900	614
+E40	Geuzenbuurt	2014	6775		0	1	767	1214	1654
+F78	Geuzenveld	2014	14368		0	62	4012	1122	709
+A02	Grachtengordel-West	2014	6396		69	13	511	1689	2090
+A03	Grachtengordel-Zuid	2014	5394		80	12	193	1218	1905
+A05	Haarlemmerbuurt	2014	9320		141	39	2512	1480	1571
+E20	Helmersbuurt	2014	7474		13	8	1123	1450	1634
+T96	Holendrecht/Reigersbos	2014	18255		0	13	5859	1935	561
+K44	Hoofddorppleinbuurt	2014	11368		44	2	972	2305	3140
+E42	Hoofdweg e,o,	2014	10382		0	2	2382	1187	2133
+E12	Houthavens	2014	1585		83	0	793	187	60
+M50	IJburg-Oost	2014			0	0			
+M35	IJburg-West	2014	14159		0	26	1778	2550	1041
+M51	IJburg-Zuid	2014	6572		0	0	1152	1012	464
+N61	IJplein/Vogelbuurt	2014	8206		37	4	3124	707	241
+K53	IJselbuurt	2014	5221		8	0	1364	450	1153
+M32	Indische Buurt-Oost	2014	10044		12	6	3608	933	576
+M31	Indische Buurt-West	2014	12732		0	20	4111	1652	987
+A06	Jordaan	2014	19343		114	9	4978	3298	4634
+N67	Kadoelen	2014	2835		35	2	429	639	87
+E18	Kinkerbuurt	2014	6129		14	0	1383	760	1253
+E37	Landlust	2014	18578		18	1	4588	2213	2418
+F80	Lutkemeer/Ookmeer	2014	850		0	0	21	179	104
+F84	Middelveldsche Akerpolder	2014	14380		36	0	1628	2916	829
+M56	Middenmeer	2014	14920		0	2	2357	2707	2291
+K47	Museumkwartier	2014	12895		3	18	355	2482	3915
+T95	Nellestein	2014	2998		1	4	349	675	656
+K25	Nieuwe Pijp	2014	12099		21	6	2457	1952	2903
+N64	Nieuwendammerdijk/Buiksloterdijk	2014	1693		10	0	1	539	88
+A04	Nieuwmarkt/Lastage	2014	9443		198	21	2575	1588	1854
+N72	Noordelijke IJ-oevers-Oost	2014	116		0	1	0	17	50
+N71	Noordelijke IJ-oevers-West	2014	1340		87	0	439	163	173
+M58	Omval/Overamstel	2014	2549		94	4	1083	221	400
+M33	Oostelijk Havengebied	2014	18509		227	8	3340	3282	1977
+A09	Oostelijke Eilanden/Kadijken	2014	12676		164	10	4653	1786	849
+M28	Oosterparkbuurt	2014	10470		0	74	3730	1326	975
+N66	Oostzanerwerf	2014	8727		72	1	1977	1544	165
+F82	Osdorp-Midden	2014	15155		0	5	4093	1609	683
+F81	Osdorp-Oost	2014	15847		0	9	5158	2111	870
+K24	Oude Pijp	2014	14824		31	3	2564	2370	4162
+E21	Overtoomse Sluis	2014	7720		18	19	907	1491	1957
+F86	Overtoomse Veld	2014	11266		0	17	2372	779	1279
+K59	Prinses Irenebuurt e,o,	2014	1236		0	0	0	491	206
+K54	Rijnbuurt	2014	9068		71	2	2185	918	2121
+K52	Scheldebuurt	2014	14541		0	5	1402	1891	4102
+K45	Schinkelbuurt	2014	3735		0	3	803	629	836
+F88	Sloter-/Riekerpolder	2014	13898		71	33	1132	2835	1668
+E36	Sloterdijk	2014	196		0	2	11	16	27
+F76	Slotermeer-Noordoost	2014	9451		0	2	2834	1095	278
+F77	Slotermeer-Zuidwest	2014	16593		5	9	5306	1627	589
+F85	Slotervaart-Noord	2014	7913		0	9	1460	1100	795
+F89	Slotervaart-Zuid	2014	9504		0	122	2877	780	880
+E13	Spaarndammer- en Zeeheldenbuurt	2014	10695		9	5	4112	1165	732
+E14	Staatsliedenbuurt	2014	12754		54	3	3881	2268	1498
+K48	Stadionbuurt	2014	11371		146	5	3483	873	2078
+M30	Transvaalbuurt	2014	9063		0	1	2928	891	689
+N63	Tuindorp Buiksloot	2014	1847		0	0	790	113	9
+N62	Tuindorp Nieuwendam	2014	3454		3	0	1538	252	55
+N65	Tuindorp Oostzaan	2014	10698		80	25	3550	1280	155
+E41	Van Galenbuurt	2014	6669		0	0	1667	674	871
+E19	Van Lennepbuurt	2014	7077		51	6	2526	910	1015
+N60	Volewijck	2014	9589		42	7	4138	469	238
+E22	Vondelbuurt	2014	1864		0	6	153	367	374
+N73	Waterland	2014	2172		108	1	39	631	161
+N68	Waterlandpleinbuurt	2014	12913		0	2	3569	1598	229
+A08	Weesperbuurt/Plantage	2014	7931		100	13	1537	1360	1459
+M27	Weesperzijde	2014	4892		48	0	861	1004	765
+B10	Westelijk Havengebied	2014	242		48	2	0	6	45
+E43	Westindische Buurt	2014	6604		1	1	742	990	1871
+F87	Westlandgracht	2014	7183		0	5	1401	883	1300
+K46	Willemspark	2014	5615		0	10	266	1158	1155
+M34	Zeeburgereiland/Nieuwe diep	2014	834		63	1	418	16	11
+K26	Zuid-Pijp	2014	8197		26	3	3403	557	605
+K23	Zuidas	2014	1019		0	8	85	126	368
+A00	Burgwallen-Oude Zijde	2015	4262	8131	2	19	541	527	1771
+A01	Burgwallen-Nieuwe Zijde	2015	4199	4868	8	3	258	557	1938
+A02	Grachtengordel-West	2015	6429	9537	69	13	510	1730	2057
+A03	Grachtengordel-Zuid	2015	5388	6352	80	12	194	1282	1852
+A04	Nieuwmarkt/Lastage	2015	9539	8511	217	21	2566	1641	1827
+A05	Haarlemmerbuurt	2015	9294	10363	141	39	2494	1496	1579
+A06	Jordaan	2015	19401	15540	113	10	4967	3398	4563
+A07	De Weteringschans	2015	7357	8185	74	5	547	1741	2265
+A08	Weesperbuurt/Plantage	2015	7845	5611	100	13	1535	1387	1432
+A09	Oostelijke Eilanden/Kadijken	2015	12704	7386	164	10	4568	1865	844
+B10	Westelijk Havengebied	2015	202	2	49	2	0	6	42
+E12	Houthavens	2015	1602	3399	63	0	792	187	62
+E13	Spaarndammer- en Zeeheldenbuurt	2015	10761	4483	9	5	4059	1219	735
+E14	Staatsliedenbuurt	2015	13056	16641	55	3	3874	2360	1585
+E15	Centrale Markt	2015	2534	2312	24	2	610	445	142
+E16	Frederik Hendrikbuurt	2015	8377	14055	20	5	1971	1443	1629
+E17	Da Costabuurt	2015	4661	12188	68	10	618	847	1169
+E18	Kinkerbuurt	2015	6208	13589	14	0	1376	823	1208
+E19	Van Lennepbuurt	2015	7131	17759	51	6	2472	988	992
+E20	Helmersbuurt	2015	7527	12632	13	7	1123	1434	1646
+E21	Overtoomse Sluis	2015	7747	14892	18	19	899	1585	1903
+E22	Vondelbuurt	2015	1898	4170	0	6	150	371	382
+E36	Sloterdijk	2015	503	195	0	2	11	17	205
+E37	Landlust	2015	18742	9016	20	1	4486	2350	2437
+E38	Erasmuspark	2015	5898	8434	0	1	534	1311	1205
+E39	De Kolenkit	2015	9220	5983	1	2	3191	708	349
+E40	Geuzenbuurt	2015	6751	13242	0	1	748	1297	1600
+E41	Van Galenbuurt	2015	6749	11160	0	0	1649	731	832
+E42	Hoofdweg e,o,	2015	10440	14236	0	2	2342	1283	2070
+E43	Westindische Buurt	2015	6793	11450	1	1	687	1099	1823
+E75	Chassébuurt	2015	6234	11556	0	2	1289	746	904
+F11	Bedrijventerrein Sloterdijk	2015	104	6	0	1	1	0	43
+F76	Slotermeer-Noordoost	2015	9469	4413	0	2	2818	1123	266
+F77	Slotermeer-Zuidwest	2015	17015	3356	5	9	5291	1714	563
+F78	Geuzenveld	2015	15041	4544	0	62	4163	1172	685
+F79	Eendracht	2015	2329	404	0	0	482	421	30
+F80	Lutkemeer/Ookmeer	2015	847	57	0	0	21	177	108
+F81	Osdorp-Oost	2015	15756	5269	0	9	5259	2187	846
+F82	Osdorp-Midden	2015	15743	6322	0	5	4125	1788	683
+F83	De Punt	2015	5494	4333	0	5	1061	1007	410
+F84	Middelveldsche Akerpolder	2015	14403	3633	36	0	1619	2990	768
+F85	Slotervaart-Noord	2015	7985	3014	0	9	1449	1127	779
+F86	Overtoomse Veld	2015	11704	3083	0	18	2270	824	1404
+F87	Westlandgracht	2015	7448	2710	0	5	1324	931	1558
+F88	Sloter-/Riekerpolder	2015	13846	1209	72	33	1130	2880	1627
+F89	Slotervaart-Zuid	2015	9617	3795	0	137	2963	845	914
+K23	Zuidas	2015	1280	284	0	7	85	139	364
+K24	Oude Pijp	2015	14977	14674	31	3	2548	2403	4235
+K25	Nieuwe Pijp	2015	12247	14258	21	6	2411	2074	2842
+K26	Zuid-Pijp	2015	8237	12944	27	3	3320	637	610
+K44	Hoofddorppleinbuurt	2015	11539	7574	44	2	923	2425	3076
+K45	Schinkelbuurt	2015	3801	7774	0	3	810	662	797
+K46	Willemspark	2015	5698	4073	0	9	265	1188	1143
+K47	Museumkwartier	2015	12883	5142	3	18	336	2512	3915
+K48	Stadionbuurt	2015	11572	6828	146	5	3323	1039	2072
+K49	Apollobuurt	2015	8644	4380	0	1	64	1940	1859
+K52	Scheldebuurt	2015	14718	7485	0	5	1374	2008	4017
+K53	IJselbuurt	2015	5211	11618	8	0	1360	470	1138
+K54	Rijnbuurt	2015	9060	5450	70	2	2138	989	2100
+K59	Prinses Irenebuurt e,o,	2015	1279	1809	0	0	0	522	173
+K90	Buitenveldert-West	2015	12662	2601	20	67	2256	2905	2266
+K91	Buitenveldert-Oost	2015	7630	2956	0	6	1337	1444	1724
+M27	Weesperzijde	2015	4990	7418	48	0	852	1055	798
+M28	Oosterparkbuurt	2015	10796	8456	0	74	3706	1464	943
+M29	Dapperbuurt	2015	8944	8230	1	16	3003	1070	811
+M30	Transvaalbuurt	2015	9115	12253	0	1	2885	959	675
+M31	Indische Buurt-West	2015	12668	14249	0	20	3948	1722	994
+M32	Indische Buurt-Oost	2015	10156	5488	12	6	3521	1017	565
+M33	Oostelijk Havengebied	2015	18358	5751	232	7	3289	3350	1962
+M34	Zeeburgereiland/Nieuwe diep	2015	989	198	63	1	417	38	20
+M35	IJburg-West	2015	14234	4825	0	26	1840	2596	937
+M50	IJburg-Oost	2015			0	0			
+M51	IJburg-Zuid	2015	6758	3900	0	0	1171	1040	395
+M55	Frankendael	2015	10370	3619	4	82	3274	917	1567
+M56	Middenmeer	2015	15214	2641	0	2	2346	2751	2254
+M57	Betondorp	2015	3176	1795	0	0	1657	239	54
+M58	Omval/Overamstel	2015	2922	613	94	4	1083	235	414
+N60	Volewijck	2015	9679	4093	41	7	4088	509	238
+N61	IJplein/Vogelbuurt	2015	8226	3449	37	4	3008	760	303
+N62	Tuindorp Nieuwendam	2015	3499	4336	3	0	1514	288	41
+N63	Tuindorp Buiksloot	2015	1871	5411	0	0	775	128	9
+N64	Nieuwendammerdijk/Buiksloterdijk	2015	1679	1787	10	0	2	551	74
+N65	Tuindorp Oostzaan	2015	10876	3162	80	25	3480	1389	142
+N66	Oostzanerwerf	2015	8739	1495	73	1	1935	1606	147
+N67	Kadoelen	2015	2843	885	35	2	408	661	92
+N68	Waterlandpleinbuurt	2015	13055	3836	0	2	3337	1661	359
+N69	Buikslotermeer	2015	10819	3824	0	5	3826	1446	327
+N70	Banne Buiksloot	2015	13840	3540	33	14	4021	1553	279
+N71	Noordelijke IJ-oevers-West	2015	1524	343	87	0	439	176	252
+N72	Noordelijke IJ-oevers-Oost	2015	142	98	0	1	0	17	50
+N73	Waterland	2015	2184	34	108	1	39	651	141
+N74	Elzenhagen	2015	2348	1054	1	0	194	478	163
+T92	Amstel III/Bullewijk	2015	280	3	5	6	0	7	7
+T93	Bijlmer-Centrum (D,F,H)	2015	23171	3677	0	24	7131	2285	1459
+T94	Bijlmer-Oost (E,G,K)	2015	26787	3212	0	10	7107	3709	1138
+T95	Nellestein	2015	3008	767	1	4	345	672	663
+T96	Holendrecht/Reigersbos	2015	18271	3230	0	13	5808	1995	552
+T97	Gein	2015	11560	2812	0	113	2503	1966	665
+T98	Driemond	2015	1490	353	0	0	264	325	37
+Z99	buiten beschouwing	2015							
+A00	Burgwallen-Oude Zijde	2016	4290	8184	2	19	566	580	1718
+A01	Burgwallen-Nieuwe Zijde	2016	3981	4927	11	3	269	580	1942
+A02	Grachtengordel-West	2016	6483	9588	70	13	515	1735	2070
+A03	Grachtengordel-Zuid	2016	5455	6388	80	12	197	1277	1873
+A04	Nieuwmarkt/Lastage	2016	9618	8611	215	21	2533	1720	1858
+A05	Haarlemmerbuurt	2016	9314	10439	142	39	2474	1502	1634
+A06	Jordaan	2016	19408	15587	113	9	4929	3534	4504
+A07	De Weteringschans	2016	7352	8201	76	5	532	1801	2229
+A08	Weesperbuurt/Plantage	2016	7943	5625	99	13	1535	1414	1416
+A09	Oostelijke Eilanden/Kadijken	2016	12655	7389	165	10	4483	1932	865
+B10	Westelijk Havengebied	2016	200	2	49	2	0	3	44
+E12	Houthavens	2016	1044	3595	62	0	160	270	769
+E13	Spaarndammer- en Zeeheldenbuurt	2016	10888	4486	9	5	3973	1296	748
+E14	Staatsliedenbuurt	2016	13187	16683	55	3	3833	2429	1577
+E15	Centrale Markt	2016	2501	2312	24	2	593	455	149
+E16	Frederik Hendrikbuurt	2016	8496	14153	20	6	1965	1529	1584
+E17	Da Costabuurt	2016	4688	12250	68	10	610	884	1153
+E18	Kinkerbuurt	2016	6358	14360	14	0	1379	933	1288
+E19	Van Lennepbuurt	2016	7078	17758	51	6	2431	1031	991
+E20	Helmersbuurt	2016	7506	12670	13	7	1118	1529	1569
+E21	Overtoomse Sluis	2016	7788	15158	18	19	893	1685	1887
+E22	Vondelbuurt	2016	1868	4183	0	6	152	383	371
+E36	Sloterdijk	2016	515	195	0	2	11	19	203
+E37	Landlust	2016	19082	9284	20	1	4603	2447	2499
+E38	Erasmuspark	2016	5891	8451	0	1	528	1357	1171
+E39	De Kolenkit	2016	9577	6538	1	2	3230	831	558
+E40	Geuzenbuurt	2016	6840	13277	0	1	739	1365	1551
+E41	Van Galenbuurt	2016	6992	11162	0	0	1627	746	840
+E42	Hoofdweg e,o,	2016	10481	14264	0	2	2308	1335	2063
+E43	Westindische Buurt	2016	6938	11462	1	1	645	1164	1804
+E75	Chassébuurt	2016	6246	11600	0	2	1308	799	843
+F11	Bedrijventerrein Sloterdijk	2016	106	6	0	0	0	0	42
+F76	Slotermeer-Noordoost	2016	9474	4418	0	2	2799	1134	278
+F77	Slotermeer-Zuidwest	2016	17290	3454	5	9	5475	1733	581
+F78	Geuzenveld	2016	15478	4558	0	62	4119	1238	681
+F79	Eendracht	2016	2392	404	0	0	462	429	42
+F80	Lutkemeer/Ookmeer	2016	850	57	0	0	20	178	109
+F81	Osdorp-Oost	2016	15930	5218	0	9	5066	2192	953
+F82	Osdorp-Midden	2016	15883	6339	0	5	4090	1824	700
+F83	De Punt	2016	5897	4530	0	5	1106	1037	447
+F84	Middelveldsche Akerpolder	2016	14488	3637	36	0	1606	3003	774
+F85	Slotervaart-Noord	2016	7990	3014	0	9	1385	1129	841
+F86	Overtoomse Veld	2016	12139	3242	0	18	2311	917	1502
+F87	Westlandgracht	2016	7837	2859	0	5	1242	1007	1763
+F88	Sloter-/Riekerpolder	2016	13977	1209	72	33	1126	2917	1594
+F89	Slotervaart-Zuid	2016	9666	3784	0	138	3344	900	465
+K23	Zuidas	2016	2256	688	0	7	85	172	1173
+K24	Oude Pijp	2016	14871	14713	32	3	2534	2565	4111
+K25	Nieuwe Pijp	2016	12406	14570	21	6	2393	2208	2887
+K26	Zuid-Pijp	2016	8276	12952	27	3	3262	653	655
+K44	Hoofddorppleinbuurt	2016	11767	7627	44	2	892	2540	3036
+K45	Schinkelbuurt	2016	3844	7781	0	3	800	701	770
+K46	Willemspark	2016	5647	4091	0	9	266	1236	1105
+K47	Museumkwartier	2016	12866	5158	3	18	333	2604	3847
+K48	Stadionbuurt	2016	11646	6830	146	4	3272	1090	2075
+K49	Apollobuurt	2016	8764	4387	0	1	63	1992	1814
+K52	Scheldebuurt	2016	14752	7490	0	5	1349	2117	3938
+K53	IJselbuurt	2016	5360	11685	8	0	1351	498	1136
+K54	Rijnbuurt	2016	9128	5452	70	2	2106	1058	2065
+K59	Prinses Irenebuurt e,o,	2016	1318	1809	0	0	0	538	157
+K90	Buitenveldert-West	2016	12697	2607	20	67	2054	2972	2417
+K91	Buitenveldert-Oost	2016	7660	2956	0	6	1301	1458	1746
+M27	Weesperzijde	2016	5225	7483	48	15	798	1119	812
+M28	Oosterparkbuurt	2016	10957	8566	0	71	3678	1607	906
+M29	Dapperbuurt	2016	9255	8355	1	16	2950	1188	820
+M30	Transvaalbuurt	2016	9426	12679	0	2	2938	1032	707
+M31	Indische Buurt-West	2016	12590	14289	0	20	3885	1799	998
+M32	Indische Buurt-Oost	2016	10379	5358	12	6	3369	1069	544
+M33	Oostelijk Havengebied	2016	18495	5748	233	8	3190	3425	1982
+M34	Zeeburgereiland/Nieuwe diep	2016	1204	259	61	1	421	77	124
+M35	IJburg-West	2016	14431	4920	34	26	1905	2632	942
+M50	IJburg-Oost	2016			0	0			
+M51	IJburg-Zuid	2016	7009	3991	0	0	1194	1092	367
+M55	Frankendael	2016	11004	3674	6	84	3317	955	1573
+M56	Middenmeer	2016	15308	2639	0	2	2346	2813	2188
+M57	Betondorp	2016	3215	1794	0	0	1619	248	82
+M58	Omval/Overamstel	2016	3923	1039	94	4	1112	346	1479
+N60	Volewijck	2016	9655	4094	42	7	4050	517	270
+N61	IJplein/Vogelbuurt	2016	8246	3449	37	4	3035	795	241
+N62	Tuindorp Nieuwendam	2016	3520	4338	3	0	1495	291	58
+N63	Tuindorp Buiksloot	2016	1866	5413	0	0	762	128	22
+N64	Nieuwendammerdijk/Buiksloterdijk	2016	1690	1778	10	0	2	536	86
+N65	Tuindorp Oostzaan	2016	11168	3199	80	25	3440	1420	209
+N66	Oostzanerwerf	2016	8764	1496	73	1	1890	1618	180
+N67	Kadoelen	2016	3036	929	35	1	417	684	119
+N68	Waterlandpleinbuurt	2016	13311	3904	0	2	3187	1687	578
+N69	Buikslotermeer	2016	10956	3811	0	5	3688	1447	444
+N70	Banne Buiksloot	2016	14186	3582	33	15	3915	1691	317
+N71	Noordelijke IJ-oevers-West	2016	1692	348	87	0	445	191	243
+N72	Noordelijke IJ-oevers-Oost	2016	164	107	0	1	0	18	55
+N73	Waterland	2016	2211	34	107	1	37	633	165
+N74	Elzenhagen	2016	2452	1100	1	1	150	560	162
+T92	Amstel III/Bullewijk	2016	438	38	5	6	0	6	181
+T93	Bijlmer-Centrum (D,F,H)	2016	23981	3982	0	25	7208	2296	2276
+T94	Bijlmer-Oost (E,G,K)	2016	27260	3247	0	10	7094	3788	1202
+T95	Nellestein	2016	3012	767	1	4	343	664	673
+T96	Holendrecht/Reigersbos	2016	18320	3223	0	13	5714	2017	607
+T97	Gein	2016	11567	2812	0	114	2464	1968	702
+T98	Driemond	2016	1479	352	0	0	252	321	52
+Z99	buiten beschouwing	2016							

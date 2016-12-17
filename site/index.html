@@ -23,11 +23,14 @@
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="https://d3js.org/topojson.v2.min.js"></script>
     <script src="https://d3js.org/d3-dsv.v1.min.js"></script>
+	<script src="../chosen_v1.6.2/chosen.jquery.min.js"></script> 
+	<link rel="stylesheet" href="../chosen_v1.6.2/chosen.min.css">
     <script> 
       $(document).ready(function(){
         $("#header").load("header.html");
         $("#footer").load("footer.html");
         $("#scatterplot").load("scatterplot.html");
+		$("#selection").load("select.html");
         $("#leftmap").load("map.html");
       });
     </script>
@@ -47,6 +50,9 @@
         <div class="home">
 
           <div class="tooltip" style="opacity: 0"></div>
+		  
+		  <div id="selection">
+		  </div>
 
           <table style="width: 100%;">
             <tr>
