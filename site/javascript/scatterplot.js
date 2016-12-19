@@ -106,7 +106,21 @@ function scatter_change(){
 				.duration(500)
 				.attr("fill", "black")  // Change color
 				.attr("r", 5);  // Change radius
-		});
+		})
+		.on("mouseover", function(d) {
+          tooltip.transition()
+               .duration(200)
+               .style("opacity", .9);
+            tooltip.html(d["name"] + "<br/> (" + d[data_1] 
+	        + ", " + d[data_2] + ")")
+               .style("left", (d3.event.pageX + 5) + "px")
+               .style("top", (d3.event.pageY - 28) + "px");
+        })
+        .on("mouseout", function(d) {
+            tooltip.transition()
+               .duration(500)
+               .style("opacity", 0);
+      });
 
 	// Update X Axis
 	svgScatterplot.select(".x.axis")
