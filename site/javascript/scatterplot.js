@@ -37,16 +37,16 @@ function drawScatterplot(){
 
 	// Create Circles
 	svgScatterplot.selectAll("circle")
-	.data(dataset_year)
-	.enter()
-	.append("circle")  // Add circle svg
-	.attr("cx", function(d) {
-		return xScale(d[data_1]);  // Circle's X
-	})
-	.attr("cy", function(d) {  // Circle's Y
-		return yScale(d[data_2]);
-	})
-	.attr("r", 5);  // radius
+		.data(dataset_year)
+		.enter()
+		.append("circle")  // Add circle svg
+		.attr("cx", function(d) {
+			return xScale(d[data_1]);  // Circle's X
+		})
+		.attr("cy", function(d) {  // Circle's Y
+			return yScale(d[data_2]);
+		})
+		.attr("r", 5);	
 
 	// Add to X axis
 	svgScatterplot.append("g")
@@ -71,9 +71,6 @@ function scatter_change(){
 		.data(dataset_year)  // Update with new data
 		.transition()  // Transition from old to new
 		.duration(200)  // Length of animation
-		.delay(function(d, i) {
-			return i / dataset_year.length * 500;  // Dynamic delay (i.e. each item delays a little longer)
-		})
 		//.ease("linear")  // Transition easing - default 'variable' (i.e. has acceleration), also: 'circle', 'elastic', 'bounce', 'linear'
 		.attr("cx", function(d) {
 			return xScale(d[data_1]);  // Circle's X
@@ -100,4 +97,9 @@ function scatter_change(){
 		.transition()
 		.duration(100)
 		.call(yAxis);
+}
+
+function scatterTooltipOver(d)
+{
+
 }
