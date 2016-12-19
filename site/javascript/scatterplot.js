@@ -1,149 +1,107 @@
-var viewWidth = 500;
-var viewHeight = 450;
-d3.select(window).on("resize", resize);
+// Reference: http://bl.ocks.org/WilliamQLiu/bd12f73d0b79d70bfbae
+var svgScatterplot;
+var xScale;
+var yScale;
+var xAxis;
+var YAxis;
 
-var margin = {top: 20, right: 20, bottom: 30, left: 40};
-var width = viewWidth - margin.left - margin.right;
-var height = viewHeight - margin.top - margin.bottom;
+function drawScatterplot(){
+	// Setup settings for graphic
+	var canvas_width = 1000;
+	var canvas_height = 600;
+	var padding = 60;  // for chart edges
 
-var scatterplot_svg = d3.select("#scatterplot_svg")
-    .attr("width", viewWidth)
-    .attr("height", viewHeight)
-    .attr("margin", "auto")
-    .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	// Create scale functions
+	xScale = d3.scaleLinear()  // xScale is width of graphic
+				.domain([minVar1, maxVar1])
+				.range([padding, canvas_width - padding * 2]); // output range
 
-var x = d3.scaleLinear()
-  .range([0, width]);
-var y = d3.scaleLinear()
-  .range([height, 0]);
+	yScale = d3.scaleLinear()  // yScale is height of graphic
+				.domain([minVar2, maxVar2])
+				.range([canvas_height - padding, padding]);  // remember y starts on top going down so we flip
 
-var xAxis = d3.axisBottom()
-  .scale(x);
-var yAxis = d3.axisLeft()
-  .scale(y);
+	// Define X axis
+	xAxis = d3.axisBottom()
+				.scale(xScale);
 
-var boats = boat_data.boats;   
+	// Define Y axis
+	yAxis = d3.axisLeft()
+				.scale(yScale);
 
-x.domain(d3.extent(boats, function(d) { return d.x; })).nice();
-y.domain(d3.extent(boats, function(d) { return d.y; })).nice();
+	// Create SVG element
+	svgScatterplot = d3.select("#scatterplot")  // This is where we put our vis
+	.append("svg")
+	.attr("width", canvas_width)
+	.attr("height", canvas_height)
 
-scatterplot_svg.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + height + ")")
-    .call(xAxis)
-  .append("text")
-    .attr("class", "label")
-    .attr("x", width)
-    .attr("y", -6)
-    .style("text-anchor", "end")
-    .text("x values");
+	// Create Circles
+	svgScatterplot.selectAll("circle")
+	.data(dataset_year)
+	.enter()
+	.append("circle")  // Add circle svg
+	.attr("cx", function(d) {
+		return xScale(d[data_1]);  // Circle's X
+	})
+	.attr("cy", function(d) {  // Circle's Y
+		return yScale(d[data_2]);
+	})
+	.attr("r", 5);  // radius
 
-scatterplot_svg.append("g")
-    .attr("class", "y axis")
-    .call(yAxis)
-  .append("text")
-    .attr("class", "label")
-    .attr("transform", "rotate(-90)")
-    .attr("y", 6)
-    .attr("dy", ".71em")
-    .style("text-anchor", "end")
-    .text("y values")
+	// Add to X axis
+	svgScatterplot.append("g")
+	.attr("class", "x axis")
+	.attr("transform", "translate(0," + (canvas_height - padding) +")")
+	.call(xAxis);
 
-var tooltip = d3.select(".tooltip");
-var drawn = false;
-
-d3.queue()
-  .defer(d3.tsv, "resources/data_year.csv")
-  .await(drawScatterplot);
-
-var DATA = null;
-
-function getDataForYear(year) {
-  var result = [];
-  for (var i = 0; i < DATA.length; i++) {
-    if (DATA[i].year == year) {
-      result.push(DATA[i]);
-    }
-  }
-  return result;
+	// Add to Y axis
+	svgScatterplot.append("g")
+	.attr("class", "y axis")
+	.attr("transform", "translate(" + padding +",0)")
+	.call(yAxis);
 }
 
-function getAbsoluteValue(v) {
-  if(v == null || v == NaN || v == "") {
-    return 0;
-  }
-  return v;
+function scatter_change(){
+	// Update scale domains
+	//xScale.domain([minVar1, maxVar1]);
+	//yScale.domain([minVar2, maxVar2]);
+
+	// Update circles
+	svgScatterplot.selectAll("circle")
+		.data(dataset_year)  // Update with new data
+		.transition()  // Transition from old to new
+		.duration(1000)  // Length of animation
+		.each("start", function() {  // Start animation
+			d3.select(this)  // 'this' means the current element
+				.attr("fill", "red")  // Change color
+				.attr("r", 5);  // Change size
+		})
+		.delay(function(d, i) {
+			return i / dataset_year.length * 500;  // Dynamic delay (i.e. each item delays a little longer)
+		})
+		//.ease("linear")  // Transition easing - default 'variable' (i.e. has acceleration), also: 'circle', 'elastic', 'bounce', 'linear'
+		.attr("cx", function(d) {
+			return xScale(d[data_1]);  // Circle's X
+		})
+		.attr("cy", function(d) {
+			return yScale(d[data_2]);  // Circle's Y
+		})
+		.each("end", function() {  // End animation
+			d3.select(this)  // 'this' means the current element
+				.transition()
+				.duration(500)
+				.attr("fill", "black")  // Change color
+				.attr("r", 2);  // Change radius
+		});
+
+	// Update X Axis
+	svgScatterplot.select(".x.axis")
+		.transition()
+		.duration(1000)
+		.call(xAxis);
+
+	// Update Y Axis
+	svgScatterplot.select(".y.axis")
+		.transition()
+		.duration(100)
+		.call(yAxis);
 }
-
-function drawScatterplot(error, data) {
-  DATA = data;
-  //You can implement your scatterplot here
-
-  //The svg is already defined, you can just focus on the creation of the scatterplot
-  //you should at least draw the data points and the axes.
-  console.log("Draw Scatterplot");
-	
-	dots = scatterplot_svg.selectAll(".dot")
-		.data(getDataForYear(2005));
-
-	dots.enter().append("circle")
-	.attr("class", "dot")
-	.attr("r", 3.5)
-	.attr("cx", function(d) {return x(getAbsoluteValue(d["data1"]));})
-	.attr("cy", function(d) {return y(getAbsoluteValue(d["data2"]));})
-	.style("fill", '#2222aa')
-  .on('mouseover', function(d) {
-    d3.select(this).style("fill", '#aa2222');
-    tooltip.transition().duration(200).style("opacity", 1);
-    tooltip.text(getAbsoluteValue(d["data1"]) + ", " + getAbsoluteValue(d["data2"]))
-      .style("left", (d3.event.pageX) + "px")
-      .style("top", (d3.event.pageY - 30) + "px");
-  })
-  .on('mouseout', function(d) {
-    d3.select(this).style("fill", '#2222aa');
-    // d3.select(this).attr('class', function(d){return d.class})
-    tooltip.transition().duration(300).style("opacity", 0);
-  })
-
-  drawn = true;
-}
-
-function updateScatterplot(year) {
-  console.log("update Scatterplot " + year);
-  
-  dots = scatterplot_svg.selectAll(".dot")
-    .data(getDataForYear(year));
-
-  dots
-  .transition()
-  .duration(1000)
-  .attr("class", "dot")
-  .attr("r", 3.5)
-  .attr("cx", function(d) {return x(getAbsoluteValue(d["data1"]));})
-  .attr("cy", function(d) {return y(getAbsoluteValue(d["data2"]));})
-  .style("fill", '#2222aa');
-    
-  //Additional tasks are given at the end of this file
-}
-
-function resize() {
-  //This function is called if the window is resized
-  //You can update your scatterplot here
-  viewWidth = window.innerWidth;
-  viewHeight = window.innerHeight;
-}
-
-
-//////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////
-////////////////////    ADDITIONAL TASKS   ///////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////
-/*
-Once that you have implemented your basic scatterplot you can work on new features
-  * Color coding of the points based on a third attribute
-  * Legend for the third attribute with color scale
-  * Interactive selection of the 3 attributes visualized in the scatterplot
-  * Resizing of the window updates the scatterplot
-*/
