@@ -1,6 +1,11 @@
 var year='2012';
 var data_1 = "";
 var data_2 = "";
+var dataset = [];
+var zoomState;
+var selected;
+
+var dataset_line = {};
 
 // slider function from jquery-ui
 // it will create slider interface in the map page
@@ -14,12 +19,19 @@ $( function() {
       $( "#amount" ).val( " " + ui.value );
       update(ui.value,"left",data_1);
       update(ui.value,"right",data_2);
+      year = ui.value;
+      if(zoomState == 1)
+      {
+        d3.selectAll(".class_circle").style("fill", "black").attr("r", "3");
+        //d3.selectAll(".class_circle_right_line").style("fill", "black").attr("r", "3");    
+        d3.select("#left_line_circle_"+year).style("fill", "#F57F17").attr("r", "6");
+        d3.select("#right_line_circle_"+year).style("fill", "#F57F17").attr("r", "6");
+      }
     }
   });
   $( "#amount" ).val( " " + $( "#slider" ).slider( "value" ) );
 } );
 
-var dataset = [];
 
 // easy autocomplete
 var options = {
@@ -50,10 +62,10 @@ $("#search").easyAutocomplete(options);
 
 function draw()
 {
-  data_1 = $("#variableA").val();
-  data_2 = $("#variableB").val();
   d3.tsv("../datasets/data_tab_delimited.txt", function(error, tsv_data) {
-    //console.log(dataset);
+    dataset = [];
+    data_1 = $("#variableA").val();
+    data_2 = $("#variableB").val();
     tsv_data.forEach(function(d) {
       var temp = {};
       temp["id"] = d.id;
@@ -63,18 +75,27 @@ function draw()
       temp[data_2] = d[data_2];
       dataset.push(temp);
     });
-    console.log(dataset);
+    //console.log(dataset);
     drawLegend(data_1, "left");
     drawLegend(data_2, "right");
     update(year,"left",data_1);
-    update(year,"right",data_2);    
+    update(year,"right",data_2); 
+    if(zoomState == 1)
+    {
+        console.log(selected);
+        $("#left_line").html("");
+        $("#right_line").html("");        
+        drawLinechart(selected,data_1,"left_line");
+        drawLinechart(selected,data_2,"right_line"); 
+    }
+    //drawLinechart();    
   });  
 
 }
 
 // initialize the width and height of the map
-var width = 550;
-var height = 500;
+var width = 500;
+var height = 400;
 var centered;
 
 // initialize the data with pre-selected value to draw the map
@@ -98,6 +119,7 @@ var divTooltipSecond = d3.select("body").append("div")
   .style("opacity", 0);
 
 // initialize the svg in left column
+
 var svg = d3.select("#left_column").append("svg")
   .attr("width", width)
   .attr("height", height);
@@ -151,48 +173,14 @@ var g2;
 
 // function queueLeft is called after the queue above
 function queue(error, map, data) {
-  var max = {};
-  max["left"] = 0;
-  max["right"] = 0;
-  //var min = 100000;
-  var min = {};
-  min["left"] = 100000;
-  min["right"] = 100000;
-
   // save corresponding map data for the variable that user choose
   // at first, it will choose the minimum year that the data is available
   data.forEach(function(d) {
-    //if(d.year == year)
-    //{
-      dataValue["leftValue"][d.id] = 0;
-      dataValue["leftId"][d.id] = d.name;
-      dataValue["rightValue"][d.id] = 0;
-      dataValue["rightId"][d.id] = d.name;
-    //}
-    /*if(d[data_1] > max["left"] && d[data_1]>0 && d.year == year)
-    {
-      max["left"] = +d[data_1];
-    }
-    if(d[data_1] < min["left"] && d[data_1]>0 && d.year == year)
-    {
-      min["left"] = +d[data_1];
-    }
-    if(d[data_1] > max["right"] && d[data_1]>0 && d.year == year)
-    {
-      max["right"] = +d[data_1];
-    }
-    if(d[data_1] < min["right"] && d[data_1]>0 && d.year == year)
-    {
-      min["right"] = +d[data_1];
-    }*/
+    dataValue["leftValue"][d.id] = 0;
+    dataValue["leftId"][d.id] = d.name;
+    dataValue["rightValue"][d.id] = 0;
+    dataValue["rightId"][d.id] = d.name;
   });
-
-  /*data.forEach(function(d) {
-    if( d.year == year) { 
-      dataValue["leftRange"][d.id] = (d[data_1]-min["left"])/(max["left"]-min["left"]); 
-      dataValue["rightRange"][d.id] = (d[data_2]-min["right"])/(max["right"]-min["right"]); 
-    }
-  });*/
 
   g = svg.append("g")
         .attr("class", "path-borders")
@@ -274,10 +262,12 @@ function mouseOut(d)
   divTooltipSecond.transition().duration(300).style("opacity", 0);
 }
 
+
 function mouseClicked(d)
 {
   var x, y, k;
-  var zoomState;
+  selected = d.id;
+
   if (d && centered != d) {
     var centroid = path.centroid(d);
     x = centroid[0];
@@ -285,6 +275,9 @@ function mouseClicked(d)
     k = 3;
     centered = d;
     zoomState = 1;
+    drawLinechart(selected,data_1,"left_line");
+    drawLinechart(selected,data_2,"right_line");   
+    $("#search").val(dataValue["leftId"][d.id]);           
   }
   else {
     x = width / 2;
@@ -292,6 +285,8 @@ function mouseClicked(d)
     k = 1;
     centered = null;
     zoomState = 0;
+    $("#left_line").html("");  
+    $("#right_line").html("");               
   }
 
   g.selectAll("path")
@@ -304,8 +299,7 @@ function mouseClicked(d)
       return d === centered;
     });
 
-  var selected = d.id;
-  console.log(d);
+  //console.log(d);
   // inspired from this : http://stackoverflow.com/questions/10692100/invoke-a-callback-at-the-end-of-a-transition
   g.transition().duration(700)
     .attr("transform", "translate(" + width/2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
@@ -316,7 +310,6 @@ function mouseClicked(d)
         var select2 = "#"+"pathLeft"+selected;
         var y = $("#leftG");
         y.find(select2).appendTo(y);
-        //var select = d3.select(this.select("#"+"pathRight"+selected);
         d3.select(select2).transition().duration(300)
           .style('stroke', '#F57F17')
           .style('stroke-width','2px');
@@ -325,7 +318,7 @@ function mouseClicked(d)
       {
         d3.select("#"+"pathLeft"+selected).transition().duration(300)
           .style('stroke', '#757575')
-          .style('stroke-width', '0.5px');        
+          .style('stroke-width', '0.5px');   
       }
     })
 
@@ -375,165 +368,258 @@ function allElementsFromPoint(x, y) {
 
 function update(year1,pos,datadraw)
 {
-  //d3.tsv("../datasets/data_tab_delimited.txt", function(error, data1) {
-    var data1 = dataset;
-    var max = 0;
-    var min = 100000;
+  var data1 = dataset;
+  var max = 0;
+  var min = 100000;
 
-    for (var key in dataValue[pos+"Id"])
+  for (var key in dataValue[pos+"Id"])
+  {
+    dataValue[pos+"Value"][key] = 0;
+  }
+  //console.log(data1);
+  data1.forEach(function(d) {
+    if(d.year == year1)
     {
-      dataValue[pos+"Value"][key] = 0;
+      dataValue[pos+"Value"][d.id] = +d[datadraw];
+      dataValue[pos+"Id"][d.id] = d.name;
     }
-    console.log(data1);
-    data1.forEach(function(d) {
-      if(d.year == year1)
-      {
-        dataValue[pos+"Value"][d.id] = +d[datadraw];
-        dataValue[pos+"Id"][d.id] = d.name;
-      }
-      if(d[datadraw] > max && d[datadraw]>0 && d.year == year1)
-      {
-        max = +d[datadraw];
-      }
-      if(d[datadraw] < min && d[datadraw]>0 && d.year == year1)
-      {
-        min = +d[datadraw];
-      }
-    });
+    if(d[datadraw] > max && d[datadraw]>0 && d.year == year1)
+    {
+      max = +d[datadraw];
+    }
+    if(d[datadraw] < min && d[datadraw]>0 && d.year == year1)
+    {
+      min = +d[datadraw];
+    }
+  });
 
-    data1.forEach(function(d) {
-      if( d.year == year) { dataValue[pos+"Range"][d.id] = (d[datadraw]-min)/(max-min); }
-    });   
-    if(pos == "left")
-     {
-      g = d3.select("#"+pos+"G")
-      .selectAll("path")
-      .each(function(d,i) {
-        d3.select(this).transition().duration(200).style("fill", function(d){
-          var mapValue = dataValue[pos+"Value"][d.id];
-          if(mapValue == 0) { return "white"; }
-          else { return color[pos](mapValue); }
-        })
-      });
-    }
-    if(pos == "right")
-     {
-      g2 = d3.select("#"+pos+"G")
-      .selectAll("path")
-      .each(function(d,i) {
-        d3.select(this).transition().duration(200).style("fill", function(d){
-          var mapValue = dataValue[pos+"Value"][d.id];
-          if(mapValue == 0) { return "white"; }
-          else { return color[pos](mapValue); }
-        })
-      });
-    }    
-  //});
+  data1.forEach(function(d) {
+    if( d.year == year) { dataValue[pos+"Range"][d.id] = (d[datadraw]-min)/(max-min); }
+  });   
+  if(pos == "left")
+   {
+    g = d3.select("#"+pos+"G")
+    .selectAll("path")
+    .each(function(d,i) {
+      d3.select(this).transition().duration(300).style("fill", function(d){
+        var mapValue = dataValue[pos+"Value"][d.id];
+        if(mapValue == 0) { return "white"; }
+        else { return color[pos](mapValue); }
+      })
+    });
+  }
+  if(pos == "right")
+   {
+    g2 = d3.select("#"+pos+"G")
+    .selectAll("path")
+    .each(function(d,i) {
+      d3.select(this).transition().duration(300).style("fill", function(d){
+        var mapValue = dataValue[pos+"Value"][d.id];
+        if(mapValue == 0) { return "white"; }
+        else { return color[pos](mapValue); }
+      })
+    });
+  }    
 }
 
 function drawLegend(dataVar,pos)
 {
-  //d3.tsv("../datasets/data_tab_delimited.txt", function(error, data1) {
-    var data1 = dataset;
-    var max = 0;
-    var min = 100000;
-    $("#legend_"+pos).html("");
+  var data1 = dataset;
+  var max = 0;
+  var min = 100000;
+  $("#legend_"+pos).html("");
 
-    data1.forEach(function(d) {
-      if(d[dataVar] > max && d[dataVar]>0 && d.year > 0)
-      {
-        max = +d[dataVar];
-      }
-      if(d[dataVar] < min && d[dataVar]>0 && d.year > 0)
-      {
-        min = +d[dataVar];
-      }
-    });
-    var tick = max/9;
+  data1.forEach(function(d) {
+    if(d[dataVar] > max && d[dataVar]>0 && d.year > 0)
+    {
+      max = +d[dataVar];
+    }
+    if(d[dataVar] < min && d[dataVar]>0 && d.year > 0)
+    {
+      min = +d[dataVar];
+    }
+  });
+  var tick = max/9;
 
-    if(pos == "left") { color[pos] = d3.scaleThreshold().domain(d3.range(0, max, tick)).range(d3.schemeGreens[9]); }
-    else if(pos == "right") { color[pos] = d3.scaleThreshold().domain(d3.range(0, max, tick)).range(d3.schemeBlues[9]); }
+  if(pos == "left") { color[pos] = d3.scaleThreshold().domain(d3.range(0, max, tick)).range(d3.schemeGreens[9]); }
+  else if(pos == "right") { color[pos] = d3.scaleThreshold().domain(d3.range(0, max, tick)).range(d3.schemeBlues[9]); }
 
-    var ssvg = d3.select("#legend_"+pos);
+  var ssvg = d3.select("#legend_"+pos);
 
-    ssvg.append("g")
-      .attr("class", "legendLinear")
-      .attr("transform", "translate(100,10)");
+  ssvg.append("g")
+    .attr("class", "legendLinear")
+    .attr("transform", "translate(100,10)");
 
-    var legendLinear = d3.legendColor()
-      .shapeWidth(35)
-      .orient('horizontal')
-      .scale(color[pos]);
+  var legendLinear = d3.legendColor()
+    .shapeWidth(35)
+    .orient('horizontal')
+    .scale(color[pos]);
 
-    ssvg.select(".legendLinear")
-      .call(legendLinear);
-  //});
+  ssvg.select(".legendLinear")
+    .call(legendLinear);
 }
 
-// reference for heatmap : http://bl.ocks.org/tjdecke/5558084
-var gridSize = Math.floor(width/30);
-var legendElementWidth = gridSize * 2;
+// global variable for line chart
+//dataset_line["left_line"] = [];
+//dataset_line["right_line"] = [];
 
-var widthHeat = 1000;
-var heightHeat = 1000;
+function drawLinechart(wijk,variable,div)
+{
+  // reference : http://bl.ocks.org/d3noob/38744a17f9c0141bcd04
+  dataset_line[div] = [];
+  $("#"+div).html("");
 
-var heatSvg = d3.select("#heatmap").append("svg")
-                .attr("width", widthHeat)
-                .attr("height", heightHeat)
-                .append("g")
-                .attr("transform", "translate(10,10)");
+  var width_linechart = 250;
+  var height_linechart = 150;
+  var margin = {top: 10, right: 30, bottom: 30, left: 50},
+  width_linechart = width_linechart - margin.left - margin.right;
+  height_linechart = height_linechart - margin.top - margin.bottom;
+  var svg_scatterplot = d3.select("#"+div).append("svg")
+      .attr("width", 300)
+      .attr("height", 150);    
+  var gg = svg_scatterplot.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var heatmapChart = function() {
-  d3.tsv("../datasets/data_tab_delimited.txt",
-    function(d) {
-      return {
-        name: d.name,
-        year: +d.year,
-        id: d.id,
-        value: +d.BevAutoch
-      };
-    },
-    function(error, data) {
-      var colorScale = d3.scaleThreshold().domain(d3.range(0, 13000, 13000/9)).range(d3.schemeGreens[9]);
-      var cards = heatSvg.selectAll(".year").data(data, function(d) { return d.name+":"+d.year;});
-      cards.append("title");
+  var x = d3.scaleLinear().rangeRound([0, width_linechart]);
+  var y = d3.scaleLinear().rangeRound([height_linechart, 0]);
+  // define axis
+  var xAxis = d3.axisBottom().scale(x).ticks(4).tickFormat(d3.format("d"));;
+  var yAxis = d3.axisLeft().scale(y).ticks(5);
+  var data_selected = variable;
 
-      cards.enter().append("rect")
-        .attr("x", function(d) { 
-          var h = d.id.slice(-2)*1;
-          //console.log(h);
-          return h * gridSize; 
-        })
-        .attr("y", function(d) {
-          var h = d.year - 2005;
-          console.log(h);
-          return h * gridSize; 
-        })
-        .attr("rx", 4)
-        .attr("ry", 4)
-        .attr("width", gridSize)
-        .attr("height", gridSize)
-        .style("fill", function(d) { 
-          console.log(d); 
-          return colorScale(d.value); 
-        });
+  // draw the line
+  var line = d3.line()
+                .x(function(d) { 
+                  return x(+d.year); 
+                })
+                .y(function(d) { return y(+d["value"]); })
+  // data
+  // var data_wijk = [];
 
-      cards.transition().duration(1000)
-        .style("fill", function(d) { 
-          console.log(d); 
-          return colorScale(d.value); 
-        });
+  dataset.forEach(function(d) {
+    if(d.id == wijk)
+    {
+      var temp = [];
+      temp["year"] = d.year;
+      temp["value"] = +d[data_selected];
+      dataset_line[div].push(temp);
+      //data_wijk.push(temp);
+    }
+  });
 
-      cards.select("title").text(function(d) { return d.value; });
+  console.log(dataset_line[div]);
+  x.domain(d3.extent(dataset_line[div], function(d) { 
+    console.log(d.year);
+    return d.year; 
+  }));
+  y.domain(d3.extent(dataset_line[div], function(d) { return +d["value"]; }));  
 
-      cards.exit().remove();
+  gg.append("g")
+      .attr("class", "axis axis--x")
+      .attr("transform", "translate(0," + height_linechart + ")")
+      .call(xAxis);
 
-    });
-};
+  gg.append("g")
+      .attr("class", "axis axis--y")
+      .call(yAxis)
+      .append("text")
+      .attr("fill", "#000")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "0.71em")
+      .style("text-anchor", "end")
+      .text(data_selected);
 
-heatmapChart();
+  var pa = gg.append("path")
+      .datum(dataset_line[div])
+      .attr("class", "line_"+div)
+      .attr("d", line);
+
+  gg.selectAll("dot")
+    .data(dataset_line[div])
+    .enter().append("circle")
+    .attr("id", function(d) { return div+"_circle_"+d.year; }) 
+    .attr("class", "class_circle")   
+    .attr("r", function(d) {
+      if(d.year == year)
+      {
+        return "6";
+      }
+      else
+      {
+        return "3";
+      }      
+    })
+    .style("fill", function(d) {
+      if(d.year == year)
+      {
+        return "#F57F17";
+      }
+      else
+      {
+        return "black";
+      }
+    })
+    .attr("cx", function(d) { return x(+d.year); })
+    .attr("cy", function(d) { return y(+d["value"]); })
+    .on("mouseover", lineTooltipOver)
+    .on("mouseout", lineTooltipOut);
+}
+
+var divTooltipLine1 = d3.select("body").append("div")   
+  .attr("class", "tooltipLine")               
+  .style("opacity", 0);
+
+var divTooltipLine2 = d3.select("body").append("div")   
+  .attr("class", "tooltipLine")               
+  .style("opacity", 0);
+
+function lineTooltipOver(d)
+{
+  var year_selected = this.id.slice(-4);
+  var split = this.id.split("_");
+  var pos1 = split[0]; // left or right
+  var dict = {};
+
+  console.log(pos1);
+  if(pos1 == "left") { 
+    var pos2 = "right";
+    var id_selectedOpposite = this.id.replace("left", "right"); 
+  }
+  else if(pos1 == "right") {
+    var pos2 = "left"; 
+    var id_selectedOpposite = this.id.replace("right", "left"); 
+  }  
+  console.log(pos2);
+  // ref for this method : http://stackoverflow.com/questions/19253753/javascript-find-json-value
+  console.log(dataset_line);
+  dict[pos1] = {};
+  dict[pos2] = {};
+  dataset_line[pos1+"_line"].forEach(function(x) {
+    dict[pos1][x.year] = x["value"];
+  });
+  dataset_line[pos2+"_line"].forEach(function(x) {
+    dict[pos2][x.year] = x["value"];
+  });
+
+  // reference from here : http://stackoverflow.com/questions/16256454/d3-js-position-tooltips-using-element-position-not-mouse-position
+  divTooltipLine1.transition().duration(200).style("opacity", 1);    
+  divTooltipLine1.html(d).text(dict[pos1][year_selected])
+      .style("left", (parseInt(d3.select("#"+this.id).attr("cx")) + document.getElementById(pos1+"_line").offsetLeft) + 40 + "px")     
+      .style("top", (parseInt(d3.select("#"+this.id).attr("cy")) + document.getElementById(pos1+"_line").offsetTop) - 20 + "px");    
 
 
+  divTooltipLine2.transition().duration(200).style("opacity", 1);    
+  divTooltipLine2.html(d).text(dict[pos2][year_selected])
+      .style("left", (parseInt(d3.select("#"+id_selectedOpposite).attr("cx")) + document.getElementById(pos2+"_line").offsetLeft) + 40 + "px")     
+      .style("top", (parseInt(d3.select("#"+id_selectedOpposite).attr("cy")) + document.getElementById(pos2+"_line").offsetTop) - 20 + "px");    
+  console.log(dict);  
+}
+
+function lineTooltipOut(d)
+{
+  divTooltipLine1.transition().duration(200).style("opacity", 0);    
+  divTooltipLine2.transition().duration(200).style("opacity", 0);    
+}
 
 
 
