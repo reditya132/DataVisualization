@@ -14,14 +14,16 @@ function addSelect(data, metadata, divID, selectID){
 	var selectHtml = "";
 	selectHtml += "<select id = " + selectID +  " size='20'>" ;
 	metadata.forEach(function(d){
-		if(d.THEMA !== thema){
-			if(thema !== undefined){
-				selectHtml += "</optgroup>";
+		if(d.Verschijningsfrequentie == "1 keer per jaar"){
+			if(d.THEMA !== thema){
+				if(thema !== undefined){
+					selectHtml += "</optgroup>";
+				}
+				thema = d.THEMA;
+				selectHtml += "<optgroup label='" + thema + "'>";
 			}
-			thema = d.THEMA;
-			selectHtml += "<optgroup label='" + thema + "'>";
+			selectHtml += "<option value='" +d.Variabele + "'" + "title='" + d.Definitie + "'" + ">" + d.Label + "</option>";
 		}
-		selectHtml += "<option value='" +d.Variabele + "'" + "title='" + d.Definitie + "'" + ">" + d.Label + "</option>";
 	});
 	selectHtml +=  "</select>" ;
 	$( "#" + divID ).append( selectHtml );
