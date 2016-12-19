@@ -29,6 +29,13 @@ function updateView(value)
     d3.select("#left_line_circle_"+year).style("fill", "#F57F17").attr("r", "6");
     d3.select("#right_line_circle_"+year).style("fill", "#F57F17").attr("r", "6");
   }  
+  dataset_year = [];
+  dataset.forEach(function(d){
+    if(d.year == year){
+      dataset_year.push(d);
+    }
+  });
+  scatter_change();  
 }
 
 $( function() {
@@ -48,14 +55,6 @@ $( function() {
         d3.select("#left_line_circle_"+year).style("fill", "#F57F17").attr("r", "6");
         d3.select("#right_line_circle_"+year).style("fill", "#F57F17").attr("r", "6");
       }
-	  
-	  dataset_year = [];
-	  dataset.forEach(function(d){
-		  if(d.year == year){
-			dataset_year.push(d);
-		  }
-	  scatter_change();
-	  });
     }
   });
   $( "#amount" ).val( " " + $( "#slider" ).slider( "value" ) );
@@ -93,12 +92,13 @@ function draw()
 {
   d3.tsv("../../datasets/data_tab_delimited.txt", function(error, tsv_data) {
     dataset = [];
-	minVar1 = Number.MAX_VALUE;
-	minVar2 = Number.MAX_VALUE;
-	maxVar1 = 0;
-	maxVar2 = 0;
+  	minVar1 = Number.MAX_VALUE;
+  	minVar2 = Number.MAX_VALUE;
+  	maxVar1 = 0;
+  	maxVar2 = 0;
     data_1 = $("#variableA").val();
     data_2 = $("#variableB").val();
+    dataset_year = [];    
     tsv_data.forEach(function(d) {
       var temp = {};
       temp["id"] = d.id;
@@ -107,24 +107,24 @@ function draw()
       temp[data_1] = d[data_1];
       temp[data_2] = d[data_2];
       dataset.push(temp);
-	  
-	  // Computes the minima and maxima of the variables.
-	  if (d.year == year){
-		dataset_year.push(temp);
-	  }
-	
-	  if (+d[data_1] < minVar1){
-		minVar1 = +d[data_1];
-      }
-	  if (+d[data_1] > maxVar1){
-		maxVar1 = +d[data_1];
-	  }
-	  if (+d[data_2] < minVar2){
-		minVar2 = +d[data_2];
-	  }
-	  if (+d[data_2] > maxVar2){
-		maxVar2 = +d[data_2];
-	  }
+  	  
+  	  // Computes the minima and maxima of the variables.
+  	  if (d.year == year){
+  		dataset_year.push(temp);
+  	  }
+  	
+  	  if (+d[data_1] < minVar1){
+  		minVar1 = +d[data_1];
+        }
+  	  if (+d[data_1] > maxVar1){
+  		maxVar1 = +d[data_1];
+  	  }
+  	  if (+d[data_2] < minVar2){
+  		minVar2 = +d[data_2];
+  	  }
+  	  if (+d[data_2] > maxVar2){
+  		maxVar2 = +d[data_2];
+  	  }
     });
     //console.log(dataset);
     drawLegend(data_1, "left");
@@ -139,8 +139,7 @@ function draw()
         drawLinechart(selected,data_1,"left_line");
         drawLinechart(selected,data_2,"right_line"); 
     }
-    //drawLinechart();
-	drawScatterplot(); 
+	  drawScatterplot(); 
 	});   
 }
 

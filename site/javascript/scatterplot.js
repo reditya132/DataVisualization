@@ -7,7 +7,8 @@ var YAxis;
 
 function drawScatterplot(){
 	// Setup settings for graphic
-	var canvas_width = 1000;
+	$("#scatterplot").html("");
+	var canvas_width = 600;
 	var canvas_height = 600;
 	var padding = 60;  // for chart edges
 
@@ -69,12 +70,7 @@ function scatter_change(){
 	svgScatterplot.selectAll("circle")
 		.data(dataset_year)  // Update with new data
 		.transition()  // Transition from old to new
-		.duration(1000)  // Length of animation
-		.each("start", function() {  // Start animation
-			d3.select(this)  // 'this' means the current element
-				.attr("fill", "red")  // Change color
-				.attr("r", 5);  // Change size
-		})
+		.duration(200)  // Length of animation
 		.delay(function(d, i) {
 			return i / dataset_year.length * 500;  // Dynamic delay (i.e. each item delays a little longer)
 		})
@@ -85,12 +81,12 @@ function scatter_change(){
 		.attr("cy", function(d) {
 			return yScale(d[data_2]);  // Circle's Y
 		})
-		.each("end", function() {  // End animation
+		.on("end", function() {  // End animation
 			d3.select(this)  // 'this' means the current element
 				.transition()
 				.duration(500)
 				.attr("fill", "black")  // Change color
-				.attr("r", 2);  // Change radius
+				.attr("r", 5);  // Change radius
 		});
 
 	// Update X Axis
