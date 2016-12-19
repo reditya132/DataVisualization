@@ -50,12 +50,12 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h3>Var A</h3>
+          <h4>1st Variable</h4>
           <div id="selectVariableA" class="col-md-6"></div>
         </div>
 
         <div class="col-md-6">
-          <h3>Var B</h3>
+          <h4>2nd Variable</h4>
           <div id="selectVariableB" class="col-md-6"></div>
         </div>
       </div>
@@ -79,17 +79,23 @@
           </center>
         </div>
       </div>
-      <div class="row">
+      <!--<div class="row">
         <div class="col-md-4 col-md-offset-4">
             <div class="row">
               <label for="amount">Year :</label>
               <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
           </div>
         </div>
-      </div>    
+      </div>   
+
       <div class="row">
         <div id="slider" class="col-md-4 col-md-offset-4"></div>
       </div>    
+      -->
+      <div class="row">
+        <h4 id="range" style="display: block; text-align: center;">2005</h4>
+        <center><input class="year-slider" type="range" min="2005" max="2016" value="2005" step="1" oninput="showValue(this.value); updateView(this.value)" onchange="updateView(this.value)"></center>
+      </div>
        <br>
       <div class = "row">
         <div class="col-md-3" id="left_line"></div>
@@ -99,7 +105,8 @@
     </div>
 
     <script src="javascript/map_4.js" type="text/javascript"></script>
-    <script src="javascript/select.js" type="text/javascript"></script>         
+    <script src="javascript/select.js" type="text/javascript"></script>    
+    <script type="text/javascript" src="javascript/slider.js"></script>
     <div id="footer"></div>
   </body>
 

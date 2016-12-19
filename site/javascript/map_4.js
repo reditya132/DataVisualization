@@ -9,6 +9,21 @@ var dataset_line = {};
 
 // slider function from jquery-ui
 // it will create slider interface in the map page
+
+function updateView(value)
+{
+  update(value,"left",data_1);
+  update(value,"right",data_2);
+  console.log(value);
+  year = value;
+  if(zoomState == 1)
+  {
+    d3.selectAll(".class_circle").style("fill", "black").attr("r", "3");
+    d3.select("#left_line_circle_"+year).style("fill", "#F57F17").attr("r", "6");
+    d3.select("#right_line_circle_"+year).style("fill", "#F57F17").attr("r", "6");
+  }  
+}
+
 $( function() {
   $( "#slider" ).slider({
     value:year,
@@ -23,7 +38,6 @@ $( function() {
       if(zoomState == 1)
       {
         d3.selectAll(".class_circle").style("fill", "black").attr("r", "3");
-        //d3.selectAll(".class_circle_right_line").style("fill", "black").attr("r", "3");    
         d3.select("#left_line_circle_"+year).style("fill", "#F57F17").attr("r", "6");
         d3.select("#right_line_circle_"+year).style("fill", "#F57F17").attr("r", "6");
       }
@@ -35,7 +49,7 @@ $( function() {
 
 // easy autocomplete
 var options = {
-  url: "buurt.json",
+  url: "map/buurt.json",
   getValue: "name", 
   list: {
     onClickEvent: function() {
@@ -153,7 +167,7 @@ var path = d3.geoPath()
 // reading map file and data
 d3.queue()
   .defer(d3.json, "../map/topo_real_map.json")
-  .defer(d3.tsv, "../datasets/data_tab_delimited.txt")
+  .defer(d3.tsv, "../../datasets/data_tab_delimited.txt")
   .await(queue);
 
 // initialize some variables for the first option that user choose
@@ -189,7 +203,7 @@ function queue(error, map, data) {
         .data(topojson.feature(map, map.objects.new_wijk_water).features) 
         .enter().append("path")
         .attr("d", path)
-        .attr("id", function(d) { return "pathLeft"+d.id; })
+        .attr("id", function(d) { return "path_left_"+d.id; })
         .style("fill", function(d) {
           return color["left"](dataValue["leftValue"][d.id]); 
         })
@@ -205,7 +219,7 @@ function queue(error, map, data) {
         .data(topojson.feature(map, map.objects.new_wijk_water).features) 
         .enter().append("path")
         .attr("d", path)
-        .attr("id", function(d) { return "pathRight"+d.id; })
+        .attr("id", function(d) { return "path_right_"+d.id; })
         .style("fill", function(d) {
           return color["right"](dataValue["rightValue"][d.id]); 
         })
@@ -218,10 +232,11 @@ function queue(error, map, data) {
 function mouseOver(d,i)
 {
   d3.select(this).transition().duration(200).style("opacity", 1);
-  
+
   // get the name of the div where the mouse position is located
   var arr = allElementsFromPoint(d3.event.pageX, d3.event.pageY);
   var mouseDiv = arr[3].id;
+  console.log(arr);
   //console.log(mouseDiv);
   var locationDivLeft = $("#left_column").position();
   var locationDivRight = $("#right_column").position();
@@ -307,7 +322,7 @@ function mouseClicked(d)
       if(zoomState == 1)
       {
         d3.select(this).style('stroke','#757575').style('stroke-width','0.5px');
-        var select2 = "#"+"pathLeft"+selected;
+        var select2 = "#"+"path_left_"+selected;
         var y = $("#leftG");
         y.find(select2).appendTo(y);
         d3.select(select2).transition().duration(300)
@@ -316,7 +331,7 @@ function mouseClicked(d)
       }
       else
       {
-        d3.select("#"+"pathLeft"+selected).transition().duration(300)
+        d3.select("#"+"path_left_"+selected).transition().duration(300)
           .style('stroke', '#757575')
           .style('stroke-width', '0.5px');   
       }
@@ -328,7 +343,7 @@ function mouseClicked(d)
       if(zoomState == 1)
       {
         d3.select(this).style('stroke','#757575').style('stroke-width','0.5px');
-        var select = "#"+"pathRight"+selected;
+        var select = "#"+"path_right_"+selected;
         var x = $("#rightG");
         x.find(select).appendTo(x);
         //var select = d3.select(this.select("#"+"pathRight"+selected);
@@ -338,7 +353,7 @@ function mouseClicked(d)
       }
       else
       {
-        d3.select("#"+"pathRight"+selected).transition().duration(300)
+        d3.select("#"+"path_right_"+selected).transition().duration(300)
           .style('stroke', '#757575')
           .style('stroke-width', '0.5px');        
       }
