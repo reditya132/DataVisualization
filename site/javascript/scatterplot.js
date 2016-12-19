@@ -1,9 +1,12 @@
 // Reference: http://bl.ocks.org/WilliamQLiu/bd12f73d0b79d70bfbae
+// Reference: http://bl.ocks.org/weiglemc/6185069
+
 var svgScatterplot;
 var xScale;
 var yScale;
 var xAxis;
 var YAxis;
+var tooltip;
 
 function drawScatterplot(){
 	// Setup settings for graphic
@@ -34,6 +37,11 @@ function drawScatterplot(){
 	.append("svg")
 	.attr("width", canvas_width)
 	.attr("height", canvas_height)
+	
+	// add the tooltip area to the webpage
+	tooltip = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
 
 	// Create Circles
 	svgScatterplot.selectAll("circle")
@@ -46,7 +54,21 @@ function drawScatterplot(){
 		.attr("cy", function(d) {  // Circle's Y
 			return yScale(d[data_2]);
 		})
-		.attr("r", 5);	
+		.attr("r", 5)
+		.on("mouseover", function(d) {
+          tooltip.transition()
+               .duration(200)
+               .style("opacity", .9);
+            tooltip.html(d["name"] + "<br/> (" + d[data_1] 
+	        + ", " + d[data_2] + ")")
+               .style("left", (d3.event.pageX + 5) + "px")
+               .style("top", (d3.event.pageY - 28) + "px");
+        })
+        .on("mouseout", function(d) {
+            tooltip.transition()
+               .duration(500)
+               .style("opacity", 0);
+      });
 
 	// Add to X axis
 	svgScatterplot.append("g")
