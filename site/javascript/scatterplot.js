@@ -7,12 +7,22 @@ var yScale;
 var xAxis;
 var YAxis;
 var tooltip;
+var dict_dataset_scatter;
 
 function drawScatterplot(){
-	// Setup settings for graphic
+	// calculate data
+	dict_dataset_scatter = {};
+	dict_dataset_scatter[data_1] = {};
+	dict_dataset_scatter[data_2] = {};
+	dataset_year.forEach(function(x) {
+		dict_dataset_scatter[data_1][x["id"]] = x[data_1];
+		dict_dataset_scatter[data_2][x["id"]] = x[data_2];		
+	});	
+	// dataset for scatterplot
+	// Setup settings for graphic	
 	$("#scatterplot").html("");
 	var canvas_width = 600;
-	var canvas_height = 600;
+	var canvas_height = 500;
 	var padding = 60;  // for chart edges
 
 	// Create scale functions
@@ -55,19 +65,23 @@ function drawScatterplot(){
 			return yScale(d[data_2]);
 		})
 		.attr("id", function(d) {
-			return d.id;
+			return "scatter_"+d.id;
 		})
+		.attr("class", "circle_scatter")
 		.attr("r", 5)
 		.on("mouseover", function(d) {
 			d3.select(this)
 				.transition()
 				.duration(100)
-				.attr("fill", "red");
-          tooltip.transition()
+				.style("fill", function(d) {
+					if(d.id != selected) { return "red"; }
+					else { return "#F57F17"; }
+				});
+          	tooltip.transition()
                .duration(200)
                .style("opacity", .9);
-            tooltip.html(d["name"] + "<br/> (" + d[data_1] 
-	        + ", " + d[data_2] + ")")
+            tooltip.html(d["name"] + "<br/> (" + dict_dataset_scatter[data_1][d.id]
+	        	+ ", " + dict_dataset_scatter[data_2][d.id]+ ")")
                .style("left", (d3.event.pageX + 5) + "px")
                .style("top", (d3.event.pageY - 28) + "px");
         })
@@ -75,11 +89,23 @@ function drawScatterplot(){
 			d3.select(this)
 				.transition()
 				.duration(100)
-				.attr("fill", "black");
+				.style("fill", function(d) {
+					if(d.id != selected) { return "black"; }
+					else { return "#F57F17"; }
+				});
             tooltip.transition()
                .duration(500)
-               .style("opacity", 0);
-      });
+               .style("opacity", 0)
+		})
+		.on("click", function(d) {
+	        for(var i in topodata)
+	        {
+	          if(topodata[i].id == d.id)
+	          {
+	            mouseClicked(topodata[i]);
+	          }
+	        }
+     	});
 
 	// Add to X axis
 	svgScatterplot.append("g")
@@ -100,64 +126,25 @@ function scatter_change(){
 	//yScale.domain([minVar2, maxVar2]);
 
 	// Update circles
+	dict_dataset_scatter = {};
+	dict_dataset_scatter[data_1] = {};
+	dict_dataset_scatter[data_2] = {};
+	dataset_year.forEach(function(x) {
+		dict_dataset_scatter[data_1][x["id"]] = x[data_1];
+		dict_dataset_scatter[data_2][x["id"]] = x[data_2];		
+	});
+
 	svgScatterplot.selectAll("circle")
-		.data(dataset_year)  // Update with new data
-		.transition()  // Transition from old to new
-		.duration(200)  // Length of animation
-		//.ease("linear")  // Transition easing - default 'variable' (i.e. has acceleration), also: 'circle', 'elastic', 'bounce', 'linear'
-		.attr("cx", function(d) {
-			return xScale(d[data_1]);  // Circle's X
-		})
-		.attr("cy", function(d) {
-			return yScale(d[data_2]);  // Circle's Y
-		})
-		.attr("id", function(d) {
-			return d.id;
-		})
-		.on("end", function() {  // End animation
-			d3.select(this)  // 'this' means the current element
-				.transition()
-				.duration(500)
-				.attr("fill", "black")  // Change color
-				.attr("r", 5);  // Change radius
-		})
-		.on("mouseover", function(d) {
+		.each(function() {
+			var cid = this.id.split("_")[1];
 			d3.select(this)
 				.transition()
-				.duration(100)
-				.attr("fill", "red");
-          tooltip.transition()
-               .duration(200)
-               .style("opacity", .9);
-            tooltip.html(d["name"] + "<br/> (" + d[data_1] 
-	        + ", " + d[data_2] + ")")
-               .style("left", (d3.event.pageX + 5) + "px")
-               .style("top", (d3.event.pageY - 28) + "px");
-        })
-        .on("mouseout", function(d) {
-			d3.select(this)
-				.transition()
-				.duration(100)
-				.attr("fill", "black");
-            tooltip.transition()
-               .duration(500)
-               .style("opacity", 0);
-      });
-
-	// Update X Axis
-	svgScatterplot.select(".x.axis")
-		.transition()
-		.duration(1000)
-		.call(xAxis);
-
-	// Update Y Axis
-	svgScatterplot.select(".y.axis")
-		.transition()
-		.duration(100)
-		.call(yAxis);
-}
-
-function scatterTooltipOver(d)
-{
-
+				.duration(300)
+				.attr("cx", function(d) {
+					return xScale(dict_dataset_scatter[data_1][cid]);
+				})
+				.attr("cy", function(d) {
+					return yScale(dict_dataset_scatter[data_2][cid]);
+				});
+		});
 }
