@@ -54,8 +54,15 @@ function drawScatterplot(){
 		.attr("cy", function(d) {  // Circle's Y
 			return yScale(d[data_2]);
 		})
+		.attr("id", function(d) {
+			return d.id;
+		})
 		.attr("r", 5)
 		.on("mouseover", function(d) {
+			d3.select(this)
+				.transition()
+				.duration(100)
+				.attr("fill", "red");
           tooltip.transition()
                .duration(200)
                .style("opacity", .9);
@@ -65,6 +72,10 @@ function drawScatterplot(){
                .style("top", (d3.event.pageY - 28) + "px");
         })
         .on("mouseout", function(d) {
+			d3.select(this)
+				.transition()
+				.duration(100)
+				.attr("fill", "black");
             tooltip.transition()
                .duration(500)
                .style("opacity", 0);
@@ -100,6 +111,9 @@ function scatter_change(){
 		.attr("cy", function(d) {
 			return yScale(d[data_2]);  // Circle's Y
 		})
+		.attr("id", function(d) {
+			return d.id;
+		})
 		.on("end", function() {  // End animation
 			d3.select(this)  // 'this' means the current element
 				.transition()
@@ -108,6 +122,10 @@ function scatter_change(){
 				.attr("r", 5);  // Change radius
 		})
 		.on("mouseover", function(d) {
+			d3.select(this)
+				.transition()
+				.duration(100)
+				.attr("fill", "red");
           tooltip.transition()
                .duration(200)
                .style("opacity", .9);
@@ -117,6 +135,10 @@ function scatter_change(){
                .style("top", (d3.event.pageY - 28) + "px");
         })
         .on("mouseout", function(d) {
+			d3.select(this)
+				.transition()
+				.duration(100)
+				.attr("fill", "black");
             tooltip.transition()
                .duration(500)
                .style("opacity", 0);
