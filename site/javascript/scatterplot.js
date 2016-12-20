@@ -57,14 +57,6 @@ function drawScatterplot(){
 		.attr("id", function(d) {
 			return d.id;
 		})
-		.attr("fill", function(d){
-			if(d.id == selected){
-				return "orange";
-			}
-			else{
-				return "black";
-			}
-		})
 		.attr("r", 5)
 		.on("mouseover", function(d) {
 			d3.select(this)
@@ -83,14 +75,7 @@ function drawScatterplot(){
 			d3.select(this)
 				.transition()
 				.duration(100)
-				.attr("fill", function(d){
-					if(d.id == selected){
-						return "orange";
-					}
-					else{
-						return "black";
-					}
-				});
+				.attr("fill", "black");
             tooltip.transition()
                .duration(500)
                .style("opacity", 0);
@@ -129,27 +114,12 @@ function scatter_change(){
 		.attr("id", function(d) {
 			return d.id;
 		})
-		.attr("fill", function(d){
-			if(d.id == selected){
-				return "orange";
-			}
-			else{
-				return "black";
-			}
-		})
 		.on("end", function() {  // End animation
 			d3.select(this)  // 'this' means the current element
 				.transition()
 				.duration(500)
-				.attr("fill", function(d){ // Change color
-					if(d.id == selected){
-						return "orange";
-					}
-					else{
-						return "black";
-					}
-				})  
-				.attr("r", 5)  // Change radius
+				.attr("fill", "black")  // Change color
+				.attr("r", 5);  // Change radius
 		})
 		.on("mouseover", function(d) {
 			d3.select(this)
@@ -168,14 +138,7 @@ function scatter_change(){
 			d3.select(this)
 				.transition()
 				.duration(100)
-				.attr("fill", function(d){
-					if(d.id == selected){
-						return "orange";
-					}
-					else{
-						return "black";
-					}
-				});
+				.attr("fill", "black");
             tooltip.transition()
                .duration(500)
                .style("opacity", 0);
