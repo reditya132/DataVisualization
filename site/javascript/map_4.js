@@ -38,29 +38,6 @@ function updateView(value)
   scatter_change();  
 }
 
-$( function() {
-  $( "#slider" ).slider({
-    value:year,
-    min: 2005,
-    max: 2016,
-    step: 1,
-    slide: function( event, ui ) {
-      $( "#amount" ).val( " " + ui.value );
-      update(ui.value,"left",data_1);
-      update(ui.value,"right",data_2);
-      year = ui.value;
-      if(zoomState == 1)
-      {
-        d3.selectAll(".class_circle").style("fill", "black").attr("r", "3");
-        d3.select("#left_line_circle_"+year).style("fill", "#F57F17").attr("r", "6");
-        d3.select("#right_line_circle_"+year).style("fill", "#F57F17").attr("r", "6");
-      }
-    }
-  });
-  $( "#amount" ).val( " " + $( "#slider" ).slider( "value" ) );
-} );
-
-
 // easy autocomplete
 var options = {
   url: "map/buurt.json",
@@ -110,20 +87,20 @@ function draw()
   	  
   	  // Computes the minima and maxima of the variables.
   	  if (d.year == year){
-  		dataset_year.push(temp);
+  		  dataset_year.push(temp);
   	  }
   	
   	  if (+d[data_1] < minVar1){
-  		minVar1 = +d[data_1];
-        }
+  		  minVar1 = +d[data_1];
+      }
   	  if (+d[data_1] > maxVar1){
-  		maxVar1 = +d[data_1];
+  		  maxVar1 = +d[data_1];
   	  }
   	  if (+d[data_2] < minVar2){
-  		minVar2 = +d[data_2];
+  		  minVar2 = +d[data_2];
   	  }
   	  if (+d[data_2] > maxVar2){
-  		maxVar2 = +d[data_2];
+  		  maxVar2 = +d[data_2];
   	  }
     });
     //console.log(dataset);
@@ -328,7 +305,16 @@ function mouseClicked(d)
     zoomState = 1;
     drawLinechart(selected,data_1,"left_line");
     drawLinechart(selected,data_2,"right_line");   
-    $("#search").val(dataValue["leftId"][d.id]);           
+    $("#search").val(dataValue["leftId"][d.id]);   
+    d3.selectAll(".circle_scatter")
+      .transition().duration(1000)
+      .attr("r", 5)
+      .style("fill", "black");
+    d3.select("#scatter_"+selected)
+      .raise() // .raise() is a new function in D3v4 to move an element to the end
+      .transition().duration(1000)
+      .attr("r", 9)
+      .style("fill","#F57F17");    
   }
   else {
     x = width / 2;
@@ -337,7 +323,12 @@ function mouseClicked(d)
     centered = null;
     zoomState = 0;
     $("#left_line").html("");  
-    $("#right_line").html("");               
+    $("#right_line").html("");  
+    d3.selectAll(".circle_scatter")
+      .transition()
+      .duration(1000)
+      .attr("r", 5)
+      .style("fill","black");    
   }
 
   g.selectAll("path")
@@ -359,9 +350,8 @@ function mouseClicked(d)
       {
         d3.select(this).style('stroke','#757575').style('stroke-width','0.5px');
         var select2 = "#"+"path_left_"+selected;
-        var y = $("#leftG");
-        y.find(select2).appendTo(y);
-        d3.select(select2).transition().duration(300)
+
+        d3.select(select2).raise().transition().duration(300)
           .style('stroke', '#F57F17')
           .style('stroke-width','2px');
       }
@@ -380,10 +370,8 @@ function mouseClicked(d)
       {
         d3.select(this).style('stroke','#757575').style('stroke-width','0.5px');
         var select = "#"+"path_right_"+selected;
-        var x = $("#rightG");
-        x.find(select).appendTo(x);
-        //var select = d3.select(this.select("#"+"pathRight"+selected);
-        d3.select(select).transition().duration(300)
+
+        d3.select(select).raise().transition().duration(300)
           .style('stroke', '#F57F17')
           .style('stroke-width','2px');
       }
@@ -543,8 +531,6 @@ function drawLinechart(wijk,variable,div)
                   return x(+d.year); 
                 })
                 .y(function(d) { return y(+d["value"]); })
-  // data
-  // var data_wijk = [];
 
   dataset.forEach(function(d) {
     if(d.id == wijk)
@@ -557,7 +543,6 @@ function drawLinechart(wijk,variable,div)
     }
   });
 
-  console.log(dataset_line[div]);
   x.domain(d3.extent(dataset_line[div], function(d) { 
     console.log(d.year);
     return d.year; 
@@ -580,8 +565,10 @@ function drawLinechart(wijk,variable,div)
       .style("text-anchor", "end")
       .text(data_selected);
 
-  var pa = gg.append("path")
+  gg.append("path")
       .datum(dataset_line[div])
+      .transition()
+      .duration(1000)
       .attr("class", "line_"+div)
       .attr("d", line);
 
@@ -671,9 +658,3 @@ function lineTooltipOut(d)
   divTooltipLine1.transition().duration(200).style("opacity", 0);    
   divTooltipLine2.transition().duration(200).style("opacity", 0);    
 }
-
-
-
-
-
-
