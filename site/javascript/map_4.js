@@ -14,6 +14,9 @@ var minVar2;
 var maxVar1;
 var maxVar2;
 
+// global variable for topological data
+var topodata;
+
 // slider function from jquery-ui
 // it will create slider interface in the map page
 
@@ -209,11 +212,13 @@ function queue(error, map, data) {
     dataValue["rightId"][d.id] = d.name;
   });
 
+  topodata = topojson.feature(map, map.objects.new_wijk_water).features;
+
   g = svg.append("g")
         .attr("class", "path-borders")
         .attr("id", "leftG")        
         .selectAll("path")
-        .data(topojson.feature(map, map.objects.new_wijk_water).features) 
+        .data(topodata) 
         .enter().append("path")
         .attr("d", path)
         .attr("id", function(d) { return "path_left_"+d.id; })
@@ -229,7 +234,7 @@ function queue(error, map, data) {
         .attr("class", "path-borders")
         .attr("id", "rightG")
         .selectAll("path")
-        .data(topojson.feature(map, map.objects.new_wijk_water).features) 
+        .data(topodata) 
         .enter().append("path")
         .attr("d", path)
         .attr("id", function(d) { return "path_right_"+d.id; })

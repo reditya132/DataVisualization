@@ -7,9 +7,19 @@ var yScale;
 var xAxis;
 var YAxis;
 var tooltip;
+var dict_dataset_scatter;
 
 function drawScatterplot(){
-	// Setup settings for graphic
+	// calculate data
+	dict_dataset_scatter = {};
+	dict_dataset_scatter[data_1] = {};
+	dict_dataset_scatter[data_2] = {};
+	dataset_year.forEach(function(x) {
+		dict_dataset_scatter[data_1][x["id"]] = x[data_1];
+		dict_dataset_scatter[data_2][x["id"]] = x[data_2];		
+	});	
+	// dataset for scatterplot
+	// Setup settings for graphic	
 	$("#scatterplot").html("");
 	var canvas_width = 600;
 	var canvas_height = 500;
@@ -63,12 +73,15 @@ function drawScatterplot(){
 			d3.select(this)
 				.transition()
 				.duration(100)
-				.attr("fill", "red");
+				.style("fill", function(d) {
+					if(d.id != selected) { return "red"; }
+					else { return "#F57F17"; }
+				});
           	tooltip.transition()
                .duration(200)
                .style("opacity", .9);
-            tooltip.html(d["name"] + "<br/> (" + d[data_1] 
-	        + ", " + d[data_2] + ")")
+            tooltip.html(d["name"] + "<br/> (" + dict_dataset_scatter[data_1][d.id]
+	        	+ ", " + dict_dataset_scatter[data_2][d.id]+ ")")
                .style("left", (d3.event.pageX + 5) + "px")
                .style("top", (d3.event.pageY - 28) + "px");
         })
@@ -76,11 +89,23 @@ function drawScatterplot(){
 			d3.select(this)
 				.transition()
 				.duration(100)
-				.attr("fill", "black");
+				.style("fill", function(d) {
+					if(d.id != selected) { return "black"; }
+					else { return "#F57F17"; }
+				});
             tooltip.transition()
                .duration(500)
-               .style("opacity", 0);
-      });
+               .style("opacity", 0)
+		})
+		.on("click", function(d) {
+	        for(var i in topodata)
+	        {
+	          if(topodata[i].id == d.id)
+	          {
+	            mouseClicked(topodata[i]);
+	          }
+	        }
+     	});
 
 	// Add to X axis
 	svgScatterplot.append("g")
@@ -101,13 +126,14 @@ function scatter_change(){
 	//yScale.domain([minVar2, maxVar2]);
 
 	// Update circles
-	var dict_dataset_scatter = {};
+	dict_dataset_scatter = {};
 	dict_dataset_scatter[data_1] = {};
 	dict_dataset_scatter[data_2] = {};
 	dataset_year.forEach(function(x) {
 		dict_dataset_scatter[data_1][x["id"]] = x[data_1];
 		dict_dataset_scatter[data_2][x["id"]] = x[data_2];		
 	});
+
 	svgScatterplot.selectAll("circle")
 		.each(function() {
 			var cid = this.id.split("_")[1];

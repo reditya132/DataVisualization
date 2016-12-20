@@ -22,7 +22,7 @@ function addSelect(data, metadata, divID, selectID){
 				thema = d.THEMA;
 				selectHtml += "<optgroup label='" + thema + "'>";
 			}
-			selectHtml += "<option value='" +d.Variabele + "'" + "title='" + d.Definitie + "'" + ">" + d.Label + "</option>";
+			selectHtml += "<option value='" +d.Variabele.replace(" ","") + "'" + "title='" + d.Definitie + "'" + ">" + d.Label + "</option>";
 		}
 	});
 	selectHtml +=  "</select>" ;
