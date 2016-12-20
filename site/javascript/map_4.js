@@ -328,6 +328,7 @@ function mouseClicked(d)
     zoomState = 1;
     drawLinechart(selected,data_1,"left_line");
     drawLinechart(selected,data_2,"right_line");   
+	scatter_change(); 
     $("#search").val(dataValue["leftId"][d.id]);           
   }
   else {
