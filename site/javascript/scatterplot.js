@@ -1,5 +1,6 @@
 // Reference: http://bl.ocks.org/WilliamQLiu/bd12f73d0b79d70bfbae
 // Reference: http://bl.ocks.org/weiglemc/6185069
+// Reference: https://bl.ocks.org/d3noob/6f082f0e3b820b6bf68b78f2f7786084
 
 var svgScatterplot;
 var xScale;
@@ -147,4 +148,18 @@ function scatter_change(){
 					return yScale(dict_dataset_scatter[data_2][cid]);
 				});
 		});
+		
+	// Remove line
+	svgScatterplot.selectAll(".line").remove();
+	
+	// Define the line
+	var valueline = d3.line()
+		.x(function(d) { return xScale(d[data_1]); })
+		.y(function(d) { return yScale(d[data_2]); });
+		
+	// Add the valueline path.
+	svgScatterplot.append("path")
+		.data([dataset_selected])
+		.attr("class", "line")
+		.attr("d", valueline);
 }

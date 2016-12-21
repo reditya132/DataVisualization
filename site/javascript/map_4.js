@@ -13,6 +13,7 @@ var minVar1;
 var minVar2;
 var maxVar1;
 var maxVar2;
+var dataset_selected = [];
 
 // global variable for topological data
 var topodata;
@@ -33,11 +34,19 @@ function updateView(value)
     d3.select("#right_line_circle_"+year).style("fill", "#F57F17").attr("r", "6");
   }  
   dataset_year = [];
+  dataset_selected = [];
   dataset.forEach(function(d){
     if(d.year == year){
       dataset_year.push(d);
     }
+	if(zoomState == 1){
+		if(d.id == selected){
+			dataset_selected.push(d);
+		}
+	}
   });
+  dataset_selected.sort(function(a,b) {return (a.year > b.year) ? 1 : ((b.year > a.year) ? -1 : 0);} );
+  
   scatter_change();  
 }
 
