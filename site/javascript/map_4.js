@@ -112,6 +112,11 @@ function draw()
     data_1 = $("#variableA").val();
     data_2 = $("#variableB").val();
 
+    if (data_1 == null || data_2 == null) {
+      alert("Choose a variable for both maps.");
+      return;
+    }
+
     // Start assigning new values to the dataset and dataset_year variable
     tsv_data.forEach(function(d) {
       var temp = {};
