@@ -297,16 +297,16 @@ function mouseOver(d,i)
 {
   d3.select(this).transition().duration(200).style("opacity", 1);
 
-  // Get the name of the div where the mouse position is located
-  var arr = allElementsFromPoint(d3.event.pageX, d3.event.pageY);
-  var mouseDiv = arr[3].id;
+  // Get the position of the mouse whether it is located in the left or right choropleth
+  var mouseDiv = this.id.split("_")[1];
+  console.log(mouseDiv);
 
   // Save the position of the left and right div
   var locationDivLeft = $("#left_column").position();
   var locationDivRight = $("#right_column").position();
   
   // There are two different logic depending whether the mouse is in the left or right column
-  if(mouseDiv == "left_column")
+  if(mouseDiv == "left")
   {
     // The first tooltip position will be a function of the X and Y position of the mouse
     divTooltipFirst.transition().duration(200).style("opacity", 1);
@@ -321,7 +321,7 @@ function mouseOver(d,i)
       .style("top", (d3.event.pageY - 30 - locationDivLeft.top + locationDivRight.top) + "px");
   }
 
-  else if(mouseDiv == "right_column")
+  else if(mouseDiv == "right")
   {
     // The first tooltip position will be a function of the X and Y position of the mouse
     divTooltipFirst.transition().duration(200).style("opacity", 1);
@@ -335,27 +335,6 @@ function mouseOver(d,i)
       .style("left", (d3.event.pageX - locationDivRight.left + locationDivLeft.left) + "px")
       .style("top", (d3.event.pageY - 30 - locationDivRight.top + locationDivLeft.top) + "px");    
   }
-}
-
-// Reference : http://stackoverflow.com/questions/8813051/determine-which-element-the-mouse-pointer-is-on-top-of-in-javascript
-// This function will return all the div associated with a particular mouse position
-function allElementsFromPoint(x, y) {
-  var element, elements = [];
-  var old_visibility = [];
-  while (true) {
-      element = document.elementFromPoint(x, y);
-      if (!element || element === document.documentElement) {
-          break;
-      }
-      elements.push(element);
-      old_visibility.push(element.style.visibility);
-      element.style.visibility = 'hidden'; // Temporarily hide the element (without changing the layout)
-  }
-  for (var k = 0; k < elements.length; k++) {
-      elements[k].style.visibility = old_visibility[k];
-  }
-  elements.reverse();
-  return elements;
 }
 
 // This function is called when the user move out their mouse from a particular neighbourhood
