@@ -161,12 +161,12 @@ function scatter_path(){
 		}
 	});
   
-  // Sort the data for one district on year (to make a path in the scatterplot).
-  dataset_selected.sort(function(a,b) {return (a.year > b.year) ? 1 : ((b.year > a.year) ? -1 : 0);} );
+	// Sort the data for one district on year (to make a path in the scatterplot).
+	dataset_selected.sort(function(a,b) {return (a.year > b.year) ? 1 : ((b.year > a.year) ? -1 : 0);} );
 	
 	// Remove line
 	svgScatterplot.selectAll(".line").remove();
-	
+
 	// Define the line
 	var valueline = d3.line()
 		.x(function(d) { return xScale(d[data_1]); })

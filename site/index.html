@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Data visualization assignment">
 
-    <title>Dataviz</title>
+    <title>Visualizing Amsterdam</title>
 
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/scatterplot.css">
@@ -15,8 +15,6 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <script type="text/javascript" src="javascript/slider.js"></script>
-    <!-- <script type="text/javascript" src="javascript/jQuery.js"></script> -->
-    <!-- <script type="text/javascript" src="javascript/d3.v3.min.js" charset="utf-8"></script> -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -37,10 +35,6 @@
         $("#footer").load("footer.html");
       });
     </script>
-    <!--
-    <link rel="canonical" href="http://yourdomain.com/">
-    <link rel="alternate" type="application/rss+xml" title="Dataviz" href="http://yourdomain.com/feed.xml">
-  -->
   </head>
 
 
@@ -48,6 +42,27 @@
     <div id="header"></div>
 
     <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h3>Welcome to our Visualizing Amsterdam website!</h3>
+          <p>
+            In this website, you can explore various demographic variables provided by Open Data Initiatives of the City of Amsterdam in an interesting and fun way. We provide selection of two variables at the same time so that you can play around and think about whether a particular demographic variable relates with one another or not. <b>Hint: Start by comparing "Totale bevolking" (total population) with "Kengetal sociale cohesie" (Social cohesion among people)</b>. Start to find interesting insights such as which neighbourhood has the high population with a low social cohesion.
+          </p>
+          <p>
+            Note that you can interact with a lot of areas drawn in the visualization below. Among things that you can do are : 
+            <ul>
+              <li>Move the slider slowly from 2005 until 2016 to see a nice animation of the changes of the variable in both the choropleth maps and the scatterplot</li>              
+              <li>Click a particular neighbourhood to zoom in and load more details of the time series data for both variables that you choose.</li>
+              <li>Search on a particular neighbourhood in the Search Neighbourhood boxes</li>
+              <li>Click any point in the scatterplot that you find interested to load more details about that particular neighbourhood</li>
+            </ul>
+          </p>
+          <p>
+            <b>Enjoy!</b>
+          </p>
+        </div>
+      </div>
+      <hr>
       <div class="row">
         <div class="col-md-6">
           <h4>1st Variable</h4>
@@ -63,6 +78,7 @@
         <br>
         <button onclick="draw()" type="button" class="btn btn-success">Submit!</button>
       </center>
+      <br>
 
       <div class="row">
         <div id="left_column" class="col-md-6">
@@ -71,6 +87,7 @@
         </div>
       </div>
       <br>
+
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
           <center>
@@ -79,19 +96,7 @@
           </center>
         </div>
       </div>
-      <!--<div class="row">
-        <div class="col-md-4 col-md-offset-4">
-            <div class="row">
-              <label for="amount">Year :</label>
-              <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-          </div>
-        </div>
-      </div>   
 
-      <div class="row">
-        <div id="slider" class="col-md-4 col-md-offset-4"></div>
-      </div>    
-      -->
       <div class="row">
         <h4 id="range" style="display: block; text-align: center;">2012</h4>
         <center><input class="year-slider" type="range" min="2005" max="2016" value="2012" step="1" oninput="showValue(this.value); updateView(this.value)" onchange="updateView(this.value)"></center>
