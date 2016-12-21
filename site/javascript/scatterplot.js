@@ -148,7 +148,22 @@ function scatter_change(){
 					return yScale(dict_dataset_scatter[data_2][cid]);
 				});
 		});
-		
+}
+
+function scatter_path(){
+	dataset_selected = [];
+	dataset.forEach(function(d){
+		// Store the data for one district over all years
+		if(zoomState == 1){
+			if(d.id == selected){
+				dataset_selected.push(d);
+			}
+		}
+	});
+  
+  // Sort the data for one district on year (to make a path in the scatterplot).
+  dataset_selected.sort(function(a,b) {return (a.year > b.year) ? 1 : ((b.year > a.year) ? -1 : 0);} );
+	
 	// Remove line
 	svgScatterplot.selectAll(".line").remove();
 	

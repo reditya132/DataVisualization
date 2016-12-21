@@ -39,13 +39,7 @@ function updateView(value)
     if(d.year == year){
       dataset_year.push(d);
     }
-	if(zoomState == 1){
-		if(d.id == selected){
-			dataset_selected.push(d);
-		}
-	}
   });
-  dataset_selected.sort(function(a,b) {return (a.year > b.year) ? 1 : ((b.year > a.year) ? -1 : 0);} );
   
   scatter_change();  
 }
@@ -395,7 +389,8 @@ function mouseClicked(d)
           .style('stroke', '#757575')
           .style('stroke-width', '0.5px');        
       }
-    })
+    });
+	scatter_path();
 }
 
 // reference : http://stackoverflow.com/questions/8813051/determine-which-element-the-mouse-pointer-is-on-top-of-in-javascript
