@@ -57,11 +57,25 @@ function updateView(value)
   // Assignment for dataset_year that will be used to draw the updated scatter plot
   dataset_year = [];
   dataset_selected = [];
+  dataset.forEach(function(d){
+    if(d.year == year){
+      dataset_year.push(d);
+    }
+  });
+
+  // Update the scatterplot with this function
+  scatter_change();
+  
+  // Update correlation coefficient.
+  showCorrelationCoefficient();  
+}
+
+// Computes and shows the correlation coefficient for all data points within the select year.
+function showCorrelationCoefficient(){
   correlationCoefficient = 0;
   var xMean = 0, yMean = 0, count = 0, CovXY = 0, VarX = 0, VarY = 0;
   dataset.forEach(function(d){
     if(d.year == year){
-      dataset_year.push(d);
 	  count++;
 	  xMean += +d[data_1];
 	  yMean += +d[data_2];
@@ -76,10 +90,16 @@ function updateView(value)
   });
  
   correlationCoefficient = CovXY / (Math.sqrt(VarX * VarY) );
-  //$( "#correlationCoefficient" ).remove();
-  $( "#correlationCoefficient" ).empty().append( "Correlation Coefficient: " + correlationCoefficient );
-  // Update the scatterplot with this function
-  scatter_change();  
+  var roundedCC = Math.round(correlationCoefficient * 1000) / 1000;
+  if(Math.abs(roundedCC) >= 0.66){
+	$( "#correlationCoefficient" ).empty().append( "<span class='alert alert-success'>Correlation Coefficient: " + roundedCC + "</span>" );
+  }
+  else if(Math.abs(roundedCC) >= 0.33){
+	$( "#correlationCoefficient" ).empty().append( "<span class='alert alert-warning'>Correlation Coefficient: " + roundedCC + "</span>" );
+  }
+  else{
+	$( "#correlationCoefficient" ).empty().append( "<span class='alert alert-danger'>Correlation Coefficient: " + roundedCC + "</span>" );
+  }
 }
 
 // Draw the search neighbourhood box with Jquery EasyAutocomplete plugin : http://easyautocomplete.com/
@@ -112,7 +132,6 @@ var options = {
 };
 
 $("#search").easyAutocomplete(options);
-
 
 // This function is called everytime the user clicks the "SUBMIT" button to choose new variables
 function draw()
@@ -181,6 +200,9 @@ function draw()
 
     // Draw and update the scatterplot
 	  drawScatterplot(); 
+	  
+	// Draw correlation coefficient.
+    showCorrelationCoefficient(); 
 	});   
 }
 
