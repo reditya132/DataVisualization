@@ -57,6 +57,7 @@ function updateView(value)
   // Assignment for dataset_year that will be used to draw the updated scatter plot
   dataset_year = [];
   dataset_selected = [];
+  correlationCoefficient = 0;
   dataset.forEach(function(d){
     if(d.year == year){
       dataset_year.push(d);
@@ -448,7 +449,7 @@ function mouseClicked(d)
           .style('stroke', '#757575')
           .style('stroke-width', '0.5px');   
       }
-    })
+    });
 
   g2.transition().duration(700)
     .attr("transform", "translate(" + width/2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
@@ -471,7 +472,6 @@ function mouseClicked(d)
           .style('stroke-width', '0.5px');        
       }
     });
-
   // Draw a path for a particular neighbourhood in the scatterplot
   scatter_path();
 }
