@@ -1,0 +1,500 @@
+  147  python scrape.py 
+  148  python scrape.py 
+  149  python scrape.py > halo.txt
+  150  vi halo.txt 
+  151  python scrape.py > halo.txt
+  152  python scrape.py 
+  153  python scrape.py 
+  154  python scrape.py 
+  155  python scrape.py 
+  156  python scrape.py 
+  157  python scrape.py 
+  158  python scrape.py 
+  159  python scrape.py 
+  160  python scrape.py 
+  161  python scrape.py 
+  162  python scrape.py 
+  163  python scrape.py 
+  164  python scrape.py 
+  165  python scrape.py 
+  166  python scrape.py 
+  167  python scrape.py 
+  168  python scrape.py 
+  169  python scrape.py 
+  170  python scrape.py > output.txt
+  171  less output.txt 
+  172  python scrape.py > output.txt
+  173  python scrape.py 
+  174  python scrape.py 
+  175  python scrape.py 
+  176  python scrape.py 
+  177  python scrape.py 
+  178  cd
+  179  cd Downloads/
+  180  ls -lth | head
+  181  head dump.
+  182  head dump.json 
+  183  wc -l dump.json 
+  184  ls
+  185  cd Dropbox/
+  186  ls
+  187  cd LECTURE/
+  188  ls
+  189  cd Pattern\ Recognition/
+  190  ls
+  191  cd MATLAB/
+  192  ls
+  193  cd ..
+  194  ls
+  195  cd
+  196  cd Documents/MATLAB/
+  197  ls
+  198  ls -lth
+  199  mkdir Final
+  200  cd Final/
+  201  ls
+  202  mv ../final_project.m .
+  203  ls
+  204  rm -rf final_project.m 
+  205  cd ..
+  206  ls
+  207  ls
+  208  git clone https://github.com/reditya132/PatternRecognition.git
+  209  cd PatternRecognition/
+  210  ls
+  211  vi README.md 
+  212  ls
+  213  ls
+  214  git add *
+  215  git commit -m "initial script to load prdataset data"
+  216  git push origin master
+  217  ls
+  218  ping www.google.com
+  219  ping www.google.com
+  220  ssh -p 5656 dataviz@188.226.129.43
+  221  ssh
+  222  ssh dataviz@188.226.129.43
+  223  ssh dataviz@188.226.129.43 -p 5656
+  224  ssh dataviz@188.226.129.43 -p 8888
+  225  ssh dataviz@188.226.129.43 
+  226  ssh root@188.226.129.43
+  227  ssh dataviz@188.226.129.43
+  228  cd
+  229  ls
+  230  cd Downloads/
+  231  ls
+  232  cd shape-2012-versie-3.0
+  233  ls
+  234  ls -lth
+  235  head buurt_2012.shp
+  236  ls
+  237  mkdir php
+  238  cd php/
+  239  ls
+  240  git clone https://github.com/postaddictme/instagram-php-scraper.git
+  241  cd instagram-php-scraper/
+  242  ls
+  243  composer
+  244  brew install composer
+  245  brew install homebrew/php/composer
+  246  composer require raiym/instagram-php-scraper
+  247  composer require raiym/instagram-php-scraper[v0.4.1, dev-master]
+  248  composer require raiym/instagram-php-scraper
+  249  ls
+  250  vi composer.json 
+  251  composer composer.json 
+  252  cat READ
+  253  cat README.md 
+  254  ls
+  255  vi index.php 
+  256  php index.php 
+  257  ls
+  258  cd src/
+  259  ls
+  260  cd InstagramScraper
+  261  ls
+  262  cd Model/
+  263  ls
+  264  vi Location.php 
+  265  cd ..
+  266  cd ..
+  267  ls
+  268  cd ..
+  269  ls
+  270  ls
+  271  pwd
+  272  ls
+  273  history | grep ssh
+  274  history | grep reza
+  275  ssh reza@82.196.7.146 -p 8787
+  276  history | grep reza
+  277  ssh reza@82.196.7.146 -p 8787
+  278  history | grep ssh
+  279  history | grep reza
+  280  ssh reza@82.196.7.146 -p 8787
+  281  ssh reza@82.196.7.146 -p 8787
+  282  ssh reza@82.196.7.146 -p 8787
+  283  ssh reza@82.196.7.146 -p 8787
+  284  cd
+  285  cd Downloads/
+  286  ls
+  287  cd D11-02/
+  288  ls
+  289  head D01 
+  290  head D02 
+  291  less D02 
+  292  vi D02 
+  293  ssh reza@82.196.7.146 -p 8787
+  294  ping www.google.com
+  295  ping www.google.com
+  296  ping 8.8.8.8
+  297  ping 8.8.8.8
+  298  ssh reza@82.196.7.146 -p 8787
+  299  ssh reza@82.196.7.146 -p 8787
+  300  history | grep reza
+  301  ssh reza@82.196.7.146 -p 8787
+  302  ping www.google.com
+  303  ping www.google.com
+  304  ssh reza@82.196.7.146 -p 8787
+  305  ssh reza@82.196.7.146 -p 8787
+  306  ssh reza@82.196.7.146 -p 8787
+  307  ssh reza@82.196.7.146 -p 8787
+  308  ls
+  309  cd Documents/LECTURE/
+  310  ls
+  311  cd Web\ Science\ and\ Engineering/
+  312  ls
+  313  cd Final/
+  314  ls
+  315  cd ..
+  316  mkdir FinalAssignment
+  317  cd FinalAssignment/
+  318  ls
+  319  brew install gdal
+  320  npm
+  321  brew install node
+  322  brew install npm
+  323  npm
+  324  npm install -g topojson@1
+  325  which ogr2ogr
+  326  which topojson
+  327  cp ~/Downloads/shape-2012-versie-3.0/buurt_2012.* .
+  328  ls
+  329  mkdir map
+  330  mv buurt_2012.* map/
+  331  ls
+  332  cd map/
+  333  ls
+  334  ogr2ogr \ -f GeoJSONdf -h
+  335  df -h
+  336  ls
+  337  rm -rf haha.*
+  338  clear
+  339  ls
+  340  ogr2ogr -f GeoJSON amsterdam.json Amsterdam.shp
+  341  ls -lth
+  342  head amsterdam.json 
+  343  clear
+  344  ls
+  345  cd ..
+  346  ls
+  347  ls
+  348  ls
+  349  mkdir src
+  350  cd src/
+  351  ls
+  352  brew install http-server
+  353  npm install http-server -g
+  354  http-server -p 8008 . &
+  355  ls
+  356  cd ..
+  357  killall http-server
+  358  ps -ax | grep htt
+  359  killall node
+  360  http-server -p 8008 . &
+  361  history 
+  362  ls
+  363  cd map/
+  364  ls
+  365  topojson -o amsterdam_use.json amsterdam.json
+  366  ls -lth
+  367  head amsterdam_use.json 
+  368  ls
+  369  ls -lth
+  370  head amsterdam.json 
+  371  clear
+  372  ls
+  373  cp ~/Downloads/shape-2012-versie-3.0/wijk_2012.* .
+  374  topojson -o buurt_amsterdam_topo.json buurt_amsterdam.json
+  375  vim buurt_amsterdam.json 
+  376  dos2unix buurt_amsterdam.json 
+  377  topojson -o buurt_amsterdam_topo.json buurt_amsterdam.json
+  378  clear
+  379  topojson -o buurt_amsterdam_topo.json buurt_amsterdam.json
+  380  less buurt_amsterdam.json 
+  381  ls
+  382  cd ..
+  383  ls
+  384  ls
+  385  git clone https://github.com/reditya132/DataVisualization.git
+  386  ls
+  387  cd map/
+  388  ls
+  389  ls -lth
+  390  cp wijk_amsterdam.json buurt_amsterdam.json ../DataVisualization/
+  391  cd ..
+  392  ls
+  393  cd DataVisualization/
+  394  ls
+  395  mkdir map
+  396  mv buurt_amsterdam.json wijk_amsterdam.json map/
+  397  ls
+  398  git add *
+  399  git commit -m "Map file for buurt and wijk"
+  400  git push origin master
+  401  ls
+  402  mkdir datasets
+  403  ls
+  404  cd datasets/
+  405  cp ~/Downloads/2016_BBGA_3009\ 3.xlsx .
+  406  cp ~/Downloads/BBGA_latest_and_greatest.csv .
+  407  ls
+  408  git add *
+  409  git commit -m "Datasets"
+  410  git push origin master
+  411  cd ..
+  412  ls
+  413  mkdir reza
+  414  ls
+  415  rm -rf reza/
+  416  ls
+  417  ls
+  418  mkdir src
+  419  ls
+  420  cd src/
+  421  ls
+  422  cd ..
+  423  ls
+  424  git add *
+  425  git commit -m ""
+  426  git push origin master
+  427  ls
+  428  cd src/
+  429  ls
+  430  touch index.html
+  431  cd ..
+  432  git add *
+  433  git commit -m "add src"
+  434  git push origin master
+  435  ls
+  436  cd map/
+  437  ls
+  438  ls -lth
+  439  topojson -o wijk_topo.json wijk_amsterdam.json 
+  440  l
+  441  ls
+  442  cd map/
+  443  ls
+  444  history 
+  445  ls
+  446  date -r 1471044863
+  447  ssh reza@82.196.7.146 -p 8787
+  448  ssh reza@82.196.7.146 -p 8787
+  449  ssh reza@82.196.7.146 -p 8787
+  450  ssh reza@82.196.7.146 -p 8787
+  451  ssh reza@82.196.7.146 -p 8787
+  452  /anaconda/bin/jupyter_mac.command ; exit;
+  453  ssh reza@82.196.7.146 -p 8787
+  454  ssh reza@82.196.7.146 -p 8787
+  455  ssh reza@82.196.7.146 -p 8787
+  456  clear
+  457  ssh reza@82.196.7.146 -p 8787
+  458  cd
+  459  ls
+  460  cd Dropbox/LECTURE/Pattern\ Recognition/
+  461  ls
+  462  cd MATLAB/
+  463  ls
+  464  cd ..
+  465  ls
+  466  cd
+  467  cd Documents/MATLAB/
+  468  ls
+  469  cd PatternRecognition/
+  470  ls
+  471  git pull
+  472  git pull origin master
+  473  git add *
+  474  git push origin master
+  475  git pull master
+  476  git pull
+  477  git fetch
+  478  ls
+  479  cat README.md 
+  480  git push origin master
+  481  git pull *
+  482  ls
+  483  ls -lth
+  484  git pull origin 
+  485  git
+  486  git fetch
+  487  ls
+  488  cat README.md 
+  489  git pull
+  490  git push origin master
+  491  ls
+  492  vim initial_script.m 
+  493  git add *
+  494  git push origin master
+  495  git commit -m "initial script"
+  496  git push origin master
+  497  history 
+  498  ssh reza@82.196.7.146 -p 8787
+  499  ssh reza@82.196.7.146
+  500  ssh reza@82.196.7.146 -p 8787
+  501  ls
+  502  cd map/
+  503  ls
+  504  topojson -o topo_wijk_amsterdam.json wijk_amsterdam.json 
+  505  vi wijk_amsterdam.json 
+  506  vi wijk_amsterdam.json 
+  507  vi wijk_amsterdam.json 
+  508  python -mjson.tool
+  509  cat wijk_amsterdam.json | python -mjson.tool
+  510  cat wijk_amsterdam.json | python -mjson.tool | less
+  511  python map_parsing.py 
+  512  python map_parsing.py 
+  513  python map_parsing.py | less
+  514  clear
+  515  python map_parsing.py | less
+  516  python map_parsing.py 
+  517  python map_parsing.py 
+  518  python map_parsing.py 
+  519  head wijk_amsterdam.json 
+  520  python map_parsing.py 
+  521  python map_parsing.py 
+  522  python map_parsing.py 
+  523  python map_parsing.py 
+  524  python map_parsing.py 
+  525  python map_parsing.py 
+  526  python map_parsing.py 
+  527  python map_parsing.py 
+  528  python map_parsing.py 
+  529  python map_parsing.py 
+  530  python map_parsing.py 
+  531  python map_parsing.py 
+  532  python map_parsing.py | head -n 1
+  533  python map_parsing.py 
+  534  python map_parsing.py 
+  535  python map_parsing.py 
+  536  python map_parsing.py 
+  537  python map_parsing.py 
+  538  python map_parsing.py 
+  539  python map_parsing.py > sample.json
+  540  history | grep json
+  541  cat sample.json | python -mjson.tool | less
+  542  cat sample.json | python -mjson.tool | less
+  543  topojson -o topo_sample.json sample.json 
+  544  less sample.json 
+  545  topojson -o topo_sample.json sample.json 
+  546  ls -lth
+  547  cat topo_sample.json 
+  548  topojson --no-quantization sample.json 
+  549  topojson --no-quantization -o topo_sample.json sample.json 
+  550  less topo_sample.json 
+  551  less topo_sample.json 
+  552  cat sample.json 
+  553  topojson -o topo_sample.json sample.json 
+  554  cat topo_sample.json 
+  555  geo2topo
+  556  topojson --no-quantization -o topo_sample.json sample.json 
+  557  less topo_sample.json 
+  558  vi topo_sample.json 
+  559  vi sample.json 
+  560  vi topo_sample.json 
+  561  topojson --no-quantization --properties name=name -o topo_sample.json sample.json 
+  562  vi topo_sample.json 
+  563  vi topo_sample.json 
+  564  vi topo_sample.json 
+  565  vi topo_sample.json 
+  566  cat sample.json 
+  567  python map_parsing.py | less
+  568  python map_parsing.py | less
+  569  python map_parsing.py | less
+  570  python map_parsing.py | less
+  571  python map_parsing.py > sample.json 
+  572  cat sample.json 
+  573  python map_parsing.py > sample.json 
+  574  vi sample.json 
+  575  sudo npm install geojson-validation
+  576  gjv
+  577  sudo npm install geojson-validation@1
+  578  sudo npm install geojson-validation
+  579  ls
+  580  cd node_modules/
+  581  ls
+  582  cd geojson-validation/
+  583  ls
+  584  cd bin/
+  585  ls
+  586  ./gjv 
+  587  ./gjv ../../../sample.json 
+  588  ./gjv ../../../sample.json | head
+  589  vi samp
+  590  cd ../..
+  591  ls
+  592  cd ..
+  593  ls
+  594  vi sample.json 
+  595  python map_parsing.py > sample.json 
+  596  node_modules/geojson-validation/bin/gjv sample.json 
+  597  python map_parsing.py > sample.json 
+  598  python map_parsing.py > sample.json 
+  599  node_modules/geojson-validation/bin/gjv sample.json 
+  600  cat sample.json 
+  601  python map_parsing.py > sample.json 
+  602  cat sample.json 
+  603  vi topo_sample.json 
+  604  vi topo_sample.json 
+  605  vi topo_sample.json 
+  606  vi topo_sample.json 
+  607  vi sample.json 
+  608  vi topo_sample.json 
+  609  cat topo_sample.json 
+  610  vi topo_sample.json 
+  611  vi topo_sample.json 
+  612  topojson -o topo_sample_2.json --no-quantization sample.json 
+  613  vi sample.json 
+  614  vi sample.json 
+  615  vi topo_sample_2.json 
+  616  python map_parsing.py > sample.json 
+  617  topojson -o topo_sample_2.json --no-quantization sample.json 
+  618  vi topo_sample_2.json 
+  619  vi sample.json 
+  620  python map_parsing.py > sample.json 
+  621  topojson -o topo_sample_2.json --no-quantization sample.json 
+  622  python map_parsing.py > sample.json 
+  623  topojson -o topo_sample_2.json --no-quantization sample.json 
+  624  vi sample.json 
+  625  vi topo_sample_2.json 
+  626  python map_parsing.py > sample.json 
+  627  topojson -o topo_sample_2.json --no-quantization sample.json 
+  628  python map_parsing.py > sample.json 
+  629  topojson -o topo_sample_2.json --no-quantization sample.json 
+  630  python map_parsing.py > sample.json 
+  631  topojson -o topo_sample_2.json --no-quantization sample.json 
+  632  python map_parsing.py > sample.json 
+  633  topojson -o topo_sample_2.json --no-quantization sample.json 
+  634  history | grep topojson
+  635  topojson --no-quantization --properties name=name -o topo_sample_3.json sample.json
+  636  vi topo_sample_3.json 
+  637  vi topo_sample.json 
+  638  vi topo.json 
+  639  vi topo_sample_3.json 
+  640  geo2topo
+  641  ls
+  642  ls -lth *.json
+  643  topojson --properties name=name -o topo_sample_3.json sample.json
+  644  topojson --properties name=name -o topo_sample_3.json sample.json
+  645  vi topo_sample_3.json 
+  646  history >> historical_command.txt
