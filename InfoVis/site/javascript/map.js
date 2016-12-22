@@ -59,26 +59,12 @@ function updateView(value)
   dataset_year = [];
   dataset_selected = [];
   correlationCoefficient = 0;
-  var xMean = 0, yMean = 0, count = 0, CovXY = 0, VarX = 0, VarY = 0;
   dataset.forEach(function(d){
     if(d.year == year){
       dataset_year.push(d);
-    count++;
-    xMean += +d[data_1];
-    yMean += +d[data_2];
     }
   });
-  xMean = xMean/count;
-  yMean = yMean/count;
-  dataset_year.forEach(function(d){
-    CovXY += ((+d[data_1]) - xMean)*((+d[data_2]) - yMean);
-    VarX += Math.pow(((+d[data_1]) - xMean),2);
-    VarY += Math.pow(((+d[data_2]) - yMean),2);
-  });
- 
-  correlationCoefficient = CovXY / (Math.sqrt(VarX * VarY) );
-  //$( "#correlationCoefficient" ).remove();
-  $( "#correlationCoefficient" ).empty().append( "Correlation Coefficient: " + correlationCoefficient );
+  
   // Update the scatterplot with this function
   scatter_change();  
 
