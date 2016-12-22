@@ -499,11 +499,6 @@ function mouseClicked(d)
       return d === centered;
     });
 
-  g_experimental.selectAll("path")
-    .classed("active", centered && function(d) {
-      return d === centered;
-    });
-
   // Inspired from this : http://stackoverflow.com/questions/10692100/invoke-a-callback-at-the-end-of-a-transition
   // However, we write our own implementation inside the callback
   g.transition().duration(700)
@@ -526,31 +521,9 @@ function mouseClicked(d)
           .style('stroke', '#757575')
           .style('stroke-width', '0.5px');   
       }
-    })
-
-  g2.transition().duration(700)
-    .attr("transform", "translate(" + width/2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-    .on("end", function(d) { 
-      // On end of transition, highlight the selected neighbourhood by adding bold orange stroke around it.      
-      if(zoomState == 1)
-      {
-        d3.select(this).style('stroke','#757575').style('stroke-width','0.5px');
-        var select = "#"+"path_right_"+selected;
-
-        d3.select(select).raise().transition().duration(300)
-          .style('stroke', '#F57F17')
-          .style('stroke-width','2px');
-      }
-      // If it's zoomed out, "delete" the stroke and return it to the normal stroke      
-      else
-      {
-        d3.select("#"+"path_right_"+selected).transition().duration(300)
-          .style('stroke', '#757575')
-          .style('stroke-width', '0.5px');        
-      }
     });
 
-  g_experimental.transition().duration(700)
+  g2.transition().duration(700)
     .attr("transform", "translate(" + width/2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
     .on("end", function(d) { 
       // On end of transition, highlight the selected neighbourhood by adding bold orange stroke around it.      
