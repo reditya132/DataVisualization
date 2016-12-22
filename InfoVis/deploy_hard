@@ -1,6 +1,0 @@
-#!/bin/bash
-echo Removing old site files
-ssh dataviz@dataviz -C "cd public_html; if [ -d 'site' ]; then rm -r site; fi"
-echo Pushing new site files
-scp -r /Users/Sharif/Documents/GitHub/DataVisualization/site/ dataviz@dataviz:public_html/site
-echo "Done!"
