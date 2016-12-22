@@ -32,6 +32,7 @@ var centered;
 // g2 = Right column
 var g;
 var g2;
+var g_experimental;
 
 ////////// END DEFINITION OF GLOBAL VARIABLE /////////
 
@@ -232,6 +233,34 @@ var legendRight = d3.select("#right_column").append("svg")
   .attr("height", 50)
   .attr("id", "legend_right");
 
+var svg_experimental = d3.select("#experimental").append("svg")
+  .attr("width", width)
+  .attr("height", height);
+
+var experimentalLegendDiv = d3.select("#experimental").append("div")
+  .style("visibility", "hidden")
+  .attr("class", "legend_div row");
+
+var legendLeftExperimental = experimentalLegendDiv.append("div")
+  .attr("class", "col-md-6");
+
+legendLeftExperimental.append("p").text("1st variable");
+
+legendLeftExperimental.append("svg")
+  .attr("width", width)
+  .attr("height", 50)
+  .attr("id", "legend_left_experimental");
+
+var legendRightExperimental = experimentalLegendDiv.append("div")
+  .attr("class", "col-md-6");
+
+legendRightExperimental.append("p").text("2nd variable");
+
+legendRightExperimental.append("svg")
+  .attr("width", width)
+  .attr("height", 50)
+  .attr("id", "legend_right_experimental");
+
 // Project using geoAlbers projection
 var projection = d3.geoAlbers()
   .center([4.88, 52.36])
@@ -307,6 +336,24 @@ function queue(error, map, data) {
         .on("mouseover", mouseOver)
         .on("mouseout", mouseOut)
         .on("click", mouseClicked);
+
+  // experimental choropleths
+  g_experimental = svg_experimental.append("g")
+        .attr("class", "path-borders")
+        .attr("id", "experimentalG")
+        .selectAll("path")
+        .data(topodata) 
+        .enter().append("path")
+        .attr("d", path)
+        // This is an important part as now each neighbourhood will have an ID, makes it easier for us to select a specific neighbourhood later in the map
+        .attr("id", function(d) { return "path_experimental_"+d.id; })
+        .style("fill", function(d) {
+          return blendColors(color["experimental"](dataValue["leftValue"][d.id]), color["right"](dataValue["rightValue"][d.id])); 
+        })
+        .style("opacity", 1)
+        .on("mouseover", mouseOver)
+        .on("mouseout", mouseOut)
+        .on("click", mouseClicked);
 };
 
 /*
@@ -355,6 +402,16 @@ function mouseOver(d,i)
     divTooltipSecond.text(dataValue["leftId"][d.id] + " : " + dataValue["leftValue"][d.id])
       .style("left", (d3.event.pageX - locationDivRight.left + locationDivLeft.left) + "px")
       .style("top", (d3.event.pageY - 30 - locationDivRight.top + locationDivLeft.top) + "px");    
+  }
+
+  else if(mouseDiv == "experimental")
+  {
+    // The first tooltip position will be a function of the X and Y position of the mouse
+    // If its the experimental div, show both values
+    divTooltipFirst.transition().duration(200).style("opacity", 1);
+    divTooltipFirst.text(dataValue["leftId"][d.id] + " : " + dataValue["leftValue"][d.id] + ", " + dataValue["rightValue"][d.id])
+      .style("left", (d3.event.pageX) + "px")
+      .style("top", (d3.event.pageY - 30) + "px");   
   }
 }
 
@@ -436,6 +493,11 @@ function mouseClicked(d)
       return d === centered;
     });
 
+  g_experimental.selectAll("path")
+    .classed("active", centered && function(d) {
+      return d === centered;
+    });
+
   // Inspired from this : http://stackoverflow.com/questions/10692100/invoke-a-callback-at-the-end-of-a-transition
   // However, we write our own implementation inside the callback
   g.transition().duration(700)
@@ -461,6 +523,28 @@ function mouseClicked(d)
     })
 
   g2.transition().duration(700)
+    .attr("transform", "translate(" + width/2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+    .on("end", function(d) { 
+      // On end of transition, highlight the selected neighbourhood by adding bold orange stroke around it.      
+      if(zoomState == 1)
+      {
+        d3.select(this).style('stroke','#757575').style('stroke-width','0.5px');
+        var select = "#"+"path_right_"+selected;
+
+        d3.select(select).raise().transition().duration(300)
+          .style('stroke', '#F57F17')
+          .style('stroke-width','2px');
+      }
+      // If it's zoomed out, "delete" the stroke and return it to the normal stroke      
+      else
+      {
+        d3.select("#"+"path_right_"+selected).transition().duration(300)
+          .style('stroke', '#757575')
+          .style('stroke-width', '0.5px');        
+      }
+    });
+
+  g_experimental.transition().duration(700)
     .attr("transform", "translate(" + width/2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
     .on("end", function(d) { 
       // On end of transition, highlight the selected neighbourhood by adding bold orange stroke around it.      
@@ -539,7 +623,74 @@ function update(yearSelected,pos,datadraw)
         else { return color[pos](mapValue); }
       })
     });
-  }    
+  }
+
+  //Always update experimental one
+  g = d3.select("#experimentalG")
+    .selectAll("path")
+    .each(function(d,i) {
+      // For each path inside the choropleths, change its value and color
+      d3.select(this).transition().duration(300).style("fill", function(d){
+        var leftMapValue = dataValue["leftValue"][d.id];
+        if(leftMapValue == 0) { leftMapValue =  "#FFFFFF"; }
+        var rightMapValue = dataValue["rightValue"][d.id];
+        if(rightMapValue == 0) { rightMapValue =  "#FFFFFF"; }
+        return blendColors(color["experimental"](leftMapValue), color["right"](rightMapValue));
+      })
+    });   
+}
+
+function blendColors(color1, color2)
+{
+  var red1 = parseInt(color1.substring(1, 3), 16) / 255;
+  var green1 = parseInt(color1.substring(3, 5), 16) / 255;
+  var blue1 = parseInt(color1.substring(5, 7), 16) / 255;
+
+  var red2 = parseInt(color2.substring(1, 3), 16) / 255;
+  var green2 = parseInt(color2.substring(3, 5), 16) / 255;
+  var blue2 = parseInt(color2.substring(5, 7), 16) / 255;
+
+  var red = 1;
+  var green = 1;
+  var blue = 1;
+
+  //overlay
+  /*if (red1 < 0.5){
+    red = 2 * red1 * red2;
+  }else{
+    red = 1 - 2 * (1 -red1) * (1 - red2);
+  }
+
+  if (green1 < 0.5){
+    green = 2 * green1 * green2;
+  }else{
+    green = 1 - 2 * (1 -green1) * (1 - green2);
+  }
+
+  if (blue1 < 0.5){
+    blue = 2 * blue1 * blue2;
+  }else{
+    blue = 1 - 2 * (1 -blue1) * (1 - blue2);
+  }
+
+  red = red1 * red2;
+  green = green1 * green2;
+  blue = blue1 * blue2;
+  */
+
+  //average color blending
+  red = (red1 + red2) / 2;
+  green = (green1 + green2) / 2;
+  blue = (blue1 + blue2) / 2;
+
+
+  var red = Math.round(red * 255);
+  var green = Math.round(green * 255);
+  var blue = Math.round(blue * 255);
+
+  var blended = "#" + red.toString(16) + green.toString(16) + blue.toString(16);
+
+  return blended;
 }
 
 /*
@@ -555,6 +706,7 @@ function drawLegend(dataVar,pos)
   var min = 100000;
   // Everytime, clean out the legend div first and draw the new one.
   $("#legend_"+pos).html("");
+  $("#legend_"+pos+"_experimental").html("");
 
   // Logic to assign minimum and maximum value of the legend
   data_temp.forEach(function(d) {
@@ -570,10 +722,10 @@ function drawLegend(dataVar,pos)
 
   // The jump in every ticks of the legend
   var tick = max/9;
-
   // Assign a color scheme of schemeGreens to the left choropleth and schemeBlues to the right one
   if(pos == "left") { color[pos] = d3.scaleThreshold().domain(d3.range(0, max, tick)).range(d3.schemeGreens[9]); }
   else if(pos == "right") { color[pos] = d3.scaleThreshold().domain(d3.range(0, max, tick)).range(d3.schemeBlues[9]); }
+  color["experimental"] = d3.scaleThreshold().domain(d3.range(0, max, tick)).range(d3.schemeReds[9]);
 
   var ssvg = d3.select("#legend_"+pos);
 
@@ -588,6 +740,27 @@ function drawLegend(dataVar,pos)
 
   ssvg.select(".legendLinear")
     .call(legendLinear);
+
+  var ssvg_experimental = d3.select("#legend_"+pos+"_experimental");
+
+  ssvg_experimental.append("g")
+    .attr("class", "legendLinear")
+    .attr("transform", "translate(100,10)");
+
+  var legendLinearExperimental = d3.legendColor()
+    .shapeWidth(35)
+    .orient('horizontal')
+    .scale(color["experimental"]);
+
+  if (pos == "left"){
+  ssvg_experimental.select(".legendLinear")
+    .call(legendLinearExperimental);
+  } else {
+    ssvg_experimental.select(".legendLinear")
+    .call(legendLinear);
+  }
+
+  d3.selectAll(".legend_div").style("visibility", "visible");
 }
 
 
