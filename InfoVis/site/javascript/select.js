@@ -1,3 +1,7 @@
+////////// DEFINITION OF GLOBAL VARIABLES ////////////
+var metadata_labels = [];
+////////// END DEFINITION OF GLOBAL VARIABLES /////////
+
 // Loads the data and meta data of the Amsterdam dataset.
 d3.queue()
 	.defer(d3.tsv, "../datasets/metadata.txt")
@@ -26,8 +30,10 @@ function addSelect(metadata, divID, selectID){
 				thema = d.THEMA;
 				selectHtml += "<optgroup label='" + thema + "'>";
 			}
-			// A new select option gets created per variable with value, title and label from metadata..
+			// A new select option gets created per variable with value, title and label from metadata.
+			// Variable in metadata had some uncorresponding space with normal data file. There for " " gets replaced with "".
 			selectHtml += "<option value='" +d.Variabele.replace(" ","") + "'" + "title='" + d.Definitie + "'" + ">" + d.Label + "</option>";
+			metadata_labels[d.Variabele.replace(" ","")] = d.Label;
 		}
 	});
 	selectHtml +=  "</optgroup></select>" ;

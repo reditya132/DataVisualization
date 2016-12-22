@@ -40,7 +40,8 @@ function drawScatterplot(){
 
 	// Define X axis
 	xAxis = d3.axisBottom()
-				.scale(xScale);
+				.scale(xScale)
+				.ticks(7);
 
 	// Define Y axis
 	yAxis = d3.axisLeft()
@@ -115,13 +116,28 @@ function drawScatterplot(){
 	svgScatterplot.append("g")
 	.attr("class", "x axis")
 	.attr("transform", "translate(0," + (canvas_height - padding) +")")
-	.call(xAxis);
+	.call(xAxis)
+	.append("text")
+    .attr("fill", "#000")
+    .attr("x", 250)
+	.attr("y", 30)
+    .attr("dx", "0.71em")
+    .style("text-anchor", "end")
+    .text(metadata_labels[data_1] + " →");
 
 	// Add to Y axis
 	svgScatterplot.append("g")
 	.attr("class", "y axis")
 	.attr("transform", "translate(" + padding +",0)")
-	.call(yAxis);
+	.call(yAxis)
+	.append("text")
+    .attr("fill", "#000")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -50)
+	.attr("x", -200)
+    .attr("dy", "0.71em")
+    .style("text-anchor", "end")
+    .text(metadata_labels[data_2] + " →");
 }
 
 /* Updates the points position. Can be used when the year has been changed for the scatterplot. */
