@@ -70,38 +70,6 @@ function updateView(value)
   showCorrelationCoefficient();  
 }
 
-// Computes and shows the correlation coefficient for all data points within the select year.
-function showCorrelationCoefficient(){
-  correlationCoefficient = 0;
-  var xMean = 0, yMean = 0, count = 0, CovXY = 0, VarX = 0, VarY = 0;
-  dataset.forEach(function(d){
-    if(d.year == year){
-	  count++;
-	  xMean += +d[data_1];
-	  yMean += +d[data_2];
-    }
-  });
-  xMean = xMean/count;
-  yMean = yMean/count;
-  dataset_year.forEach(function(d){
-	  CovXY += ((+d[data_1]) - xMean)*((+d[data_2]) - yMean);
-	  VarX += Math.pow(((+d[data_1]) - xMean),2);
-	  VarY += Math.pow(((+d[data_2]) - yMean),2);
-  });
- 
-  correlationCoefficient = CovXY / (Math.sqrt(VarX * VarY) );
-  var roundedCC = Math.round(correlationCoefficient * 1000) / 1000;
-  if(Math.abs(roundedCC) >= 0.66){
-	$( "#correlationCoefficient" ).empty().append( "<span class='alert alert-success'>Correlation Coefficient: " + roundedCC + "</span>" );
-  }
-  else if(Math.abs(roundedCC) >= 0.33){
-	$( "#correlationCoefficient" ).empty().append( "<span class='alert alert-warning'>Correlation Coefficient: " + roundedCC + "</span>" );
-  }
-  else{
-	$( "#correlationCoefficient" ).empty().append( "<span class='alert alert-danger'>Correlation Coefficient: " + roundedCC + "</span>" );
-  }
-}
-
 // Draw the search neighbourhood box with Jquery EasyAutocomplete plugin : http://easyautocomplete.com/
 var options = {
   url: "map/buurt.json",
