@@ -133,7 +133,7 @@ public class VolVisApplication extends javax.swing.JFrame {
 
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
         // TODO add your handling code here:
-        JFileChooser fc = new JFileChooser("/Users/Sharif/Documents/GitHub/DataVisualization/VolVis/DataVisVolVisCode/VolumeVisualization/set1_data/");
+        JFileChooser fc = new JFileChooser();
         fc.setFileFilter(new FileFilter() {
 
             @Override
